@@ -8,40 +8,32 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 
-import enums.DriverType;
-import helper.FileReaderManager;
 import managers.DriverManager;
 import managers.DriverManagerFactory;
+import pageObjects.LoginPage;
+import helper.DriverUtils;
 
 public class TestBase {
-
+	public WebDriver driver;
 	DriverManager driverManager;
-	WebDriver driver;
+	LoginPage LoginPage = new LoginPage();
 
 	@BeforeClass
 	public void setUp() {
-		Long implicityWait =  FileReaderManager.getInstance().getConfigReader().getImplicitlyWait();
-		Long loadTimeout =  FileReaderManager.getInstance().getConfigReader().getPageLoadTimeout();
-		String url =  FileReaderManager.getInstance().getConfigReader().getUrl();
-		DriverType browser =  FileReaderManager.getInstance().getConfigReader().getBrowser();
 		System.out.println("Pre-condition");
 		BasicConfigurator.configure();
-		driverManager = DriverManagerFactory.getDriverManager(browser);
-		driver = driverManager.getWebDriver();
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().pageLoadTimeout(loadTimeout,TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(implicityWait, TimeUnit.SECONDS);
-		driver.get(url);
+		DriverUtils.driver = DriverManagerFactory.getDriverManager(DriverUtils.browser).getWebDriver();
+		DriverUtils.driver.get(DriverUtils.url);
+		DriverUtils.driver.manage().window().maximize();
+		DriverUtils.driver.manage().timeouts().pageLoadTimeout(DriverUtils.loadTimeout,TimeUnit.SECONDS);
+		DriverUtils.driver.manage().timeouts().implicitlyWait(DriverUtils.implicityWait, TimeUnit.SECONDS);
 	}
 
-	/*
 	@AfterClass
 	public void tearDown() {
 		System.out.println("Post-condition");
 		driverManager.quitDriver();
 	}
-	*/
 
 	public static final Logger log = Logger.getLogger(TestBase.class.getName());
 }

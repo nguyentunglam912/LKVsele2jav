@@ -9,7 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import managers.DriverManager;
+
+import helper.DriverUtils;
 
 public class BaseElement {
 	protected String locator;
@@ -17,7 +18,7 @@ public class BaseElement {
 
 	public BaseElement(String locator) {
 		this.locator = locator;
-	}
+		}
 
 	private By getByLocator() {
 		String body = this.locator.replaceAll("[\\w\\s]*=(.*)", "$1").trim();
@@ -39,7 +40,7 @@ public class BaseElement {
 	}
 
 	protected WebDriver getDriver() {
-		return ge;
+		return DriverUtils.driver;
 	}
 
 	protected WebElement findElement() {

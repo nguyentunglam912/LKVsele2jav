@@ -1,22 +1,21 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
+import element.BaseElement;
 import element.Button;
 import element.CustomCombobox;
 import element.TextBox;
+import helper.DriverUtils;
 
-public class LoginPage {
-	WebDriver driver;
+public class LoginPage{
+	BaseElement baseElement;
 	CustomCombobox cbbRepository = new CustomCombobox("id = repository");
 	TextBox txtUserName = new TextBox("id=username");
-	TextBox txtPassword = new TextBox("id = password");
-	Button btnSignIn = new Button("className = btn-login");
-	
-	public LoginPage(){
-		PageFactory.initElements(driver, this);
-	}
+	TextBox txtPassword = new TextBox("id=password");
+	Button btnSignIn 	= new Button("className=btn-login");
 	
 	private void selectRepository(String repository) {
 		cbbRepository.selectByVisibleText(repository);
@@ -41,4 +40,9 @@ public class LoginPage {
 		clickSignIn();
 	}
 
+	public void checkLoginSuccessfully() {
+		String expectedTitle = "TestArchitect";
+		String actualTitle = DriverUtils.driver.getTitle();
+		Assert.assertTrue(actualTitle.contains(expectedTitle));
+	}
 }
