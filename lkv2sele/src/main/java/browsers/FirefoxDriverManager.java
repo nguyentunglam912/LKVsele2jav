@@ -3,7 +3,7 @@ package browsers;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import helper.DriverUtils;
-import helper.FileReaderManager;
+import managers.DriverManager;
 
 public class FirefoxDriverManager extends DriverManager{
 	@Override
