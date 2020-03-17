@@ -32,7 +32,7 @@ public class TestBase {
 	@AfterClass
 	public void tearDown() {
 		System.out.println("Post-condition");
-		driverManager.quitDriver();
+		DriverUtils.driver.quit();
 	}
 
 	public static final Logger log = Logger.getLogger(TestBase.class.getName());
