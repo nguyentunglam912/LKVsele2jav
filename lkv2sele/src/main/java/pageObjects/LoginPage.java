@@ -45,5 +45,4 @@ public class LoginPage{
 		String actualTitle = DriverUtils.driver.getTitle();
 		Assert.assertTrue(actualTitle.contains(expectedTitle));
 	}
-
 }

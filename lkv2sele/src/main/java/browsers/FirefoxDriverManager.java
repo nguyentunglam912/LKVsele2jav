@@ -3,7 +3,7 @@ package browsers;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import helper.DriverUtils;
-import managers.DriverManager;
+import helper.FileReaderManager;
 
 public class FirefoxDriverManager extends DriverManager{
 	@Override
@@ -11,6 +11,5 @@ public class FirefoxDriverManager extends DriverManager{
 		System.setProperty("webdriver.gecko.driver", DriverUtils.driverPath + "geckodriver.exe");
 		this.driver = new FirefoxDriver(); 
 	}
-
 }
 
