@@ -10,7 +10,7 @@ import enums.DriverType;
  
 public class ConfigFileReader { 
 	private Properties properties;
-	private final String propertyFilePath= "D:\\auto\\LKVsele2jav\\lkv2sele\\src\\main\\java\\configs\\Configuration.properties";
+	private final String propertyFilePath= System.getProperty("user.dir") + "\\src\\main\\java\\configs\\Configuration.properties";
  
 	public ConfigFileReader(){
 		BufferedReader reader;

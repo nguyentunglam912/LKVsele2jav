@@ -1,15 +1,14 @@
 package browsers;
 
 import org.openqa.selenium.chrome.ChromeDriver;
-
-import helper.DriverUtils;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import managers.DriverManager;
 
 public class ChromeDriverManager extends DriverManager {
 
 	@Override
 	public void createWebDriver() {
-		System.setProperty("webdriver.chrome.driver", DriverUtils.driverPath + "chromedriver.exe");
+		WebDriverManager.chromedriver().setup();
 		this.driver = new ChromeDriver();
 	}
 }
