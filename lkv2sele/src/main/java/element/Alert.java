@@ -3,7 +3,7 @@ package element;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import helper.DriverUtils;
+import support.DriverUtils;
 
 public class Alert {
 

@@ -6,11 +6,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import enums.DriverType;
+import support.DriverType;
  
 public class ConfigFileReader { 
 	private Properties properties;
-	private final String propertyFilePath= System.getProperty("user.dir") + "\\src\\main\\java\\configs\\Configuration.properties";
+	private final String propertyFilePath= System.getProperty("user.dir") + "\\src\\main\\java\\helper\\Configuration.properties";
  
 	public ConfigFileReader(){
 		BufferedReader reader;

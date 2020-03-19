@@ -2,21 +2,24 @@ package pageObjects;
 
 import element.BaseElement;
 import element.Button;
-import helper.DriverUtils;
+import helper.JSONFileReader;
+import support.DriverUtils;
 
 public class HomePage {
 	BaseElement baseElement;
 	DriverUtils driverUtils = new DriverUtils();
-	Button btnGlobalSetting = new Button("//li[@class = 'mn-setting']");
+	JSONFileReader jsonFileReader = new JSONFileReader();
 	
-	public void selectOptionInMenu(Button menuname, String option) {
+	public void selectOptionInMenu(String menuname, String option) {
 		driverUtils.waitForPageLoad();
+		String xpathMenuOption = jsonFileReader.getValueFromJson(String.format("/menu name/%s",menuname));
 		Button btnOption = new Button(String.format("//a[text()='%s']", option));
-		menuname.moveMouse();
+		Button btnMenuOption = new Button(String.format(xpathMenuOption));
+		btnMenuOption.moveMouse();
 		btnOption.click();
 	}
 
 	public void selectAddPageButtonInGlobalSettingMenu() {
-		selectOptionInMenu(btnGlobalSetting, "Add Page");
+		selectOptionInMenu("Global Setting", "Add Page");
 	}
 }

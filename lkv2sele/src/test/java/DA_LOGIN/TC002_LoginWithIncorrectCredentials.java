@@ -2,7 +2,7 @@ package DA_LOGIN;
 
 import org.testng.annotations.Test;
 
-import helper.Constant;
+import support.Constant;
 import testbase.TestBase;
 
 public class TC002_LoginWithIncorrectCredentials extends TestBase{
