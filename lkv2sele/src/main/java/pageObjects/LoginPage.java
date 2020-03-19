@@ -46,10 +46,9 @@ public class LoginPage{
 		Assert.assertTrue(actualTitle.contains(expectedTitle));
 	}
 
-	public void checkLoginErrorMessage() {
-		String expectedMessage = "Username or password is invalid";
+	public void checkLoginErrorMessage(String expectedErrorMessage) {
 		alert.waitForAlertPresent();
 		String actualMessage = alert.getText();
-		Assert.assertTrue(actualMessage.contains(expectedMessage));
+		Assert.assertTrue(actualMessage.contains(expectedErrorMessage));
 	}
 }

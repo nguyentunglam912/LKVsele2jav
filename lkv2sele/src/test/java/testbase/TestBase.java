@@ -1,18 +1,16 @@
 package testbase;
 
-import java.io.File;
-import java.util.concurrent.TimeUnit;
-
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+import com.relevantcodes.extentreports.LogStatus;
+import helper.DriverUtils;
+import managers.DriverManagerFactory;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.apache.log4j.varia.NullAppender;
 import org.testng.ITestResult;
 import org.testng.Reporter;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 import managers.DriverManagerFactory;
 import pageObjects.HomePage;
@@ -22,6 +20,9 @@ import helper.DriverUtils;
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
+
+import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 
 public class TestBase {
