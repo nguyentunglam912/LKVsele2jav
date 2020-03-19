@@ -15,6 +15,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
 import managers.DriverManagerFactory;
+import pageObjects.HomePage;
+import pageObjects.LoginPage;
 import helper.DriverUtils;
 
 import com.relevantcodes.extentreports.ExtentReports;
@@ -26,6 +28,9 @@ public class TestBase {
 	static ExtentReports extent;
 	protected static ExtentTest test;
 	public static Logger logger = Logger.getLogger("Test");
+
+	public LoginPage loginPage = new LoginPage();
+	public HomePage homePage = new HomePage();
 
 	@BeforeClass
 	public static void setUp() {
