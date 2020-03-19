@@ -2,6 +2,7 @@ package pageObjects;
 
 import org.testng.Assert;
 
+import element.Alert;
 import element.BaseElement;
 import element.Button;
 import element.CustomCombobox;
@@ -14,6 +15,7 @@ public class LoginPage{
 	TextBox txtUserName = new TextBox("id=username");
 	TextBox txtPassword = new TextBox("id=password");
 	Button btnSignIn 	= new Button("className=btn-login");
+	Alert alert = new Alert();
 	
 	private void selectRepository(String repository) {
 		cbbRepository.selectByVisibleText(repository);
@@ -42,5 +44,12 @@ public class LoginPage{
 		String expectedTitle = "TestArchitect";
 		String actualTitle = DriverUtils.driver.getTitle();
 		Assert.assertTrue(actualTitle.contains(expectedTitle));
+	}
+
+	public void checkLoginErrorMessage() {
+		String expectedMessage = "Username or password is invalid";
+		alert.waitForAlertPresent();
+		String actualMessage = alert.getText();
+		Assert.assertTrue(actualMessage.contains(expectedMessage));
 	}
 }
