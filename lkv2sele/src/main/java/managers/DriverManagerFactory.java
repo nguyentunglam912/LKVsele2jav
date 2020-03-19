@@ -2,7 +2,7 @@ package managers;
 
 import browsers.ChromeDriverManager;
 import browsers.FirefoxDriverManager;
-import enums.DriverType;
+import support.DriverType;
  
 public class DriverManagerFactory {
 	public static DriverManager getDriverManager(DriverType type) {

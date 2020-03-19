@@ -2,7 +2,7 @@ package DA_MP;
 
 import org.testng.annotations.Test;
 
-import helper.Constant;
+import support.Constant;
 import testbase.TestBase;
 
 public class TC011_CannotOpenMoreThanOneNewPageDialog extends TestBase{
@@ -20,8 +20,10 @@ public class TC011_CannotOpenMoreThanOneNewPageDialog extends TestBase{
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 		
 		reportLog("Step 3: Go to Global Setting -> Add page");
+		homePage.selectAddPageButtonInGlobalSettingMenu();
 		
 		reportLog("Step 4: Try to go to Global Setting -> Add page again");
+		homePage.selectAddPageButtonInGlobalSettingMenu();
 
 		reportLog("VP: User cannot go to Global Setting -> Add page while 'New Page' dialog appears.");
 		
