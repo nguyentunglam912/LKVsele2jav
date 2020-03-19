@@ -1,24 +1,22 @@
 package pageObjects;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
-import org.testng.Assert;
-
-import element.Alert;
 import element.BaseElement;
 import element.Button;
-import element.CustomCombobox;
-import element.TextBox;
 import helper.DriverUtils;
 
 public class HomePage {
 	BaseElement baseElement;
 	DriverUtils driverUtils = new DriverUtils();
+	Button btnGlobalSetting = new Button("//li[@class = 'mn-setting']");
 	
-	public void selectOptionInMenu(String menuName, String option) {
+	public void selectOptionInMenu(Button menuname, String option) {
 		driverUtils.waitForPageLoad();
+		Button btnOption = new Button(String.format("//a[text()='%s']", option));
+		menuname.moveMouse();
+		btnOption.click();
+	}
+
+	public void selectAddPageButtonInGlobalSettingMenu() {
+		selectOptionInMenu(btnGlobalSetting, "Add Page");
 	}
 }
