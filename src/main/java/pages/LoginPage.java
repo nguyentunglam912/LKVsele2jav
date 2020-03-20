@@ -1,4 +1,4 @@
-package pageObjects;
+package pages;
 
 import org.testng.Assert;
 
