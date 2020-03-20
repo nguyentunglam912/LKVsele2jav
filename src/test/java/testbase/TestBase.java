@@ -15,9 +15,9 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 
 import managers.DriverManagerFactory;
-import pageObjects.HomePage;
-import pageObjects.LoginPage;
-import helper.DriverUtils;
+import pages.HomePage;
+import pages.LoginPage;
+import support.DriverUtils;
 
 import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
@@ -44,7 +44,7 @@ public class TestBase {
 		System.out.println("Post-condition");
 		Logger.getRootLogger().removeAllAppenders();
 		Logger.getRootLogger().addAppender(new NullAppender());
-		DriverUtils.driver.quit();
+//		DriverUtils.driver.quit();
 	}
 
 	@BeforeTest

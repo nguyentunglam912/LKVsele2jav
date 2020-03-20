@@ -1,8 +1,9 @@
 package managers;
   
 import org.openqa.selenium.WebDriver;
-import pageObjects.LoginPage;
-import pageObjects.HomePage;
+
+import pages.HomePage;
+import pages.LoginPage;
 
 
 public class PageObjectManager {

@@ -1,4 +1,4 @@
-package pageObjects;
+package pages;
 
 import element.BaseElement;
 import element.Button;
