@@ -14,7 +14,7 @@ import io.qameta.allure.Description;
 
 
 @Listeners({ TestListener.class })
-public class TC011_CannotOpenMoreThanOneNewPageDialog extends TestBase{
+public class DA_MP_TC011 extends TestBase{
 	/**
 	 * DA_MP_TC011
 	 * @author lam.tung.nguyen
@@ -23,9 +23,9 @@ public class TC011_CannotOpenMoreThanOneNewPageDialog extends TestBase{
 	LoginPage loginPage = new LoginPage();
 	HomePage homePage = new HomePage();
 
-	@Test(description = "DA_MP_TC011 - Verify that user is unable open more than 1 'New Page' dialog")
+	@Test(description = "Verify that user is unable open more than 1 'New Page' dialog")
 	@Description("Verify that user is unable open more than 1 'New Page' dialog")
-	public void TC011() {
+	public void DA_MP_TC011_CannotOpenMoreThanOneNewPageDialog() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 

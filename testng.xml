@@ -3,7 +3,9 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-      <class name="com.sele2.testcases.DA_MP.TC011_CannotOpenMoreThanOneNewPageDialog"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC002"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC001"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC003"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
