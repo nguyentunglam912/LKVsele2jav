@@ -30,6 +30,6 @@ public class DA_LOGIN_TC003 extends TestBase{
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.INVALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Error message 'Username or password is invalid' appears");
-		loginPage.checkLoginErrorMessage(Constant.LOGIN_ERROR_MESSAGE);
+		loginPage.checkLoginErrorMessage(Constant.ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD);
 	}
 }
