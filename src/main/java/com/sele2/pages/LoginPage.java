@@ -49,7 +49,7 @@ public class LoginPage{
 		Assert.assertTrue(actualTitle.contains(expectedTitle));
 	}
 
-	@Step("VP: Verify that Dashboard Error message {0}")
+	@Step("VP: Verify the error message '{0}' is displayed")
 	public void checkLoginErrorMessage(String expectedErrorMessagge) {
 		alert.waitForAlertPresent();
 		String actualMessage = alert.getText();

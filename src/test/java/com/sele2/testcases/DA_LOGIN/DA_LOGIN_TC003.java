@@ -11,7 +11,7 @@ import io.qameta.allure.*;
 import com.sele2.utils.listeners.TestListener;
 
 @Listeners({ TestListener.class })
-public class TC003_LoginWithIncorrectPassword extends TestBase{
+public class DA_LOGIN_TC003 extends TestBase{
 	/**
 	 * DA_LOGIN_TC003
 	 * @author lam.tung.nguyen
@@ -21,7 +21,7 @@ public class TC003_LoginWithIncorrectPassword extends TestBase{
 
 	@Test(description = "Verify that user fails to log in specific repository successfully via Dashboard login page with correct username and incorrect password")
 	@Description("Test Description: Verify that user fails to log in specific repository successfully via Dashboard login page with correct username and incorrect password")
-	public void TC003() {
+	public void DA_LOGIN_TC003_LoginWithIncorrectPassword() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
@@ -30,6 +30,6 @@ public class TC003_LoginWithIncorrectPassword extends TestBase{
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.INVALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Error message 'Username or password is invalid' appears");
-		loginPage.checkLoginErrorMessage(Constant.LOGIN_ERROR_MESSAGE);
+		loginPage.checkLoginErrorMessage(Constant.ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD);
 	}
 }
