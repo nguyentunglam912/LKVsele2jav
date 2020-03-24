@@ -91,8 +91,8 @@ public class BaseElement {
 		wait.until(ExpectedConditions.elementToBeClickable(findElement()));
 	}
 
-	public void waitForVisible(int timeOut) {
-		WebDriverWait wait = new WebDriverWait(getDriver(), timeOut);
+	public void waitForVisible(Long loadtimeout) {
+		WebDriverWait wait = new WebDriverWait(getDriver(), loadtimeout);
 		wait.until(ExpectedConditions.visibilityOf(findElement()));
 	}
 

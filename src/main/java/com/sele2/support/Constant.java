@@ -11,4 +11,5 @@ public class Constant {
 	public static final String CONFIG_PATH		= "\\src\\main\\java\\com\\sele2\\helper\\Configuration.properties";
 	public static final String ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD = "Username or password is invalid";
 	public static final String ERROR_MESSAGE_PLEASE_ENTER_USERNAME = "Please enter username!";
+	public static final String NULL		= "null";
 }

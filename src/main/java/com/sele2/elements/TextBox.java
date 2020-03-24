@@ -7,7 +7,7 @@ public class TextBox extends BaseElement {
 	}
 
 	public void sendKeys(CharSequence... keysToSend) {
-		findElement().sendKeys(keysToSend);
+		if(!keysToSend.equals(null)) findElement().sendKeys(keysToSend);
 	}
 
 	public void clear() {

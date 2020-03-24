@@ -3,20 +3,16 @@ package com.sele2.pages;
 import org.testng.Assert;
 
 import io.qameta.allure.Step;
-import com.sele2.elements.Alert;
-import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
 import com.sele2.elements.CustomCombobox;
 import com.sele2.elements.TextBox;
 import com.sele2.support.DriverUtils;
 
-public class LoginPage{
-	BaseElement baseElement;
+public class LoginPage extends GeneralPage{
 	CustomCombobox cbbRepository = new CustomCombobox("id = repository");
 	TextBox txtUserName = new TextBox("id=username");
 	TextBox txtPassword = new TextBox("id=password");
 	Button btnSignIn 	= new Button("className=btn-login");
-	Alert alert = new Alert();
 	
 	private void selectRepository(String repository) {
 		cbbRepository.selectByVisibleText(repository);
