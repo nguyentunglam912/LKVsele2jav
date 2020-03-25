@@ -2,19 +2,24 @@ package com.sele2.testcases.testbase;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.varia.NullAppender;
 
 import com.sele2.support.DriverUtils;
+import com.sele2.support.Constant;
 
 import io.qameta.allure.Step;
 
 import com.sele2.driver.DriverManagerFactory;
+import com.sele2.pages.GeneralPage;
 
 
 public class TestBase {
+	GeneralPage GeneralPage = new GeneralPage();
 
 	@BeforeClass
 	public static void setUp() {
@@ -31,6 +36,10 @@ public class TestBase {
 //		DriverUtils.driver.quit();
 	}
 
+//	@AfterMethod(groups = "DA_MP_12")
+//	public void deleteTestPages() {
+//		GeneralPage.deletePage(Constant.PAGE_NAME1);
+//	}
 	@Step("Navigate to Dashboard login page")
 	public void goToDashboardLoginPage() {
 		DriverUtils.driver.get(DriverUtils.url);

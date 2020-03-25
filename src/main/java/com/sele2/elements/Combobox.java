@@ -28,9 +28,15 @@ public class Combobox extends BaseElement {
 	}
 
 	public void selectBySpecialText(String text) {
-		List<WebElement> options = select().getOptions();
-		for(WebElement option : options) {
-			if(option.getText().equals(text)) option.click(); break;
-        }
+		if(text != null) {
+			findElement().click();
+			List<WebElement> options = select().getOptions();
+			for(WebElement option : options) {
+				if(option.getText().trim().equals(text)) {
+					option.click();
+					break;
+				}
+			}
+		}
 	}
 }

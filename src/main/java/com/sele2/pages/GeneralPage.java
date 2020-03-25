@@ -13,19 +13,22 @@ import com.sele2.elements.Button;
 import com.sele2.elements.Link;
 import com.sele2.helper.JSONFileReader;
 import com.sele2.support.DriverUtils;
+import com.sele2.support.Utilities;
 
 public class GeneralPage {
 	BaseElement baseElement;
 	DriverUtils driverUtils = new DriverUtils();
+	Utilities utils = new Utilities();
 	JSONFileReader jsonFileReader = new JSONFileReader();
 	Alert alert = new Alert();
 	String xpathDynamicPage = "//div[@class = 'container']//a[text()='%s']";
 	public String dynamicMenuItems = "//li[a[normalize-space()='%s']]/ul/li/a";
 	
 	public void moveMouseToMenu(String menuname) {
-		driverUtils.waitForPageLoad();
+		utils.waitForPageLoad();
 		String xpathMenuOption = jsonFileReader.getValueFromJson(String.format("/menu name/%s",menuname));
 		Button btnMenuOption = new Button(String.format(xpathMenuOption));
+		btnMenuOption.waitForVisible(DriverUtils.loadTimeout);
 		btnMenuOption.moveMouse();
 	}
 	
@@ -40,7 +43,7 @@ public class GeneralPage {
 	}
 	
 	public void goToPage(String pagePath) {
-		driverUtils.waitForPageLoad();
+		utils.waitForPageStable();
 		Button btnDynamicPage = null;
 		String[] nodes = pagePath.split("/");
 		for(String node:nodes) {
@@ -48,11 +51,12 @@ public class GeneralPage {
 			btnDynamicPage.moveMouse();
 		}
 		btnDynamicPage.click();
+		utils.waitForPageLoad();
 	}
 	
 	public void deletePage(String pagePath) {
         goToPage(pagePath);
-        driverUtils.waitForPageLoad();
+        utils.waitForPageLoad();
         selectOptionInMenu("Global Setting", "Delete");
         alert.accept();
 	}
@@ -69,15 +73,15 @@ public class GeneralPage {
 		return dictItems;
 	}
 
-	public void deleteAllPages(String parentPage) {
+	public void deleteAllPagesFromMenu(String parentPage) {
 		Dictionary pages = getMenuItems(parentPage);
 		if(pages.size() > 0) {
 			for(Enumeration<String> page = pages.elements(); page.hasMoreElements();) {
-				deleteAllPages(page.toString());
+				deleteAllPagesFromMenu(page.toString());
 				DriverUtils.driver.get(page.nextElement());
 		        selectOptionInMenu("Global Setting", "Delete");
 		        alert.accept();
-				driverUtils.waitForPageLoad();
+		        utils.waitForPageLoad();
 				}
 		}
 	}
