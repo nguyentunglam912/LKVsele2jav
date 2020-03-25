@@ -23,7 +23,7 @@ public class DA_MP_TC013 extends TestBase{
 	LoginPage loginPage = new LoginPage();
 	HomePage homePage = new HomePage();
 
-	@Test(groups = "DA_MP")
+	@Test
 	@Description("Verify that the newly added main parent page is positioned \"\r\n" + 
 			"			+ \"at the location specified as set with 'Displayed After' field of 'New Page' form on the main page bar'Parent Page' dropped down menu")
 	public void DA_MP_TC013_CanAddPagesBesidesOverviewPage() {

@@ -4,7 +4,6 @@ import java.util.concurrent.TimeUnit;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Parameters;
 import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.varia.NullAppender;
@@ -36,10 +35,6 @@ public class TestBase {
 //		DriverUtils.driver.quit();
 	}
 
-//	@AfterMethod(groups = "DA_MP_12")
-//	public void deleteTestPages() {
-//		GeneralPage.deletePage(Constant.PAGE_NAME1);
-//	}
 	@Step("Navigate to Dashboard login page")
 	public void goToDashboardLoginPage() {
 		DriverUtils.driver.get(DriverUtils.url);

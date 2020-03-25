@@ -57,4 +57,9 @@ public class HomePage extends GeneralPage{
 		String actualTitle = DriverUtils.driver.getTitle();
 		Assert.assertTrue(actualTitle.contains(expectedTitle));
 	}
+
+	@Step("Logout TA Dashboard")
+	public void logOut() {
+		selectOptionInMenu("Profile", "Logout");
+	}
 }

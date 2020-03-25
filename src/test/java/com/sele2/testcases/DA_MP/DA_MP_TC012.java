@@ -23,7 +23,7 @@ public class DA_MP_TC012 extends TestBase{
 	LoginPage loginPage = new LoginPage();
 	HomePage homePage = new HomePage();
 
-	@Test(groups = "DA_MP_12")
+	@Test
 	@Description("Verify that user is able to add additional pages besides 'Overview' page successfully")
 	public void DA_MP_TC012_CanAddPagesBesidesOverviewPage() {
 		Log.info("Step 1: Navigate to Dashboard login page");

@@ -23,6 +23,7 @@ public class GeneralPage {
 	Alert alert = new Alert();
 	String xpathDynamicPage = "//div[@class = 'container']//a[text()='%s']";
 	public String dynamicMenuItems = "//li[a[normalize-space()='%s']]/ul/li/a";
+	BaseElement mainMenu = new BaseElement("//div[@id=\"main-menu\"]/div/ul/li");
 	
 	public void moveMouseToMenu(String menuname) {
 		utils.waitForPageLoad();
@@ -35,7 +36,8 @@ public class GeneralPage {
 	public void selectOptionInMenu(String menuname, String option) {
 		Link lnkOption = new Link(String.format("//a[text()='%s']", option));
 		moveMouseToMenu(menuname);
-		lnkOption.click();
+		if(lnkOption.size() != 0)
+			lnkOption.click();
 	}
 	
 	public void selectAddPageButtonInGlobalSettingMenu() {
@@ -75,14 +77,23 @@ public class GeneralPage {
 
 	public void deleteAllPagesFromMenu(String parentPage) {
 		Dictionary pages = getMenuItems(parentPage);
-		if(pages.size() > 0) {
-			for(Enumeration<String> page = pages.elements(); page.hasMoreElements();) {
+		for(Enumeration<String> page = pages.elements(); page.hasMoreElements();) {
+			if(!page.toString().equals("Overview") && !page.toString().equals("Execution Dashboard")) {
 				deleteAllPagesFromMenu(page.toString());
 				DriverUtils.driver.get(page.nextElement());
 		        selectOptionInMenu("Global Setting", "Delete");
 		        alert.accept();
 		        utils.waitForPageLoad();
-				}
+			}
+		}
+	}
+
+	public void deleteAllPages() {
+		List<WebElement> menus = mainMenu.findElements();
+		for(WebElement menu : menus) {
+			if(!menu.getText().trim().equals("")) {
+				deleteAllPagesFromMenu(menu.getText());
+			}
 		}
 	}
 }
