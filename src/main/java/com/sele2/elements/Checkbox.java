@@ -22,4 +22,9 @@ public class Checkbox extends BaseElement {
 		return findElement().isSelected();
 	}
 
+	public void selectValue(Boolean value) {
+		if(value == true) check();
+		else if(value == false) uncheck();
+	}
+
 }

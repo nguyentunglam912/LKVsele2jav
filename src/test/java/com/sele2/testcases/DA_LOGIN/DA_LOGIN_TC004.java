@@ -15,7 +15,7 @@ import com.sele2.utils.listeners.TestListener;
 @Listeners({ TestListener.class })
 public class DA_LOGIN_TC004 extends TestBase {
 	/**
-	 * DA_LOGIN_TC006
+	 * DA_LOGIN_TC004
 	 * @author khang.ha
 	 */
 

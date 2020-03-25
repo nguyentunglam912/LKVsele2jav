@@ -14,9 +14,9 @@ import io.qameta.allure.Description;
 
 
 @Listeners({ TestListener.class })
-public class DA_MP_TC011 extends TestBase{
+public class DA_MP_TC012 extends TestBase{
 	/**
-	 * DA_MP_TC011
+	 * DA_MP_TC012
 	 * @author lam.tung.nguyen
 	 */
 
@@ -24,8 +24,8 @@ public class DA_MP_TC011 extends TestBase{
 	HomePage homePage = new HomePage();
 
 	@Test
-	@Description("Verify that user is unable open more than 1 'New Page' dialog")
-	public void DA_MP_TC011_CannotOpenMoreThanOneNewPageDialog() {
+	@Description("Verify that user is able to add additional pages besides 'Overview' page successfully")
+	public void DA_MP_TC012_CanAddPagesBesidesOverviewPage() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
@@ -35,10 +35,11 @@ public class DA_MP_TC011 extends TestBase{
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
 		
-		Log.info("Step 4: Try to go to Global Setting -> Add page again");
-		homePage.moveMouseToMenu("Global Setting");
+		Log.info("Step 4: Enter Page Name field");
+		Log.info("Step 5: Click Ok button");
+		homePage.submitNewPage(Constant.PAGE_NAME1, Constant.NULL, Constant.NULL, Constant.NULL, false);
 
-		Log.info("VP: User cannot go to Global Setting -> Add page while 'New Page' dialog appears.");
-		homePage.checkGlobalSettingMenuDoesNotDisplay();
+		Log.info("VP: Check new page is displayed besides 'Overview' page");
+		homePage.checkNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1);
 	}
 }
