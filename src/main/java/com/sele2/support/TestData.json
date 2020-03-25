@@ -2,6 +2,6 @@
   "menu name": {
     "Global Setting": "//li[@class = 'mn-setting']",
     "Administer": "//a[@href='#Administer']",
-    "Profile":"//a[@href='#Welcome']"
+    "Profile":"//a[@href='#Welcome']",
   }
 }

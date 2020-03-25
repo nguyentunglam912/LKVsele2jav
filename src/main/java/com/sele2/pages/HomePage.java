@@ -5,6 +5,8 @@ import com.sele2.elements.Button;
 import com.sele2.helper.JSONFileReader;
 import com.sele2.support.DriverUtils;
 
+import io.qameta.allure.Step;
+
 public class HomePage {
 	BaseElement baseElement;
 	DriverUtils driverUtils = new DriverUtils();
@@ -21,5 +23,10 @@ public class HomePage {
 
 	public void selectAddPageButtonInGlobalSettingMenu() {
 		selectOptionInMenu("Global Setting", "Add Page");
+	}
+
+	@Step("Logout TA Dashboard")
+	public void logOut() {
+		selectOptionInMenu("Profile", "Logout");
 	}
 }
