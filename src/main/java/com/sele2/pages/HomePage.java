@@ -11,6 +11,8 @@ import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
 import com.sele2.support.DriverUtils;
 
+import io.qameta.allure.Step;
+
 public class HomePage extends GeneralPage{
 	private String dynamicMenuItems = "//li[a[normalize-space()='%s']]/ul/li/a";
 	BaseElement pageColumns = new BaseElement("//div[@id='ccontent']/div[@id='columns']/ul[@class='column ui-sortable']");
@@ -27,12 +29,20 @@ public class HomePage extends GeneralPage{
 		return newAddedPage.isDisplayed();
 	}
 
+	@Step("Go to Global Setting -> Add page")
 	public void selectAddPageButtonInGlobalSettingMenu() {
 		selectOptionInMenu("Global Setting", "Add Page");
 	}
 
+	@Step("Go to Global Setting -> Create Panel")
 	public void selectCreatePanelButtonInGlobalSettingMenu() {
 		selectOptionInMenu("Global Setting", "Create Panel");
+	}
+
+	@Step("Click on Choose Panel menu icon ")
+	public void selectChoosePanelsMenu() {
+		clickOnMenu("Choose Panels");
+		utils.waitForPageStable();
 	}
 
 	public String getCurrentPage() {

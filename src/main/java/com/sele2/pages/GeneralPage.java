@@ -22,17 +22,17 @@ public class GeneralPage {
 		return DriverUtils.driver.getTitle();
 	}
 
-	public void moveMouseToMenu(String menuname) {
+	public void clickOnMenu(String menuname) {
 		utils.waitForPageLoad();
 		String xpathMenuOption = jsonFileReader.getValueFromJson(String.format("/menu name/%s",menuname));
 		Button btnMenuOption = new Button(String.format(xpathMenuOption));
 		btnMenuOption.waitForVisible(DriverUtils.loadTimeout);
-		btnMenuOption.moveMouse();
+		btnMenuOption.click();
 	}
 
 	public void selectOptionInMenu(String menuname, String option) {
 		Link lnkOption = new Link(String.format("//a[text()='%s']", option));
-		moveMouseToMenu(menuname);
+		clickOnMenu(menuname);
 		if(lnkOption.size() != 0)
 			lnkOption.click();
 	}

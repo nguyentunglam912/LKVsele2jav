@@ -5,6 +5,8 @@ import com.sele2.elements.Checkbox;
 import com.sele2.elements.Combobox;
 import com.sele2.elements.TextBox;
 
+import io.qameta.allure.Step;
+
 public class PanelPage extends HomePage{
 	private String xpathPanelType 		= "//input[@name='radPanelType']//preceding::label[contains(text(),'%s')]";
 	private TextBox txtDisplayName 		= new TextBox("id=txtDisplayName");
@@ -26,6 +28,7 @@ public class PanelPage extends HomePage{
 		if(series!=null) cmbSeries.selectByVisibleText(series);
 	}
 	
+	@Step("Create a new Panel")
 	public void createNewPanel(String type, String displayName, String series) {
 		fillNewPanelInformation(type, displayName, series);
 		btnOkAddNewPanel.click();
@@ -39,6 +42,7 @@ public class PanelPage extends HomePage{
 		if(folder!=null) txtFolder.sendKeys(folder);
 	}
 	
+	@Step("Config new Panel")
 	public void configPanel(String page, Integer height, String folder) {
 		fillConfigPanel(page, height, folder);
 		btnOKConfigPanel.click();

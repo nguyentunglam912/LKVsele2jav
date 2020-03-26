@@ -32,7 +32,7 @@ public class DA_MP_TC011 extends TestBase{
 		homePage.selectAddPageButtonInGlobalSettingMenu();
 		
 		Log.info("Step 4: Try to go to Global Setting -> Add page again");
-		homePage.moveMouseToMenu("Global Setting");
+		homePage.clickOnMenu("Global Setting");
 
 		Log.info("VP: User cannot go to Global Setting -> Add page while 'New Page' dialog appears.");
 		Assert.assertFalse(homePage.isGlobalSettingMenuDisplayed());
