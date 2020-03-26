@@ -4,22 +4,21 @@ import com.sele2.browsers.ChromeDriverManager;
 import com.sele2.browsers.FirefoxDriverManager;
 import com.sele2.browsers.RemoteChromeDriverManager;
 import com.sele2.browsers.RemoteFirefoxDriverManager;
-import com.sele2.support.DriverType;
  
 public class DriverManagerFactory {
-	public static DriverManager getDriverManager(DriverType type) {
+	public static DriverManager getDriverManager(String browser) {
 		DriverManager driverManager;
-		switch(type) {
-		case CHROME:
+		switch(browser) {
+		case "chrome.local":
 			driverManager = new ChromeDriverManager();
 			break;
-		case FIREFOX:
+		case "firefox.local":
 			driverManager = new FirefoxDriverManager();
 			break;
-		case REMOTE_FIREFOX:
+		case "chrome.remote":
 			driverManager = new RemoteFirefoxDriverManager();
 			break;
-		case REMOTE_CHROME:
+		case "firefox.remote":
 			driverManager = new RemoteChromeDriverManager();
 			break;
 		default:

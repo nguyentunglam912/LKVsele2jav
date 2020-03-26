@@ -6,10 +6,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
-import javax.swing.text.StyledEditorKit.BoldAction;
-
 import com.sele2.support.Constant;
-import com.sele2.support.DriverType;
  
 public class ConfigFileReader { 
 	private Properties properties;
@@ -47,10 +44,8 @@ public class ConfigFileReader {
 		return url;
 		}
  
-	public DriverType getBrowser() {
-		String browserName = properties.getProperty("browser");
-		if(browserName == null || browserName.equals("chrome")) return DriverType.CHROME;
-		else return DriverType.FIREFOX;
+	public String getBrowser() {
+		return properties.getProperty("browser");
 	}
 	
 	public Long getPageLoadTimeout(){

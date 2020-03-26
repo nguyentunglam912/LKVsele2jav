@@ -3,6 +3,7 @@ package com.sele2.testcases.testbase;
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.varia.NullAppender;
@@ -27,10 +28,11 @@ public class TestBase {
 	public PanelPage panelPage = new PanelPage();
 
 	@BeforeClass
-	public static void setUp() {
+	@Parameters({ "browser" })
+	public void setUp(String browser) {
 		System.out.println("Pre-condition");
 		BasicConfigurator.configure();
-		DriverUtils.driver = DriverManagerFactory.getDriverManager(DriverUtils.browser).getWebDriver();
+		DriverUtils.driver = DriverManagerFactory.getDriverManager(browser).getWebDriver();
 	}
 
 	@AfterClass
