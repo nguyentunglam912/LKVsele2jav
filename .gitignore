@@ -1,1 +1,7 @@
 /bin/
+/target/
+/ExtentReports/
+/Log4j/
+/allure-report/
+/allure-results/
+/test-output/

@@ -12,16 +12,20 @@ import com.sele2.utils.listeners.TestListener;
 
 import io.qameta.allure.Description;
 
+
 @Listeners({ TestListener.class })
-public class DA_MP_TC012 extends TestBase{
+public class DA_MP_TC026 extends TestBase{
 	/**
-	 * DA_MP_TC012
+	 * DA_MP_TC026
 	 * @author lam.tung.nguyen
 	 */
+	
+	private Integer numberOfColumn1 = 2;
+	private Integer numberOfColumn2 = 3;
 
 	@Test
-	@Description("Verify that user is able to add additional pages besides 'Overview' page successfully")
-	public void DA_MP_TC012_CanAddPagesBesidesOverviewPage() {
+	@Description("Verify that page column is correct when user edit 'Number of Columns' field of a specific page")
+	public void DA_MP_TC025_VerifyCorrectPageWhenEditDisplayAfter() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
@@ -31,17 +35,19 @@ public class DA_MP_TC012 extends TestBase{
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
 
-		Log.info("Step 4: Enter Page Name field");
-		Log.info("Step 5: Click Ok button");
-		newPage.submitNewPage(Constant.PAGE_NAME1, null, null, null, null);
+		Log.info("Step 4: Submit New Page with Page Name");
+		newPage.submitNewPage(Constant.PAGE_NAME1, null, numberOfColumn1, null, null);
 
-		Log.info("VP: Check new page is displayed besides 'Overview' page");
-		Assert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
+		Log.info("Step 5: Edit Number of Columns for the above created page");
+		newPage.editPage(Constant.PAGE_NAME1, null, null, numberOfColumn2, null, null);
+
+		Log.info("VP: There are 3 columns on the above created page");
+		Assert.assertEquals(homePage.getNumberOfColumnOnPage(), numberOfColumn2);
 	}
 
 	@AfterMethod
 	private void cleanUp() {
 		Log.info("Delete newly added page");
-		homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME1);
+		homePage.deletePage(Constant.PAGE_NAME1);
 	}
 }

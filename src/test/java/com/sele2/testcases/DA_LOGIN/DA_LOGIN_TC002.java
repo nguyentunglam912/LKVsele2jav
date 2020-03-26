@@ -1,8 +1,8 @@
 package com.sele2.testcases.DA_LOGIN;
 
 import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
-import com.sele2.pages.LoginPage;
 import com.sele2.support.Constant;
 import com.sele2.support.Log;
 import com.sele2.testcases.testbase.TestBase;
@@ -13,13 +13,11 @@ import com.sele2.utils.listeners.TestListener;
 @Listeners({ TestListener.class })
 public class DA_LOGIN_TC002 extends TestBase{
 	/**
-	 * DA_LOGIN_TC002 - Verify that user fails to login specific repository successfully via Dashboard login page with incorrect credentials
+	 * DA_LOGIN_TC002
 	 * @author lam.tung.nguyen
 	 */
 
-	LoginPage loginPage = new LoginPage();
-
-	@Test(description = "Verify that user fails to login specific repository successfully via Dashboard login page with incorrect credentials")
+	@Test
 	@Description("Test Description: Verify that user fails to login specific repository successfully via Dashboard login page with incorrect credentials")
 	public void DA_LOGIN_TC002_LoginWithIncorrectCredentials() {
 		Log.info("Step 1: Navigate to Dashboard login page");
@@ -30,6 +28,6 @@ public class DA_LOGIN_TC002 extends TestBase{
 		loginPage.login(Constant.REPOSITORY, Constant.INVALID_USERNAME, Constant.INVALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Error message 'Username or password is invalid' appears");
-		loginPage.checkLoginErrorMessage(Constant.ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD);
+		Assert.assertEquals(loginPage.getLoginErrorMessage(), Constant.ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD);
 	}
 }

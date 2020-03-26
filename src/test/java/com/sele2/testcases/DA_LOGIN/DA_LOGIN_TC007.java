@@ -1,10 +1,9 @@
 package com.sele2.testcases.DA_LOGIN;
 
 import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
-import com.sele2.pages.HomePage;
-import com.sele2.pages.LoginPage;
 import com.sele2.support.Constant;
 import com.sele2.support.Log;
 import com.sele2.testcases.testbase.TestBase;
@@ -20,10 +19,7 @@ public class DA_LOGIN_TC007 extends TestBase {
 	 * @author khang.ha
 	 */
 
-	LoginPage loginPage = new LoginPage();
-	HomePage homePage = new HomePage();
-
-	@Test(description = "Verify that Username is not case sensitive")
+	@Test
     @Description("Test Description: Verify that Username is not case sensitive")
 	public void DA_LOGIN_TC007_UsernameNotCaseSensitive() {
 		Log.info("Step 1: Navigate to Dashboard login page");
@@ -33,7 +29,7 @@ public class DA_LOGIN_TC007 extends TestBase {
 		loginPage.login(Constant.REPOSITORY, Constant.UPPERCASE_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
-		loginPage.checkLoginSuccessfully();
+		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
 		
 		Log.info("Step 3: Logout TA Dashboard");
 		homePage.logOut();
@@ -42,6 +38,6 @@ public class DA_LOGIN_TC007 extends TestBase {
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
-		loginPage.checkLoginSuccessfully(); 
+		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
 		}
 	}

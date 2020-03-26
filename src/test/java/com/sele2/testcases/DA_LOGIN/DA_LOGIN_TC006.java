@@ -1,10 +1,9 @@
 package com.sele2.testcases.DA_LOGIN;
 
 import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
-import com.sele2.pages.HomePage;
-import com.sele2.pages.LoginPage;
 import com.sele2.support.Constant;
 import com.sele2.support.Log;
 import com.sele2.testcases.testbase.TestBase;
@@ -19,9 +18,6 @@ public class DA_LOGIN_TC006 extends TestBase {
 	 * @author khang.ha
 	 */
 
-	LoginPage loginPage = new LoginPage();
-	HomePage homePage = new HomePage();
-
 	@Test
     @Description("Test Description: Verify that Password input is case sensitive")
 	public void DA_LOGIN_TC006_PwdInputCaseSensitive() {
@@ -32,7 +28,7 @@ public class DA_LOGIN_TC006 extends TestBase {
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
-		loginPage.checkLoginSuccessfully();
+		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);;
 
 		Log.info("Step 3: Logout TA Dashboard");
 		homePage.logOut();
@@ -41,7 +37,6 @@ public class DA_LOGIN_TC006 extends TestBase {
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.LOWERCASE_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Error message 'Username or password is invalid' appears");
-		loginPage.checkLoginErrorMessage(Constant.ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD);
+		Assert.assertEquals(loginPage.getLoginErrorMessage(), Constant.ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD);
 	}
-
 }
