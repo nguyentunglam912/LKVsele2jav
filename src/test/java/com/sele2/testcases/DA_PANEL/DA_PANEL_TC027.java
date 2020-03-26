@@ -1,6 +1,5 @@
-package com.sele2.testcases.DA_MP;
+package com.sele2.testcases.DA_PANEL;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -13,35 +12,40 @@ import com.sele2.utils.listeners.TestListener;
 import io.qameta.allure.Description;
 
 @Listeners({ TestListener.class })
-public class DA_MP_TC012 extends TestBase{
+public class DA_PANEL_TC027 extends TestBase{
 	/**
-	 * DA_MP_TC012
+	 * DA_MP_TC027
 	 * @author lam.tung.nguyen
 	 */
 
 	@Test
-	@Description("Verify that user is able to add additional pages besides 'Overview' page successfully")
-	public void DA_MP_TC012_CanAddPagesBesidesOverviewPage() {
+	@Description("Verify that when 'Choose panels' form is expanded all pre-set panels are populated and sorted correctly")
+	public void DA_PANEL_TC027_VerifyCorrectPageWhenEditDisplayAfter() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
 		Log.info("Step 2: Login with valid account");
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
-
+		
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
-
-		Log.info("Step 4: Enter Page Name field");
-		Log.info("Step 5: Click Ok button");
+		
+		Log.info("Step 4: Submit New Page with Page Name");
 		newPage.submitNewPage(Constant.PAGE_NAME1, null, null, null, null);
 
-		Log.info("VP: Check new page is displayed besides 'Overview' page");
-		Assert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
+		Log.info("Step 5: Go to Global Setting -> Create Panel");
+		homePage.selectCreatePanelButtonInGlobalSettingMenu();
+
+		Log.info("Step 6: Create Panel with display name and series");
+		panelPage.createNewPanel(null, Constant.PANEL_NAME, Constant.SERIES);
+		
+		Log.info("Step 7: Click Ok button in Panel Configuration popup");
+		panelPage.configPanel(null, null, null);
 	}
 
 	@AfterMethod
 	private void cleanUp() {
 		Log.info("Delete newly added page");
-		homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME1);
+		homePage.deletePage(Constant.PAGE_NAME1);
 	}
 }
