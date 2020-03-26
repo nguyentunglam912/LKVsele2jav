@@ -26,10 +26,10 @@ public class DA_PANEL_TC027 extends TestBase{
 
 		Log.info("Step 2: Login with valid account");
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
-		
+
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
-		
+
 		Log.info("Step 4: Submit New Page with Page Name");
 		newPage.submitNewPage(Constant.PAGE_NAME1, null, null, null, null);
 
@@ -38,9 +38,14 @@ public class DA_PANEL_TC027 extends TestBase{
 
 		Log.info("Step 6: Create Panel with display name and series");
 		panelPage.createNewPanel(null, Constant.PANEL_NAME, Constant.SERIES);
-		
+
 		Log.info("Step 7: Click Ok button in Panel Configuration popup");
 		panelPage.configPanel(null, null, null);
+
+		Log.info("Step 8: Click on Choose Panel menu icon next to Global Setting icon");
+		homePage.selectChoosePanelsMenu();
+
+		Log.info("VP: Verify that all pre-set panels are populated and sorted correctly");
 	}
 
 	@AfterMethod
