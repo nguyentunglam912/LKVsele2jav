@@ -9,6 +9,10 @@ public class Constant {
 	public static final String INVALID_PASSWORD = "abc";
 	public static final String BLANK_USERNAME 	= "";
 	public static final String BLANK_PASSWORD 	= "";
+	public static final String TC008_USERNAME = "tc008";
+	public static final String TC008_PASSWORD = "p@ssw0rd";
+	public static final String TC009_USERNAME = "tc009!";
+	public static final String TC009_PASSWORD = "taadmin";
 	public static final String REPOSITORY 		= "SampleRepository";
 	public static final String REPOSITORY2      = "SampleRepositoryLV2";
 	public static final String CONFIG_PATH		= "\\src\\main\\java\\com\\sele2\\helper\\Configuration.properties";
