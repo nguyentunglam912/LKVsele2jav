@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import com.sele2.support.Constant;
-import com.sele2.support.Log;
+import com.sele2.helper.Log;
 import com.sele2.testcases.testbase.TestBase;
 
 import io.qameta.allure.*;
@@ -28,6 +28,6 @@ public class DA_LOGIN_TC001 extends TestBase{
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
-		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);;
+		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
 	}
 }

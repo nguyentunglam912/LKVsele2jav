@@ -9,7 +9,7 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 import com.sele2.support.DriverUtils;
-import com.sele2.support.Log;
+import com.sele2.helper.Log;
 import com.sele2.utils.extentreports.*;
 
 

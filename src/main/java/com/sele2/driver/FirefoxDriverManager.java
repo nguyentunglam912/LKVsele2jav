@@ -1,4 +1,4 @@
-package com.sele2.browsers;
+package com.sele2.driver;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 

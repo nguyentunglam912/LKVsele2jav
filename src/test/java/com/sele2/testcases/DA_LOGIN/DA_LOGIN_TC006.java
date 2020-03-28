@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
 import com.sele2.support.Constant;
-import com.sele2.support.Log;
+import com.sele2.helper.Log;
 import com.sele2.testcases.testbase.TestBase;
 
 import io.qameta.allure.*;

@@ -1,25 +1,19 @@
 package com.sele2.driver;
-
-import com.sele2.browsers.ChromeDriverManager;
-import com.sele2.browsers.FirefoxDriverManager;
-import com.sele2.browsers.RemoteChromeDriverManager;
-import com.sele2.browsers.RemoteFirefoxDriverManager;
-import com.sele2.support.DriverType;
  
 public class DriverManagerFactory {
-	public static DriverManager getDriverManager(DriverType type) {
+	public static DriverManager getDriverManager(String type) {
 		DriverManager driverManager;
 		switch(type) {
-		case CHROME:
+		case "chrome.local":
 			driverManager = new ChromeDriverManager();
 			break;
-		case FIREFOX:
+		case "firefox.local":
 			driverManager = new FirefoxDriverManager();
 			break;
-		case REMOTE_FIREFOX:
+		case "firefox.remote":
 			driverManager = new RemoteFirefoxDriverManager();
 			break;
-		case REMOTE_CHROME:
+		case "chrome.remote":
 			driverManager = new RemoteChromeDriverManager();
 			break;
 		default:

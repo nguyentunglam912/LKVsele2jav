@@ -1,10 +1,10 @@
-package com.sele2.browsers;
+package com.sele2.driver;
 
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-import static org.openqa.selenium.chrome.ChromeOptions.CAPABILITY;
+import static org.openqa.selenium.firefox.FirefoxOptions.FIREFOX_OPTIONS;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -14,15 +14,15 @@ import com.sele2.support.DriverUtils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-public class RemoteChromeDriverManager extends DriverManager{
+public class RemoteFirefoxDriverManager extends DriverManager{
 
 	@Override
 	public void createWebDriver() {
-		WebDriverManager.chromedriver().setup();
-		ChromeOptions options = new ChromeOptions();
+		WebDriverManager.firefoxdriver().setup();
+		FirefoxOptions options = new FirefoxOptions();
 		options.setHeadless(DriverUtils.hedless);
-		DesiredCapabilities capabilities =  DesiredCapabilities.chrome();
-        capabilities.setCapability(CAPABILITY, options);
+		DesiredCapabilities capabilities =  DesiredCapabilities.firefox();
+        capabilities.setCapability(FIREFOX_OPTIONS, options);
         capabilities.setVersion(DriverUtils.browserVersion);
         try {
 			this.driver = new RemoteWebDriver(new URL(DriverUtils.remoteURL), capabilities);
