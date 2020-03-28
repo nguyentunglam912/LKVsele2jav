@@ -1,10 +1,9 @@
 package com.sele2.testcases.DA_LOGIN;
 
 import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
-import com.sele2.pages.HomePage;
-import com.sele2.pages.LoginPage;
 import com.sele2.support.Constant;
 import com.sele2.support.Log;
 import com.sele2.testcases.testbase.TestBase;
@@ -18,9 +17,6 @@ public class DA_LOGIN_TC004 extends TestBase {
 	 * DA_LOGIN_TC004
 	 * @author khang.ha
 	 */
-
-	LoginPage loginPage = new LoginPage();
-	HomePage homePage = new HomePage();
 
 	@Test
     @Description("Test Description: Verify that user is able to log in different repositories successfully after logging out current repository")
@@ -40,6 +36,6 @@ public class DA_LOGIN_TC004 extends TestBase {
 		loginPage.login(Constant.REPOSITORY2, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
-		loginPage.checkLoginSuccessfully();
+		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
 		}
 	}

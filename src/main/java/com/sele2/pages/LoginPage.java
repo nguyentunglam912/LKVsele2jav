@@ -1,12 +1,9 @@
 package com.sele2.pages;
 
-import org.testng.Assert;
-
 import io.qameta.allure.Step;
 import com.sele2.elements.Button;
 import com.sele2.elements.CustomCombobox;
 import com.sele2.elements.TextBox;
-import com.sele2.support.DriverUtils;
 
 public class LoginPage extends GeneralPage{
 	CustomCombobox cbbRepository = new CustomCombobox("id = repository");
@@ -38,17 +35,8 @@ public class LoginPage extends GeneralPage{
 		clickSignIn();
 	}
 
-	@Step("Verify that Dashboard Mainpage appears")
-	public void checkLoginSuccessfully() {
-		String expectedTitle = "TestArchitect";
-		String actualTitle = DriverUtils.driver.getTitle();
-		Assert.assertTrue(actualTitle.contains(expectedTitle));
-	}
-
-	@Step("VP: Verify the error message '{0}' is displayed")
-	public void checkLoginErrorMessage(String expectedErrorMessagge) {
+	public String getLoginErrorMessage() {
 		alert.waitForAlertPresent();
-		String actualMessage = alert.getText();
-		Assert.assertTrue(actualMessage.contains(expectedErrorMessagge));
+		return alert.getText();
 	}
 }

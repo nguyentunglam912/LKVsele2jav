@@ -1,8 +1,8 @@
 package com.sele2.testcases.DA_LOGIN;
 
 import org.testng.annotations.Test;
+import org.testng.Assert;
 import org.testng.annotations.Listeners;
-import com.sele2.pages.LoginPage;
 import com.sele2.support.Constant;
 import com.sele2.support.Log;
 import com.sele2.testcases.testbase.TestBase;
@@ -17,9 +17,7 @@ public class DA_LOGIN_TC001 extends TestBase{
 	 * @author lam.tung.nguyen
 	 */
 
-	LoginPage loginPage = new LoginPage();
-
-	@Test(description = "Verify that user can login specific repository successfully via Dashboard login page with correct credentials")
+	@Test
     @Description("Test Description: Verify that user can login specific repository successfully via Dashboard login page with correct credentials")
 	public void DA_LOGIN_TC001_LoginWithCorrectCredentials() {
 		Log.info("Step 1: Navigate to Dashboard login page");
@@ -30,6 +28,6 @@ public class DA_LOGIN_TC001 extends TestBase{
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
-		loginPage.checkLoginSuccessfully();
+		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);;
 	}
 }

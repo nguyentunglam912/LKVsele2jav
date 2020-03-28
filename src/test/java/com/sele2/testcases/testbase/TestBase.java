@@ -2,23 +2,29 @@ package com.sele2.testcases.testbase;
 
 import java.util.concurrent.TimeUnit;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.varia.NullAppender;
 
 import com.sele2.support.DriverUtils;
-import com.sele2.support.Constant;
 
 import io.qameta.allure.Step;
 
 import com.sele2.driver.DriverManagerFactory;
 import com.sele2.pages.GeneralPage;
+import com.sele2.pages.HomePage;
+import com.sele2.pages.LoginPage;
+import com.sele2.pages.NewPage;
+import com.sele2.pages.PanelPage;
 
 
 public class TestBase {
-	GeneralPage GeneralPage = new GeneralPage();
+	public GeneralPage generalPage = new GeneralPage();
+	public LoginPage loginPage = new LoginPage();
+	public HomePage homePage = new HomePage();
+	public NewPage newPage = new NewPage();
+	public PanelPage panelPage = new PanelPage();
 
 	@BeforeClass
 	public static void setUp() {
@@ -32,7 +38,7 @@ public class TestBase {
 		System.out.println("Post-condition");
 		Logger.getRootLogger().removeAllAppenders();
 		Logger.getRootLogger().addAppender(new NullAppender());
-//		DriverUtils.driver.quit();
+		DriverUtils.driver.quit();
 	}
 
 	@Step("Navigate to Dashboard login page")
