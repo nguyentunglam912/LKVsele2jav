@@ -11,7 +11,7 @@ import org.json.simple.parser.ParseException;
 
 public class JSONFileReader {
 	
-	public static String propertyFilePath = System.getProperty("user.dir") + "\\src\\main\\java\\com\\sele2\\support\\TestData.json";
+	public static String propertyFilePath = System.getProperty("user.dir") + "\\src\\test\\resources\\TestData.json";
 
 	public String getValueFromJsonObjectGivenKeys(JSONObject jsonObject, String[] keys) throws FileNotFoundException, IOException, ParseException {
 		String currentKey = keys[0];

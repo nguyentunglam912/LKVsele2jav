@@ -8,7 +8,6 @@ import java.io.*;
 public class ScreenShotRobot {
 
     public void saveAsImage(byte[] imageAsByteArray, String name) {
-        InputStream in = new ByteArrayInputStream(imageAsByteArray);
         BufferedImage bImageFromConvert = null;
         File file;
         try {

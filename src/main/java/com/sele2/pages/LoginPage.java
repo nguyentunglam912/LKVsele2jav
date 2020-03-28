@@ -27,7 +27,7 @@ public class LoginPage extends GeneralPage{
 		btnSignIn.click();
 	}
 
-	@Step("Enter username: {1}, password: {2}, and click Sign In button")
+	@Step("Enter usernamen, password and click Sign In button")
 	public void login(String repository, String username, String password){
 		selectRepository(repository);
 		enterUsername(username);
