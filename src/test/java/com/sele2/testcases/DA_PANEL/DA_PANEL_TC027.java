@@ -14,7 +14,7 @@ import io.qameta.allure.Description;
 @Listeners({ TestListener.class })
 public class DA_PANEL_TC027 extends TestBase{
 	/**
-	 * DA_MP_TC027
+	 * DA_PANEL_TC027
 	 * @author lam.tung.nguyen
 	 */
 

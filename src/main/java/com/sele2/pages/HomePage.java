@@ -9,6 +9,7 @@ import org.openqa.selenium.WebElement;
 
 import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
+import com.sele2.elements.Label;
 import com.sele2.support.DriverUtils;
 
 import io.qameta.allure.Step;
@@ -16,12 +17,11 @@ import io.qameta.allure.Step;
 public class HomePage extends GeneralPage{
 	private String dynamicMenuItems = "//li[a[normalize-space()='%s']]/ul/li/a";
 	BaseElement pageColumns = new BaseElement("//div[@id='ccontent']/div[@id='columns']/ul[@class='column ui-sortable']");
+	Label lblCurrentRepo = new Label("//a[@href='#Repository']//span");
 
 	public Boolean isGlobalSettingMenuDisplayed() {
 		BaseElement menu = new BaseElement(String.format(dynamicMenuItems, "Global Setting"));
-		if(menu.size()!=0) {
-			return true;
-		} else return false;
+		if(menu.size()!=0) return true ; return false;
 	}
 
 	public Boolean isNewPageDisplayAfterPage(String displayAfterPage, String newPage) {
@@ -31,7 +31,12 @@ public class HomePage extends GeneralPage{
 
 	@Step("Go to Global Setting -> Add page")
 	public void selectAddPageButtonInGlobalSettingMenu() {
-		selectOptionInMenu("Global Setting", "Add Page");
+		this.selectOptionInMenu("Global Setting", "Add Page");
+	}
+
+	@Step("Go to Administer -> Panel")
+	public void selectPanelinAdministerMenu() {
+		this.selectOptionInMenu("Administer", "Panels");
 	}
 
 	@Step("Go to Global Setting -> Create Panel")
@@ -45,6 +50,11 @@ public class HomePage extends GeneralPage{
 		utils.waitForPageStable();
 	}
 
+	public void switchRepository(String switchRepo) {
+		this.selectOptionInMenu("Repository", switchRepo);
+		utils.waitForPageStable();
+	}
+
 	public String getCurrentPage() {
 		String currentPageTitle = this.getCurrentPageTitle();
 		return currentPageTitle.substring(20, currentPageTitle.length()).trim();
@@ -53,7 +63,11 @@ public class HomePage extends GeneralPage{
 	public Integer getNumberOfColumnOnPage() {
 		return this.pageColumns.size();
 	}
-	
+
+	public String getCurrentRepo() {
+		return this.lblCurrentRepo.getText();
+	}
+
 	public void deletePage(String pagePath) {
         goToPage(pagePath);
         utils.waitForPageLoad();

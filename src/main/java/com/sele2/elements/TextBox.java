@@ -14,4 +14,11 @@ public class TextBox extends BaseElement {
 		this.findElement().clear();
 	}
 
+	public void clearAndSendKeys(CharSequence... keysToSend) {
+		if(!keysToSend.equals(null)) {
+			this.findElement().clear();
+			this.findElement().sendKeys(keysToSend);
+		}
+	}
+
 }

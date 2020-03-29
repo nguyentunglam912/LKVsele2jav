@@ -3,5 +3,6 @@
     "Global Setting": "//li[@class = 'mn-setting']",
     "Administer": "//a[@href='#Administer']",
     "Profile":"//a[@href='#Welcome']",
+    "Repository":"//a[@href='#Repository']"
   }
 }

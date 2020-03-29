@@ -16,11 +16,11 @@ public class LoginPage extends GeneralPage{
 	}
 
 	private void enterUsername(String username){
-		txtUserName.sendKeys(username);
+		txtUserName.clearAndSendKeys(username);
 	}
 	
 	private void enterPassword(String password){
-		txtPassword.sendKeys(password);
+		txtPassword.clearAndSendKeys(password);
 	}
 	
 	private void clickSignIn(){

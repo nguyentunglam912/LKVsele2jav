@@ -1,5 +1,7 @@
 package com.sele2.pages;
 
+import org.openqa.selenium.WebDriverException;
+
 import com.sele2.elements.Alert;
 import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
@@ -22,12 +24,24 @@ public class GeneralPage {
 		return DriverUtils.driver.getTitle();
 	}
 
+	public String getCurrentPageURL() {
+		return DriverUtils.driver.getCurrentUrl();
+	}
+
+	public void closePopupMessage() {
+		alert.dissmiss();
+	}
+
 	public void clickOnMenu(String menuname) {
 		utils.waitForPageLoad();
 		String xpathMenuOption = jsonReader.getValueFromJson(String.format("/menu name/%s",menuname));
 		Button btnMenuOption = new Button(String.format(xpathMenuOption));
 		btnMenuOption.waitForVisible(DriverUtils.loadTimeout);
-		btnMenuOption.click();
+		try {
+			btnMenuOption.click();
+		} catch(Exception e){
+			   //ignore
+		}
 	}
 
 	public void selectOptionInMenu(String menuname, String option) {
