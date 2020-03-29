@@ -7,6 +7,6 @@ public class IFrame extends BaseElement {
 	}
 
 	public void switchToIFrame() {
-		getDriver().switchTo().frame(findElement());
+		this.getDriver().switchTo().frame(findElement());
 	}
 }

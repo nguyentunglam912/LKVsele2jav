@@ -9,7 +9,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-public class JSONFileReader {
+public class JSONReader {
 	
 	public static String propertyFilePath = System.getProperty("user.dir") + "\\src\\test\\resources\\TestData.json";
 

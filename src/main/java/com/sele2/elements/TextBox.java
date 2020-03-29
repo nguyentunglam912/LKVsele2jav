@@ -7,11 +7,11 @@ public class TextBox extends BaseElement {
 	}
 
 	public void sendKeys(CharSequence... keysToSend) {
-		if(!keysToSend.equals(null)) findElement().sendKeys(keysToSend);
+		if(!keysToSend.equals(null)) this.findElement().sendKeys(keysToSend);
 	}
 
 	public void clear() {
-		findElement().clear();
+		this.findElement().clear();
 	}
 
 }

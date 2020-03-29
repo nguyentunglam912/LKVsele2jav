@@ -36,22 +36,22 @@ public class HomePage extends GeneralPage{
 
 	@Step("Go to Global Setting -> Create Panel")
 	public void selectCreatePanelButtonInGlobalSettingMenu() {
-		selectOptionInMenu("Global Setting", "Create Panel");
+		this.selectOptionInMenu("Global Setting", "Create Panel");
 	}
 
 	@Step("Click on Choose Panel menu icon ")
 	public void selectChoosePanelsMenu() {
-		clickOnMenu("Choose Panels");
+		this.clickOnMenu("Choose Panels");
 		utils.waitForPageStable();
 	}
 
 	public String getCurrentPage() {
-		String currentPageTitle = getCurrentPageTitle();
+		String currentPageTitle = this.getCurrentPageTitle();
 		return currentPageTitle.substring(20, currentPageTitle.length()).trim();
 	}
 
 	public Integer getNumberOfColumnOnPage() {
-		return pageColumns.size();
+		return this.pageColumns.size();
 	}
 	
 	public void deletePage(String pagePath) {
@@ -77,7 +77,7 @@ public class HomePage extends GeneralPage{
 		Dictionary pages = getMenuItems(parentPage);
 		if(pages.size()>0) {
 			for(Enumeration<String> page = pages.elements(); page.hasMoreElements();) {
-				deleteAllPagesFromMenu(page.toString());
+				this.deleteAllPagesFromMenu(page.toString());
 				DriverUtils.driver.get(page.nextElement());
 		        selectOptionInMenu("Global Setting", "Delete");
 		        alert.accept();

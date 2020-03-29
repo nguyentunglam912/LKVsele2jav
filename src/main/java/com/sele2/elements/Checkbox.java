@@ -8,23 +8,23 @@ public class Checkbox extends BaseElement {
 
 	public void check() {
 		if (!isChecked()) {
-			click();
+			this.click();
 		}
 	}
 
 	public void uncheck() {
 		if (isChecked()) {
-			click();
+			this.click();
 		}
 	}
 
 	public boolean isChecked() {
-		return findElement().isSelected();
+		return this.findElement().isSelected();
 	}
 
 	public void selectValue(Boolean value) {
-		if(value == true) check();
-		else if(value == false) uncheck();
+		if(value == true) this.check();
+		else if(value == false) this.uncheck();
 	}
 
 }
