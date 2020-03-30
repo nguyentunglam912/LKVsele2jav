@@ -87,7 +87,7 @@ public class PanelPage extends HomePage{
 		int checkboxCol = 1;
 		for(int i = 2; i < totalRows - 1; i++) {
 			String currentPanel = this.tblPanel.getTableCellValue(i, panelNameCol);
-			if(currentPanel == panelName) {
+			if(currentPanel.equals(panelName)) {
 				this.tblPanel.clickTableCell(i, checkboxCol);
 				break;
 			}
@@ -97,6 +97,6 @@ public class PanelPage extends HomePage{
 	public void deletePanel(String panelName) {
 		this.selectPanel(panelName);
 		this.selectDeleteButtonOnPanel();
-		utils.waitForPageLoad();
+		alert.accept();
 	}
 }

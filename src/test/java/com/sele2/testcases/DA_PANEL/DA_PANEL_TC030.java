@@ -21,6 +21,7 @@ public class DA_PANEL_TC030 extends TestBase {
 	 * @author lam.tung.nguyen
 	 */
 
+	SoftAssert softAssert = new SoftAssert();
 	private String displayNameExceptAtSign = "Logigear#$%";
 	private String displayNameWithAtSign = "Logigear@";
 	private String invalidDisplayNameMessage = "Invalid display name. The name cannot contain high"
@@ -45,7 +46,7 @@ public class DA_PANEL_TC030 extends TestBase {
 		panelPage.createNewPanel(null, displayNameExceptAtSign, Constant.SERIES);
 
 		Log.info("VP: Check warning message is shown up");
-//		Assert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
+		softAssert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
 
 		Log.info("Step 6: Close warning message");
 		panelPage.closePopupMessage();
