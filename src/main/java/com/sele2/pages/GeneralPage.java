@@ -1,10 +1,13 @@
 package com.sele2.pages;
 
+import org.openqa.selenium.By;
+
 import com.sele2.elements.Alert;
 import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
 import com.sele2.elements.Link;
 import com.sele2.helper.JSONFileReader;
+import com.sele2.support.Constant;
 import com.sele2.support.DriverUtils;
 import com.sele2.support.Utilities;
 
@@ -17,6 +20,7 @@ public class GeneralPage {
 	JSONFileReader jsonFileReader = new JSONFileReader();
 	Alert alert = new Alert();
 	String xpathDynamicPage = "//div[@class = 'container']//a[text()='%s']";
+	BaseElement RepoName = new BaseElement("//span[contains(text(),'SampleRepositoryLV2')]");
 
 	public String getCurrentPageTitle() {
 		return DriverUtils.driver.getTitle();
@@ -52,5 +56,14 @@ public class GeneralPage {
 	@Step("Logout TA Dashboard")
 	public void logOut() {
 		selectOptionInMenu("Profile", "Logout");
+	}
+	
+	@Step("Switch repository at Home page")
+	public void switchRepo() {
+		selectOptionInMenu("Repository", Constant.REPOSITORY2);
+	}
+	
+	public String getRepoName () {
+		return RepoName.getText();
 	}
 }
