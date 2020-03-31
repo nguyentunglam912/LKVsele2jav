@@ -78,6 +78,7 @@ public class PanelPage extends HomePage{
 	}
 
 	public Boolean isNewPanelExisted(String panelName) {
+		utils.waitForPageStable();
 		return this.tblPanel.presenceOfData(panelName);
 	}
 

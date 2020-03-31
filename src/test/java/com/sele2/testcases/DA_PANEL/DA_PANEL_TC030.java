@@ -1,7 +1,7 @@
 package com.sele2.testcases.DA_PANEL;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -58,7 +58,7 @@ public class DA_PANEL_TC030 extends TestBase {
 		Assert.assertTrue(panelPage.isNewPanelExisted(displayNameWithAtSign));
 	}
 
-	@AfterTest
+	@AfterMethod
 	private void cleanUp() {
 		panelPage.deletePanel(displayNameWithAtSign);
 	}
