@@ -1,10 +1,10 @@
 package com.sele2.testcases.DA_PANEL;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
-import org.testng.asserts.SoftAssert;
 
 import com.sele2.support.Constant;
 import com.sele2.helper.Log;
@@ -17,11 +17,10 @@ import io.qameta.allure.Description;
 public class DA_PANEL_TC030 extends TestBase {
 	/**
 	 * DA_PANEL_TC030
-	 * 
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
-	SoftAssert softAssert = new SoftAssert();
 	private String displayNameExceptAtSign = "Logigear#$%";
 	private String displayNameWithAtSign = "Logigear@";
 	private String invalidDisplayNameMessage = "Invalid display name. The name cannot contain high"
@@ -46,7 +45,7 @@ public class DA_PANEL_TC030 extends TestBase {
 		panelPage.createNewPanel(null, displayNameExceptAtSign, Constant.SERIES);
 
 		Log.info("VP: Check warning message is shown up");
-		softAssert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
+		Assert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
 
 		Log.info("Step 6: Close warning message");
 		panelPage.closePopupMessage();
@@ -59,7 +58,9 @@ public class DA_PANEL_TC030 extends TestBase {
 	}
 
 	@AfterMethod
-	private void cleanUp() {
-		panelPage.deletePanel(displayNameWithAtSign);
+	private void cleanUp(ITestResult result) {
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			panelPage.deletePanel(displayNameWithAtSign);
+		}
 	}
 }

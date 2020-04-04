@@ -16,11 +16,12 @@ import io.qameta.allure.Description;
 public class DA_LOGIN_TC005 extends TestBase {
 	/**
 	 * DA_LOGIN_TC005
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
 	@Test
-    @Description("Verify that there is no Login dialog when switching between 2 repositories with the same account")
+	@Description("Verify that there is no Login dialog when switching between 2 repositories with the same account")
 	public void DA_LOGIN_TC005_NoLoginDialogWhenSwitchingAnotherRepo() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
@@ -36,5 +37,5 @@ public class DA_LOGIN_TC005 extends TestBase {
 
 		Log.info("VP: The Repository menu displays name of switched repository");
 		Assert.assertEquals(homePage.getCurrentRepo(), Constant.REPOSITORY2);
-		}
 	}
+}

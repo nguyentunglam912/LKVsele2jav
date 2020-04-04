@@ -15,11 +15,12 @@ import com.sele2.utils.listeners.TestListener;
 public class DA_LOGIN_TC006 extends TestBase {
 	/**
 	 * DA_LOGIN_TC006
+	 *
 	 * @author khang.ha
 	 */
 
 	@Test
-    @Description("Test Description: Verify that Password input is case sensitive")
+	@Description("Test Description: Verify that Password input is case sensitive")
 	public void DA_LOGIN_TC006_PwdInputCaseSensitive() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
@@ -28,7 +29,7 @@ public class DA_LOGIN_TC006 extends TestBase {
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
-		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);;
+		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
 
 		Log.info("Step 3: Logout TA Dashboard");
 		homePage.logOut();

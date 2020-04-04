@@ -14,9 +14,9 @@ public class ChromeDriverManager extends DriverManager {
 	@Override
 	public void createWebDriver() {
 		WebDriverManager.chromedriver().setup();
-		ChromeOptions opptions = new ChromeOptions();
-		opptions.setHeadless(DriverUtils.hedless);
-		opptions.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
-		this.driver = new ChromeDriver(opptions);
+		ChromeOptions options = new ChromeOptions();
+		options.setHeadless(DriverUtils.hedless);
+		options.setCapability(CapabilityType.UNEXPECTED_ALERT_BEHAVIOUR, UnexpectedAlertBehaviour.ACCEPT);
+		this.driver = new ChromeDriver(options);
 	}
 }

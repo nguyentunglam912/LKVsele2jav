@@ -11,11 +11,11 @@ import com.sele2.utils.listeners.TestListener;
 
 import io.qameta.allure.Description;
 
-
 @Listeners({ TestListener.class })
-public class DA_MP_TC011 extends TestBase{
+public class DA_MP_TC011 extends TestBase {
 	/**
 	 * DA_MP_TC011
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
@@ -27,10 +27,10 @@ public class DA_MP_TC011 extends TestBase{
 
 		Log.info("Step 2: Login with valid account");
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
-		
+
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
-		
+
 		Log.info("Step 4: Try to go to Global Setting -> Add page again");
 		homePage.clickOnMenu("Global Setting");
 

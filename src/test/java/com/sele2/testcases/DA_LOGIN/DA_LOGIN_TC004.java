@@ -15,11 +15,12 @@ import com.sele2.utils.listeners.TestListener;
 public class DA_LOGIN_TC004 extends TestBase {
 	/**
 	 * DA_LOGIN_TC004
+	 *
 	 * @author khang.ha
 	 */
 
 	@Test
-    @Description("Test Description: Verify that user is able to log in different repositories successfully after logging out current repository")
+	@Description("Test Description: Verify that user is able to log in different repositories successfully after logging out current repository")
 	public void DA_LOGIN_TC004_SwitchRepoAfterLoggingOut() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
@@ -37,5 +38,5 @@ public class DA_LOGIN_TC004 extends TestBase {
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
 		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
-		}
 	}
+}

@@ -15,7 +15,7 @@ import io.qameta.allure.Description;
 public class DA_PANEL_TC028 extends TestBase {
 	/**
 	 * DA_PANEL_TC028
-	 * 
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
