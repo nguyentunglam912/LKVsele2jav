@@ -1,6 +1,7 @@
 package com.sele2.testcases.DA_MP;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -13,9 +14,10 @@ import com.sele2.utils.listeners.TestListener;
 import io.qameta.allure.Description;
 
 @Listeners({ TestListener.class })
-public class DA_MP_TC012 extends TestBase{
+public class DA_MP_TC012 extends TestBase {
 	/**
 	 * DA_MP_TC012
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
@@ -40,8 +42,9 @@ public class DA_MP_TC012 extends TestBase{
 	}
 
 	@AfterMethod
-	private void cleanUp() {
-		Log.info("Delete newly added page");
-		homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME1);
+	private void cleanUp(ITestResult result) {
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME1);
+		}
 	}
 }

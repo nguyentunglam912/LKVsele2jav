@@ -2,11 +2,11 @@ package com.sele2.pages;
 
 import io.qameta.allure.Step;
 import com.sele2.elements.Button;
-import com.sele2.elements.CustomCombobox;
+import com.sele2.elements.Combobox;
 import com.sele2.elements.TextBox;
 
 public class LoginPage extends GeneralPage{
-	CustomCombobox cbbRepository = new CustomCombobox("id = repository");
+	Combobox cbbRepository = new Combobox("id = repository");
 	TextBox txtUserName = new TextBox("id=username");
 	TextBox txtPassword = new TextBox("id=password");
 	Button btnSignIn 	= new Button("className=btn-login");
@@ -16,11 +16,11 @@ public class LoginPage extends GeneralPage{
 	}
 
 	private void enterUsername(String username){
-		txtUserName.sendKeys(username);
+		txtUserName.clearAndSendKeys(username);
 	}
 	
 	private void enterPassword(String password){
-		txtPassword.sendKeys(password);
+		txtPassword.clearAndSendKeys(password);
 	}
 	
 	private void clickSignIn(){

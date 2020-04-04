@@ -1,6 +1,7 @@
 package com.sele2.testcases.DA_MP;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -49,9 +50,10 @@ public class DA_MP_TC025 extends TestBase{
 	}
 
 	@AfterMethod
-	private void cleanUp() {
-		Log.info("Delete newly added page");
-		homePage.deletePage(Constant.PAGE_NAME1);
-		homePage.deletePage(Constant.PAGE_NAME2);
+	private void cleanUp(ITestResult result) {
+		if (result.getStatus() == ITestResult.SUCCESS) {;
+			homePage.deletePage(Constant.PAGE_NAME1);
+			homePage.deletePage(Constant.PAGE_NAME2);
+		}
 	}
 }

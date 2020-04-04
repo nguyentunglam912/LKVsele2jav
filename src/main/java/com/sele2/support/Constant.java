@@ -15,6 +15,7 @@ public class Constant {
 	public static final String TC009_PASSWORD = "taadmin";
 	public static final String REPOSITORY 		= "SampleRepository";
 	public static final String REPOSITORY2      = "SampleRepositoryLV2";
+	public static final String LOGIN_URL		= "http://5e421106.ngrok.io/TADashboard/login.jsp";
 	public static final String CONFIG_PATH		= "\\src\\test\\resources\\Configuration.properties";
 	public static final String TA_DASHBOARD_TITLE = "TestArchitect ™";
 	public static final String ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD = "Username or password is invalid";

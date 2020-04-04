@@ -1,6 +1,7 @@
 package com.sele2.testcases.DA_MP;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -12,11 +13,11 @@ import com.sele2.utils.listeners.TestListener;
 
 import io.qameta.allure.Description;
 
-
 @Listeners({ TestListener.class })
-public class DA_MP_TC024 extends TestBase{
+public class DA_MP_TC024 extends TestBase {
 	/**
 	 * DA_MP_TC024
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
@@ -31,10 +32,10 @@ public class DA_MP_TC024 extends TestBase{
 
 		Log.info("Step 2: Login with valid account");
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
-		
+
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
-		
+
 		Log.info("Step 4: Submit New Page with Page Name and Parrent Page");
 		newPage.submitNewPage(Constant.PAGE_NAME1, Constant.OVERVIEW_PAGE, null, null, null);
 
@@ -49,17 +50,18 @@ public class DA_MP_TC024 extends TestBase{
 
 		Log.info("VP: The first page is navigated");
 		Assert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME1);
-		
+
 		Log.info("Step 8: Click the second breadcrums");
 		homePage.goToPage(pagePath2);
-		
+
 		Log.info("VP: The second page is navigated");
 		Assert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME2);
 	}
 
 	@AfterMethod
-	private void cleanUp() {
-		Log.info("Delete newly added main child page and its parent page");
-		homePage.deleteAllPagesFromMenu(Constant.OVERVIEW_PAGE);
+	private void cleanUp(ITestResult result) {
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			homePage.deleteAllPagesFromMenu(Constant.OVERVIEW_PAGE);
+		}
 	}
 }

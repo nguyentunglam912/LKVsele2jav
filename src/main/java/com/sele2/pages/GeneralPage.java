@@ -1,10 +1,12 @@
 package com.sele2.pages;
 
+import org.openqa.selenium.WebDriverException;
+
 import com.sele2.elements.Alert;
 import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
 import com.sele2.elements.Link;
-import com.sele2.helper.JSONFileReader;
+import com.sele2.helper.JSONReader;
 import com.sele2.support.DriverUtils;
 import com.sele2.support.Utilities;
 
@@ -14,7 +16,7 @@ public class GeneralPage {
 	BaseElement baseElement;
 	DriverUtils driverUtils = new DriverUtils();
 	Utilities utils = new Utilities();
-	JSONFileReader jsonFileReader = new JSONFileReader();
+	JSONReader jsonReader = new JSONReader();
 	Alert alert = new Alert();
 	String xpathDynamicPage = "//div[@class = 'container']//a[text()='%s']";
 
@@ -22,17 +24,29 @@ public class GeneralPage {
 		return DriverUtils.driver.getTitle();
 	}
 
+	public String getCurrentPageURL() {
+		return DriverUtils.driver.getCurrentUrl();
+	}
+
+	public void closePopupMessage() {
+		alert.dissmiss();
+	}
+
 	public void clickOnMenu(String menuname) {
 		utils.waitForPageLoad();
-		String xpathMenuOption = jsonFileReader.getValueFromJson(String.format("/menu name/%s",menuname));
+		String xpathMenuOption = jsonReader.getValueFromJson(String.format("/menu name/%s",menuname));
 		Button btnMenuOption = new Button(String.format(xpathMenuOption));
 		btnMenuOption.waitForVisible(DriverUtils.loadTimeout);
-		btnMenuOption.click();
+		try {
+			btnMenuOption.click();
+		} catch(Exception e){
+			   //ignore
+		}
 	}
 
 	public void selectOptionInMenu(String menuname, String option) {
 		Link lnkOption = new Link(String.format("//a[text()='%s']", option));
-		clickOnMenu(menuname);
+		this.clickOnMenu(menuname);
 		if(lnkOption.size() != 0)
 			lnkOption.click();
 	}
@@ -51,6 +65,6 @@ public class GeneralPage {
 
 	@Step("Logout TA Dashboard")
 	public void logOut() {
-		selectOptionInMenu("Profile", "Logout");
+		this.selectOptionInMenu("Profile", "Logout");
 	}
 }
