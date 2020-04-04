@@ -98,6 +98,6 @@ public class PanelPage extends HomePage{
 	public void deletePanel(String panelName) {
 		this.selectPanel(panelName);
 		this.selectDeleteButtonOnPanel();
-		alert.accept();
+		utils.waitForPageLoad();
 	}
 }
