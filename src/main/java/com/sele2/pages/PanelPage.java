@@ -9,7 +9,6 @@ import com.sele2.elements.Label;
 import com.sele2.elements.Link;
 import com.sele2.elements.Table;
 import com.sele2.elements.TextBox;
-import com.sele2.support.Constant;
 import com.sele2.support.DriverUtils;
 
 import io.qameta.allure.Step;
@@ -20,6 +19,10 @@ public class PanelPage extends HomePage{
 	private String xpathPanelButton		= "//form[@id='form1']//a[text()='%s']";
 	private String xpathInfoSettings	= "//table[@id='infoSettings']//tr/td[contains(text(),'%s')]";
 	private String xpathChartSettings	= "//div[@id='tdSettings']//table//tr/td[contains(text(),'%s')]";
+	private Checkbox chkSeries			= new Checkbox("//label/input[@name='chkSeriesName']");
+	private Checkbox chkCategories		= new Checkbox("//label/input[@name='chkCategoriesName']");
+	private Checkbox chkValue			= new Checkbox("//label/input[@name='chkValue']");
+	private Checkbox chkPercentage		= new Checkbox("//label/input[@name='chkPercentage']");
 	private TextBox txtDisplayName 		= new TextBox("id=txtDisplayName");
 	private Combobox cmbSeries 			= new Combobox("id=cbbSeriesField");
 	private Button btnOkAddNewPanel 	= new Button("//div[@class='ui-dialog-container']//input[@id='OK']");
@@ -29,10 +32,16 @@ public class PanelPage extends HomePage{
 	private TextBox txtFolder			= new TextBox("//div[@id='div_panelConfigurationDlg']//input[@id='txtFolder']");
 	private Button btnOKConfigPanel 	= new Button("//div[@id='div_panelConfigurationDlg']//input[@id='OK']");
 	private Table tblPanel 				= new Table("//table[@class='GridView']/tbody");
+	private Combobox cmbChartType		= new Combobox("//div[@id='tdSettings']//td/select[@id='cbbChartType']");
 
 	private void selectPanelType(String type) {
 		Checkbox chkPanelType = new Checkbox(String.format(xpathPanelType, type));
 		chkPanelType.check();	
+	}
+
+	public void selectChartType(String chartType) {
+		this.cmbChartType.selectByValue(chartType);
+		utils.waitForPageStable();
 	}
 
 	public void selectLegends(String legend) {
@@ -106,6 +115,12 @@ public class PanelPage extends HomePage{
 		} else return false;
 	}
 
+	public Boolean isDataLabelsCheckBoxesStateCorrect(Boolean series, Boolean category, Boolean value, Boolean percentage) {
+		if((this.chkSeries.isEnabled() == series)&&(this.chkCategories.isEnabled() == category)&&(this.chkValue.isEnabled() == value)
+				&&(this.chkPercentage.isEnabled() == percentage)) {
+			return true;
+		} else return false;
+	}
 	public String getWarningMessageOnPanels() {
 		alert.waitForAlertPresent();
 		String actualMessage = alert.getText();
