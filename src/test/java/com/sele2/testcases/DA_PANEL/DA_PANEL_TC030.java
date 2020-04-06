@@ -42,7 +42,7 @@ public class DA_PANEL_TC030 extends TestBase {
 		panelPage.selectAddNewButtonOnPanel();
 
 		Log.info("Step 5: Enter value into Display Name field with special characters except '@' and click OK");
-		panelPage.createNewPanel(null, displayNameExceptAtSign, Constant.SERIES);
+		panelPage.createNewPanel(null, displayNameExceptAtSign, Constant.SERIES, null);
 
 		Log.info("VP: Check warning message is shown up");
 		Assert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
@@ -51,7 +51,7 @@ public class DA_PANEL_TC030 extends TestBase {
 		panelPage.closePopupMessage();
 
 		Log.info("Step 7: Enter value into Display Name field with special characters except '@' and click OK");
-		panelPage.createNewPanel(null, displayNameWithAtSign, Constant.SERIES);
+		panelPage.createNewPanel(null, displayNameWithAtSign, Constant.SERIES, null);
 
 		Log.info("VP: Check The new panel is created");
 		Assert.assertTrue(panelPage.isNewPanelExisted(displayNameWithAtSign));
@@ -60,6 +60,7 @@ public class DA_PANEL_TC030 extends TestBase {
 	@AfterMethod
 	private void cleanUp(ITestResult result) {
 		if (result.getStatus() == ITestResult.SUCCESS) {
+			panelPage.cancelPanelDialog();
 			panelPage.deletePanel(displayNameWithAtSign);
 		}
 	}

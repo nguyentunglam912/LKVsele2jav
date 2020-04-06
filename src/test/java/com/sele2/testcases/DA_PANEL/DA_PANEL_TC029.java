@@ -37,7 +37,7 @@ public class DA_PANEL_TC029 extends TestBase {
 		panelPage.selectAddNewButtonOnPanel();
 
 		Log.info("Step 6: Click Ok button");
-		panelPage.createNewPanel(null, null, null);
+		panelPage.createNewPanel(null, null, null, null);
 
 		Log.info("VP: Warning message: 'Display Name is a required field.' show up");
 		Assert.assertEquals(panelPage.getWarningMessageOnPanels(), expectedWarningMessage);
