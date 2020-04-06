@@ -12,6 +12,7 @@ import com.sele2.support.DriverUtils;
 import io.qameta.allure.Step;
 
 import com.sele2.driver.DriverManagerFactory;
+import com.sele2.pages.ChoosePanels;
 import com.sele2.pages.GeneralPage;
 import com.sele2.pages.HomePage;
 import com.sele2.pages.LoginPage;
@@ -25,6 +26,7 @@ public class TestBase {
 	public HomePage homePage = new HomePage();
 	public NewPage newPage = new NewPage();
 	public PanelPage panelPage = new PanelPage();
+	public ChoosePanels choosePanels = new ChoosePanels();
 
 	@BeforeClass
 	public static void setUp() {
