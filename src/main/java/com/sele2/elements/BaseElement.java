@@ -60,6 +60,11 @@ public class BaseElement {
 		this.findElement().click();
 	}
 
+	public void doubleClick() {
+		Actions action = new Actions(getDriver());
+		action.doubleClick(this.findElement()).perform();
+	}
+
 	public void forceClick() {
 		JavascriptExecutor js = (JavascriptExecutor) this.getDriver();
 		js.executeScript("arguments[0].click();", this.findElement());
@@ -96,8 +101,8 @@ public class BaseElement {
 		wait.until(ExpectedConditions.visibilityOf(this.findElement()));
 	}
 
-	public void waitForInVisible(int timeOut) {
-		WebDriverWait wait = new WebDriverWait(this.getDriver(), timeOut);
+	public void waitForInVisible(Long loadtimeout) {
+		WebDriverWait wait = new WebDriverWait(this.getDriver(), loadtimeout);
 		wait.until(ExpectedConditions.invisibilityOf(this.findElement()));
 	}
 }
