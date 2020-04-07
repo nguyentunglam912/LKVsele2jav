@@ -1,7 +1,5 @@
 package com.sele2.pages;
 
-import org.openqa.selenium.WebDriverException;
-
 import com.sele2.elements.Alert;
 import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;

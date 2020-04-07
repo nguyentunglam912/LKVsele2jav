@@ -1,5 +1,7 @@
 package com.sele2.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 
 import com.sele2.elements.Button;
@@ -36,7 +38,19 @@ public class PanelPage extends HomePage{
 
 	private void selectPanelType(String type) {
 		Checkbox chkPanelType = new Checkbox(String.format(xpathPanelType, type));
-		chkPanelType.check();	
+		chkPanelType.check();
+	}
+
+	public void selectChartType(String chartType) {
+		this.cmbChartType.selectByValue(chartType);
+		utils.waitForPageStable();
+	}
+
+	public void selectDataLabels(Boolean series, Boolean categories, Boolean value, Boolean percentage) {
+		this.chkSeries.selectValue(series);
+		this.chkCategories.selectValue(categories);
+		this.chkValue.selectValue(value);
+		this.chkPercentage.selectValue(percentage);
 	}
 
 	public void selectChartType(String chartType) {
@@ -96,6 +110,16 @@ public class PanelPage extends HomePage{
 		utils.waitForPageStable();
 	}
 
+	public Boolean doesOptionsExistInSelectPageCombobox(String[] pages) {
+		Boolean doesOptionExist = true;
+		for(String page : pages) {
+			if(!this.cmbSelectPage.getAllOptions().contains(page)) {
+				doesOptionExist = false;
+				break;
+			}
+		}
+		return doesOptionExist;
+	}
 	public Boolean isAllSettingExists() {
 		Label lblType = new Label(String.format(xpathInfoSettings, "Type"));
 		Label lblDataProfile = new Label(String.format(xpathInfoSettings, "Data Profile"));

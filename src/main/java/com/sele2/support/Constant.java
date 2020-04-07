@@ -25,9 +25,11 @@ public class Constant {
 	private static final String RANDOM_STRING = Utilities.generateRandomString(5,"%s");
 	public static final String PAGE_NAME1 = String.format(RANDOM_STRING, "Test1");
 	public static final String PAGE_NAME2 = String.format(RANDOM_STRING, "Test2");
+	public static final String PAGE_NAME3 = String.format(RANDOM_STRING, "Test3");
 	public static final String OVERVIEW_PAGE = "Overview";
 
 	// Test Data Panel
 	public static final String PANEL_NAME = String.format(RANDOM_STRING, "Panel");
 	public static final String SERIES = "Name";
+	public static final String CHART_PANEL = "Action Implementation By Status";
 }
