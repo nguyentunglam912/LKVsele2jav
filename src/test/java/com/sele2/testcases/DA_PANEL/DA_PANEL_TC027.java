@@ -1,5 +1,6 @@
 package com.sele2.testcases.DA_PANEL;
 
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -12,9 +13,10 @@ import com.sele2.utils.listeners.TestListener;
 import io.qameta.allure.Description;
 
 @Listeners({ TestListener.class })
-public class DA_PANEL_TC027 extends TestBase{
+public class DA_PANEL_TC027 extends TestBase {
 	/**
-	 * DA_MP_TC027
+	 * DA_PANEL_TC027
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
@@ -37,7 +39,7 @@ public class DA_PANEL_TC027 extends TestBase{
 		homePage.selectCreatePanelButtonInGlobalSettingMenu();
 
 		Log.info("Step 6: Create Panel with display name and series");
-		panelPage.createNewPanel(null, Constant.PANEL_NAME, Constant.SERIES);
+		panelPage.createNewPanel(null, Constant.PANEL_NAME, Constant.SERIES, null);
 
 		Log.info("Step 7: Click Ok button in Panel Configuration popup");
 		panelPage.configPanel(null, null, null);
@@ -49,8 +51,9 @@ public class DA_PANEL_TC027 extends TestBase{
 	}
 
 	@AfterMethod
-	private void cleanUp() {
-		Log.info("Delete newly added page");
-		homePage.deletePage(Constant.PAGE_NAME1);
+	private void cleanUp(ITestResult result) {
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			homePage.deletePage(Constant.PAGE_NAME1);
+		}
 	}
 }

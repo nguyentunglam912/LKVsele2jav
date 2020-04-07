@@ -45,59 +45,64 @@ public class BaseElement {
 	}
 
 	protected WebElement findElement() {
-		return getDriver().findElement(getByLocator());
+		return this.getDriver().findElement(getByLocator());
 	}
 
 	public List<WebElement> findElements() {
-		return getDriver().findElements(getByLocator());
+		return this.getDriver().findElements(getByLocator());
 	}
 
 	public void submit() {
-		findElement().submit();
+		this.findElement().submit();
 	}
 
 	public void click() {
-		findElement().click();
+		this.findElement().click();
+	}
+
+	public void doubleClick() {
+		Actions action = new Actions(getDriver());
+		action.doubleClick(this.findElement()).perform();
 	}
 
 	public void forceClick() {
-		JavascriptExecutor js = (JavascriptExecutor) getDriver();
-		js.executeScript("arguments[0].click();", findElement());
+		JavascriptExecutor js = (JavascriptExecutor) this.getDriver();
+		js.executeScript("arguments[0].click();", this.findElement());
 	}
 
 	public boolean isEnabled() {
-		return findElement().isEnabled();
+		return this.findElement().isEnabled();
 	}
 
 	public String getText() {
-		return findElement().getText();
+		return this.findElement().getText();
 	}
 
 	public boolean isDisplayed() {
-		return findElement().isDisplayed();
+		return this.findElement().isDisplayed();
 	}
 
 	public void moveMouse() {
 		Actions action = new Actions(getDriver());
-		action.moveToElement(findElement()).perform();
+		action.moveToElement(this.findElement()).perform();
 	}
 
 	public int size() {
-		return findElements().size();
+		return this.findElements().size();
 	}
 
 	public void waitForClickable(int timeOut) {
-		WebDriverWait wait = new WebDriverWait(getDriver(), timeOut);
-		wait.until(ExpectedConditions.elementToBeClickable(findElement()));
+		WebDriverWait wait = new WebDriverWait(this.getDriver(), timeOut);
+		wait.until(ExpectedConditions.elementToBeClickable(this.findElement()));
 	}
 
 	public void waitForVisible(Long loadtimeout) {
-		WebDriverWait wait = new WebDriverWait(getDriver(), loadtimeout);
-		wait.until(ExpectedConditions.visibilityOf(findElement()));
+		WebDriverWait wait = new WebDriverWait(this.getDriver(), loadtimeout);
+		wait.until(ExpectedConditions.visibilityOf(this.findElement()));
 	}
 
-	public void waitForInVisible(int timeOut) {
-		WebDriverWait wait = new WebDriverWait(getDriver(), timeOut);
-		wait.until(ExpectedConditions.invisibilityOf(findElement()));
+	public void waitForInVisible(Long loadtimeout) {
+		WebDriverWait wait = new WebDriverWait(this.getDriver(), loadtimeout);
+		wait.until(ExpectedConditions.invisibilityOf(this.findElement()));
 	}
 }

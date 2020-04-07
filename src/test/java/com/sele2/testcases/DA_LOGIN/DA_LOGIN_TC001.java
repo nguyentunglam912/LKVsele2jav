@@ -11,14 +11,15 @@ import io.qameta.allure.*;
 import com.sele2.utils.listeners.TestListener;
 
 @Listeners({ TestListener.class })
-public class DA_LOGIN_TC001 extends TestBase{
+public class DA_LOGIN_TC001 extends TestBase {
 	/**
 	 * DA_LOGIN_TC001
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
 	@Test
-    @Description("Test Description: Verify that user can login specific repository successfully via Dashboard login page with correct credentials")
+	@Description("Test Description: Verify that user can login specific repository successfully via Dashboard login page with correct credentials")
 	public void DA_LOGIN_TC001_LoginWithCorrectCredentials() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();

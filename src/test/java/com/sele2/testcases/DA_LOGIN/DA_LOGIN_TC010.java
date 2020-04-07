@@ -11,9 +11,10 @@ import io.qameta.allure.*;
 import com.sele2.utils.listeners.TestListener;
 
 @Listeners({ TestListener.class })
-public class DA_LOGIN_TC010 extends TestBase{
+public class DA_LOGIN_TC010 extends TestBase {
 	/**
 	 * DA_LOGIN_TC010
+	 *
 	 * @author vi.dao
 	 */
 

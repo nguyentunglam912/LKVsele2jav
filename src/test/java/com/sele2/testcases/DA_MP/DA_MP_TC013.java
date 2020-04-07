@@ -1,6 +1,7 @@
 package com.sele2.testcases.DA_MP;
 
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -13,15 +14,16 @@ import com.sele2.utils.listeners.TestListener;
 import io.qameta.allure.Description;
 
 @Listeners({ TestListener.class })
-public class DA_MP_TC013 extends TestBase{
+public class DA_MP_TC013 extends TestBase {
 	/**
 	 * DA_MP_TC013
+	 *
 	 * @author lam.tung.nguyen
 	 */
 
 	@Test
-	@Description("Verify that the newly added main parent page is positioned \"\r\n" + 
-			"			+ \"at the location specified as set with 'Displayed After' field of 'New Page' form on the main page bar'Parent Page' dropped down menu")
+	@Description("Verify that the newly added main parent page is positioned \"\r\n"
+			+ "			+ \"at the location specified as set with 'Displayed After' field of 'New Page' form on the main page bar'Parent Page' dropped down menu")
 	public void DA_MP_TC013_CanAddPagesBesidesOverviewPage() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
@@ -46,9 +48,10 @@ public class DA_MP_TC013 extends TestBase{
 	}
 
 	@AfterMethod
-	private void cleanUp() {
-		Log.info("Delete newly added main child page and its parent page");
-		homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME1);
-		homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME2);
+	private void cleanUp(ITestResult result) {
+		if (result.getStatus() == ITestResult.SUCCESS) {
+			homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME1);
+			homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME2);
+		}
 	}
 }

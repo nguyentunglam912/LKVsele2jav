@@ -1,5 +1,6 @@
 package com.sele2.elements;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -16,21 +17,21 @@ public class Combobox extends BaseElement {
 	}
 
 	public void selectByVisibleText(String text) {		
-		select().selectByVisibleText(text);
+		this.select().selectByVisibleText(text);
 	}
 	
 	public void selectByIndex(int index) {
-		select().selectByIndex(index);
+		this.select().selectByIndex(index);
 	}
 	
 	public void selectByValue(String value) {
-		select().selectByValue(value);
+		this.select().selectByValue(value);
 	}
 
 	public void selectBySpecialText(String text) {
 		if(text != null) {
-			findElement().click();
-			List<WebElement> options = select().getOptions();
+			this.findElement().click();
+			List<WebElement> options = this.select().getOptions();
 			for(WebElement option : options) {
 				if(option.getText().trim().equals(text)) {
 					option.click();
@@ -38,5 +39,15 @@ public class Combobox extends BaseElement {
 				}
 			}
 		}
+	}
+
+	public List<String> getAllOptions(){
+		List<String> listOptions = new ArrayList<String>();
+		List<WebElement> options = this.select().getOptions();
+		for(WebElement option : options) {
+			 if (option.getAttribute("value") != "")
+				 listOptions.add(option.getText());
+		}
+		return listOptions;
 	}
 }
