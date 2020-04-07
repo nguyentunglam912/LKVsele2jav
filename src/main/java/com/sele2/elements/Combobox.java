@@ -1,5 +1,6 @@
 package com.sele2.elements;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -38,5 +39,15 @@ public class Combobox extends BaseElement {
 				}
 			}
 		}
+	}
+
+	public List<String> getAllOptions(){
+		List<String> listOptions = new ArrayList<String>();
+		List<WebElement> options = this.select().getOptions();
+		for(WebElement option : options) {
+			 if (option.getAttribute("value") != "")
+				 listOptions.add(option.getText());
+		}
+		return listOptions;
 	}
 }
