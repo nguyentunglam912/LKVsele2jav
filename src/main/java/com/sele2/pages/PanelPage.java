@@ -53,6 +53,11 @@ public class PanelPage extends HomePage{
 		this.chkPercentage.selectValue(percentage);
 	}
 
+	public void selectChartType(String chartType) {
+		this.cmbChartType.selectByValue(chartType);
+		utils.waitForPageStable();
+	}
+
 	public void selectLegends(String legend) {
 		Checkbox chkPanelType = new Checkbox(String.format(xpathLegends, legend));
 		chkPanelType.waitForVisible(DriverUtils.loadTimeout);
