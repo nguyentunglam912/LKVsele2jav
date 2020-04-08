@@ -57,7 +57,7 @@ public class HomePage extends GeneralPage{
 
 	public String getCurrentPage() {
 		String currentPageTitle = this.getCurrentPageTitle();
-		return currentPageTitle.substring(20, currentPageTitle.length()).trim();
+		return currentPageTitle.substring(18, currentPageTitle.length()).trim();
 	}
 
 	public Integer getNumberOfColumnOnPage() {
