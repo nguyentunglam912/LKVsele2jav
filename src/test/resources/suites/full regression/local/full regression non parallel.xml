@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Full Regression Non Parallel Suite">
+  <test thread-count="1" name="Full Regression Non Parallel Test">
+  <parameter name = "BROWSER" value="${BROWSER}"/>
+    <classes>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC001"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC002"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC003"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC004"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC005"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC006"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC007"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC008"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC009"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC010"/>
+      <class name="com.sele2.testcases.DA_MP.DA_MP_TC011"/>
+      <class name="com.sele2.testcases.DA_MP.DA_MP_TC012"/>
+      <class name="com.sele2.testcases.DA_MP.DA_MP_TC013"/>
+      <class name="com.sele2.testcases.DA_MP.DA_MP_TC019"/>
+      <class name="com.sele2.testcases.DA_MP.DA_MP_TC024"/>
+      <class name="com.sele2.testcases.DA_MP.DA_MP_TC025"/>
+      <class name="com.sele2.testcases.DA_MP.DA_MP_TC026"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC027"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC028"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC029"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC030"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC039"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC040"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC041"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC042"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC051"/>
+      <class name="com.sele2.testcases.DA_PANEL.DA_PANEL_TC052"/>
+    </classes>
+  </test> <!-- Full Regression Non Parallel Test -->
+</suite> <!-- Full Regression Non Parallel Suite -->

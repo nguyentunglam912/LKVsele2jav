@@ -11,7 +11,7 @@ public class DriverUtils {
 	public static final Long implicityWait 	=  FileReaderManager.getInstance().getConfigReader().getImplicitlyWait();
 	public static final Long loadTimeout	=  FileReaderManager.getInstance().getConfigReader().getPageLoadTimeout();
 	public static final String url 			=  FileReaderManager.getInstance().getConfigReader().getUrl();
-	public static final String browser	=  FileReaderManager.getInstance().getConfigReader().getBrowser();
+	public static String browser	=  FileReaderManager.getInstance().getConfigReader().getBrowser();
 	public static final String browserVersion 	=  FileReaderManager.getInstance().getConfigReader().getBrowserVersion();
 	public static Boolean hedless 			=  FileReaderManager.getInstance().getConfigReader().getHeadless();
 	public static final String remoteURL 	=  FileReaderManager.getInstance().getConfigReader().getRemoteURL();
