@@ -84,7 +84,7 @@ public class PanelPage extends HomePage{
 	}
 
 	@Step("Create a new Panel")
-	public void createNewPanel(String type, String displayName, String series, String legend) {
+	public void submitPanelForm(String type, String displayName, String series, String legend) {
 		utils.waitForPageStable();
 		this.fillNewPanelInformation(type, displayName, series, legend);
 		utils.waitForPageStable();
@@ -94,7 +94,7 @@ public class PanelPage extends HomePage{
 	private void fillConfigPanel(String page, Integer height, String folder) {
 		utils.waitForPageLoad();
 		if(page!=null) cmbSelectPage.selectByVisibleText(page);
-		if(height!=null) txtHeight.sendKeys(height.toString());
+		if(height!=null) txtHeight.clearAndSendKeys(height.toString());
 		if(folder!=null) txtFolder.sendKeys(folder);
 	}
 
@@ -102,7 +102,13 @@ public class PanelPage extends HomePage{
 	public void configPanel(String page, Integer height, String folder) {
 		fillConfigPanel(page, height, folder);
 		btnOKConfigPanel.click();
+	}
+
+	public Boolean doesConfigPanelDisplay() {
 		utils.waitForPageStable();
+		if(this.btnOKConfigPanel.size()==0)
+			return false;
+		else return true;
 	}
 
 	public Boolean doesOptionsExistInSelectPageCombobox(String[] pages) {
@@ -152,6 +158,7 @@ public class PanelPage extends HomePage{
 	}
 
 	public void selectPanel(String panelName) {
+		this.tblPanel.waitForVisible(DriverUtils.loadTimeout);
 		int totalRows = this.tblPanel.getRowsCount();
 		int panelNameCol = 2;
 		int checkboxCol = 1;
