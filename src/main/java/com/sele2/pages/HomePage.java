@@ -73,6 +73,7 @@ public class HomePage extends GeneralPage{
         utils.waitForPageLoad();
         selectOptionInMenu("Global Setting", "Delete");
         alert.accept();
+        utils.waitForPageLoad();
 	}
 
 	public Dictionary getMenuItems(String menuName) {

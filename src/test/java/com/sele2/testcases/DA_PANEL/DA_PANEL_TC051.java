@@ -14,21 +14,20 @@ import com.sele2.utils.listeners.TestListener;
 import io.qameta.allure.Description;
 
 @Listeners({ TestListener.class })
-public class DA_PANEL_TC030 extends TestBase {
+public class DA_PANEL_TC051 extends TestBase {
 	/**
-	 * DA_PANEL_TC030
+	 * DA_PANEL_TC051
 	 *
 	 * @author lam.tung.nguyen
 	 */
 
-	private String displayNameExceptAtSign = "Logigear#$%";
-	private String displayNameWithAtSign = "Logigear@";
-	private String invalidDisplayNameMessage = "Invalid display name. The name cannot contain high"
-			+ " ASCII characters or any of the following characters: /:*?<>|\\\"#[]{}=%;";
+	private String displayNameExceptAtSign = "test#$";
+	private String displayNameWithAtSign = "test@";
+	private String invalidDisplayNameMessage = "Invalid display name. The name cannot contain high ASCII characters or any of the following characters: /:*?<>|\"#[]{}=%;";
 
 	@Test
-	@Description("Verify that no special character except '@' character is allowed to be inputted into 'Display Name' field")
-	public void DA_PANEL_TC030_NoSepecialCharIsAllowedToInputDisplayName() {
+	@Description("Verify that user is unable to change 'Display Name' of any Panel if there is special character except '@' inputted")
+	public void DA_PANEL_TC051_CannotChangeDisplayNameOfPanelWithSpecialCharExceptAtSign() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
@@ -42,16 +41,22 @@ public class DA_PANEL_TC030 extends TestBase {
 		panelPage.selectAddNewButtonOnPanel();
 
 		Log.info("Step 5: Enter value into Display Name field with special characters except '@' and click OK");
-		panelPage.submitPanelForm(null, displayNameExceptAtSign, Constant.SERIES, null);
+		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null);
+
+		Log.info("Step 6: Click Edit link");
+		panelPage.openEditPanel(Constant.PANEL_NAME);
+
+		Log.info("Step 7: Edit panel name with special characters");
+		panelPage.submitPanelForm(null, this.displayNameExceptAtSign, null, null);
 
 		Log.info("VP: Check warning message is shown up");
 		Assert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
 
-		Log.info("Step 6: Close warning message");
+		Log.info("Step 8: Close warning message");
 		panelPage.closePopupMessage();
 
-		Log.info("Step 7: Enter value into Display Name field with special characters except '@' and click OK");
-		panelPage.submitPanelForm(null, displayNameWithAtSign, Constant.SERIES, null);
+		Log.info("Step 9: Edit panel name with special character is @");
+		panelPage.submitPanelForm(null, displayNameWithAtSign, null, null);
 
 		Log.info("VP: Check The new panel is created");
 		Assert.assertTrue(panelPage.isNewPanelExisted(displayNameWithAtSign));
