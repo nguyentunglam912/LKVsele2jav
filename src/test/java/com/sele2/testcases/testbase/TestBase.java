@@ -14,6 +14,7 @@ import com.sele2.support.DriverUtils;
 import io.qameta.allure.Step;
 
 import com.sele2.driver.DriverManagerFactory;
+import com.sele2.helper.FileReaderManager;
 import com.sele2.pages.ChoosePanels;
 import com.sele2.pages.GeneralPage;
 import com.sele2.pages.HomePage;
@@ -31,13 +32,13 @@ public class TestBase {
 	public ChoosePanels choosePanels = new ChoosePanels();
 
 	@BeforeClass
-	@Parameters({ "BROWSER" })
-	public static void setUp(@Optional String BROWSER) {
+	@Parameters({ "BROWSER", "REMOTE"})
+	public static void setUp(@Optional String BROWSER, @Optional String REMOTE) {
 		System.out.println("Pre-condition");
 		BasicConfigurator.configure();
-		if(BROWSER == null)
-			DriverUtils.driver = DriverManagerFactory.getDriverManager(DriverUtils.browser).getWebDriver();
-		else DriverUtils.driver = DriverManagerFactory.getDriverManager(BROWSER).getWebDriver();
+		if(BROWSER!=null) FileReaderManager.getInstance().getConfigReader().updateConfigFile("browser", BROWSER);
+		if(REMOTE!=null) FileReaderManager.getInstance().getConfigReader().updateConfigFile("remoteURL", REMOTE);
+		DriverUtils.driver = DriverManagerFactory.getDriverManager(FileReaderManager.getInstance().getConfigReader().getBrowser()).getWebDriver();
 	}
 
 	@AfterClass

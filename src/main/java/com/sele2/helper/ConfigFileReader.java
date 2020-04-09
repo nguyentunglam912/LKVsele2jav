@@ -1,7 +1,9 @@
 package com.sele2.helper;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
@@ -29,6 +31,23 @@ public class ConfigFileReader {
 				} 
 		}
 	
+	 public void updateConfigFile(String property, String value) {
+		 FileInputStream in = null;
+		 try {
+			in = new FileInputStream(propertyFilePath);
+			Properties props = new Properties();
+			props.load(in);
+			in.close();
+			FileOutputStream out;
+			out = new FileOutputStream(propertyFilePath);
+			props.setProperty(property, value);
+			props.store(out, null);
+			out.close();
+		 }catch(Exception e) {
+			 e.printStackTrace();
+		 }
+	}
+
 	public String getDriverPath(){
 		String driverPath = properties.getProperty("driverPath");
 		return driverPath;
