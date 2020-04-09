@@ -1,7 +1,5 @@
 package com.sele2.pages;
 
-import java.util.List;
-
 import org.openqa.selenium.By;
 
 import com.sele2.elements.Button;

@@ -23,7 +23,6 @@ public class RemoteChromeDriverManager extends DriverManager{
 		options.setHeadless(DriverUtils.hedless);
 		DesiredCapabilities capabilities =  DesiredCapabilities.chrome();
         capabilities.setCapability(CAPABILITY, options);
-        capabilities.setVersion(DriverUtils.browserVersion);
         try {
 			this.driver = new RemoteWebDriver(new URL(DriverUtils.remoteURL), capabilities);
 		} catch (MalformedURLException e) {

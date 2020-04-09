@@ -23,7 +23,6 @@ public class RemoteFirefoxDriverManager extends DriverManager{
 		options.setHeadless(DriverUtils.hedless);
 		DesiredCapabilities capabilities =  DesiredCapabilities.firefox();
         capabilities.setCapability(FIREFOX_OPTIONS, options);
-        capabilities.setVersion(DriverUtils.browserVersion);
         try {
 			this.driver = new RemoteWebDriver(new URL(DriverUtils.remoteURL), capabilities);
 		} catch (MalformedURLException e) {

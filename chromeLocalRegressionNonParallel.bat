@@ -1,0 +1,1 @@
+mvn clean test -DsuiteXmlFile=./src/test/resources/suites/fullRegressionNonParallel.xml -DBROWSER=chrome.local

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite thread-count="4" name="Full Regression Parallel Suite" parallel="tests">
+  <test thread-count="2" name="Chrome Test" parallel="classes">
+  	<parameter name = "BROWSER" value="chrome.remote"/>
+    <classes>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC001"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC002"/>
+
+    </classes>
+  </test> <!-- Chrome Test -->
+  <test thread-count="2" name="Firefox tests" parallel="classes">
+  	<parameter name = "BROWSER" value="firefox.remote"/>
+  	<classes>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC003"/>
+      <class name="com.sele2.testcases.DA_LOGIN.DA_LOGIN_TC004"/>
+     </classes>
+    </test> <!-- Firefox tests -->
+</suite> <!-- Full Regression Parallel Suite -->
