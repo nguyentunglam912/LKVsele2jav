@@ -56,6 +56,7 @@ public class HomePage extends GeneralPage{
 	}
 
 	public String getCurrentPage() {
+		utils.waitForPageStable();
 		String currentPageTitle = this.getCurrentPageTitle();
 		return currentPageTitle.substring(18, currentPageTitle.length()).trim();
 	}
@@ -74,6 +75,11 @@ public class HomePage extends GeneralPage{
         selectOptionInMenu("Global Setting", "Delete");
         alert.accept();
         utils.waitForPageLoad();
+	}
+
+	public String getErrorMessage() {
+		this.alert.waitForAlertPresent();
+		return this.alert.getText().trim();
 	}
 
 	public Dictionary getMenuItems(String menuName) {

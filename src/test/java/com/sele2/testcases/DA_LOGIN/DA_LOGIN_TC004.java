@@ -25,7 +25,7 @@ public class DA_LOGIN_TC004 extends TestBase {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
-		Log.info("Step 2: Enter invalid username and password");
+		Log.info("Step 2: Enter valid username and password");
 		Log.info("Step 3: Click on Login button");
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 

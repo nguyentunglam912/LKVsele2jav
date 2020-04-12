@@ -27,6 +27,7 @@ public class Constant {
 	public static final String PAGE_NAME2 = String.format(RANDOM_STRING, "Test2");
 	public static final String PAGE_NAME3 = String.format(RANDOM_STRING, "Test3");
 	public static final String OVERVIEW_PAGE = "Overview";
+	public static final String DELETE_PAGE_ERROR_MESSAGE = String.format(RANDOM_STRING, "Cannot delete");
 
 	// Test Data Panel
 	public static final String PANEL_NAME = String.format(RANDOM_STRING, "Panel");
