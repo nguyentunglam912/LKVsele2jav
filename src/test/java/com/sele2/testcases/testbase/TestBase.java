@@ -46,7 +46,7 @@ public class TestBase {
 		System.out.println("Post-condition");
 		Logger.getRootLogger().removeAllAppenders();
 		Logger.getRootLogger().addAppender(new NullAppender());
-//		DriverUtils.driver.quit();
+		DriverUtils.driver.quit();
 	}
 
 	@Step("Navigate to Dashboard login page")
