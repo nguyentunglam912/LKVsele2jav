@@ -77,6 +77,17 @@ public class HomePage extends GeneralPage{
         utils.waitForPageLoad();
 	}
 
+	public void deleteAllPagesByPath(String path) {
+		if(!path.equals("Overview") && !path.equals("Execution Dashboard")){
+			String[] nodes = path.split("/");
+			if(nodes.length > 0) {
+				this.deletePage(path);
+				String newPath = path.substring(0, path.lastIndexOf("/"));
+				deleteAllPagesByPath(newPath);
+			}
+		}
+	}
+
 	public String getErrorMessage() {
 		this.alert.waitForAlertPresent();
 		return this.alert.getText().trim();
@@ -94,19 +105,13 @@ public class HomePage extends GeneralPage{
 		return dictItems;
 	}
 
-	public void deleteAllPagesFromMenu(String parentPage) {
-		Dictionary pages = getMenuItems(parentPage);
-		if(pages.size()>0) {
-			for(Enumeration<String> page = pages.elements(); page.hasMoreElements();) {
-				this.deleteAllPagesFromMenu(page.toString());
-				DriverUtils.driver.get(page.nextElement());
-		        selectOptionInMenu("Global Setting", "Delete");
-		        alert.accept();
-		        utils.waitForPageLoad();
+	public Boolean doesItemExistInMenu(String itemExist, String menuName) {
+		Dictionary items = getMenuItems(menuName);
+		for(Enumeration<String> item = items.elements(); item.hasMoreElements();) {
+			if(item.equals(itemExist)) {
+				return true;
 			}
 		}
-		else if(!parentPage.toString().equals("Overview") && !parentPage.toString().equals("Execution Dashboard")) {
-			deletePage(parentPage);
-		}
+		return false;
 	}
 }

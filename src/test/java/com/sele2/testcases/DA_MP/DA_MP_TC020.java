@@ -73,7 +73,7 @@ public class DA_MP_TC020 extends TestBase {
 	@AfterMethod
 	private void cleanUp(ITestResult result) {
 		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deleteAllPagesFromMenu(pagePath1);
+			homePage.deleteAllPagesByPath(pagePath1);
 		}
 	}
 

@@ -14,37 +14,42 @@ import com.sele2.utils.listeners.TestListener;
 import io.qameta.allure.Description;
 
 @Listeners({ TestListener.class })
-public class DA_MP_TC012 extends TestBase {
+public class DA_MP_TC014 extends TestBase {
 	/**
-	 * DA_MP_TC012
+	 * DA_MP_TC014
 	 *
 	 * @author lam.tung.nguyen
 	 */
 
 	@Test
-	@Description("Verify that user is able to add additional pages besides 'Overview' page successfully")
-	public void DA_MP_TC012_CanAddPagesBesidesOverviewPage() {
+	@Description("Verify that 'Public' pages can be visible and accessed by all users of working repository")
+	public void DA_MP_TC014_PublicPagesIsVisibleAndAccessedByAllUsers() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
-		Log.info("Step 2: Login with valid account");
+		Log.info("Step 2: Log in specific repository with valid account");
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
 
-		Log.info("Step 4: Enter Page Name field");
-		Log.info("Step 5: Click Ok button");
-		newPage.submitNewPage(Constant.PAGE_NAME1, null, null, null, null);
+		Log.info("Step 4: Enter Page Name field, check Public checkbox and click Ok button");
+		newPage.submitNewPage(Constant.PAGE_NAME1, null, null, null, true);
 
-		Log.info("VP: Check new page is displayed besides 'Overview' page");
+		Log.info("Step 5: Click on Log out link");
+		homePage.logOut();
+
+		Log.info("Step 6: Log in with another valid account");
+		loginPage.login(Constant.REPOSITORY, Constant.TC008_USERNAME, Constant.TC008_PASSWORD);
+
+		Log.info("VP: Check newly added page is visibled");
 		Assert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
 	}
 
 	@AfterMethod
 	private void cleanUp(ITestResult result) {
 		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deleteAllPagesByPath(Constant.PAGE_NAME1);
+			homePage.deletePage(Constant.PAGE_NAME1);
 		}
 	}
 }

@@ -75,6 +75,6 @@ public class DA_PANEL_TC040 extends TestBase {
 	@AfterMethod
 	private void cleanUp() {
 		panelPage.cancelPanelDialog();
-		homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME1);
+		homePage.deleteAllPagesByPath(Constant.PAGE_NAME1);
 	}
 }
