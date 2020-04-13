@@ -1,6 +1,5 @@
 package com.sele2.testcases.DA_PANEL;
 
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -40,6 +39,7 @@ public class DA_PANEL_TC029 extends TestBase {
 		panelPage.submitPanelForm(null, null, null, null);
 
 		Log.info("VP: Warning message: 'Display Name is a required field.' show up");
-		Assert.assertEquals(panelPage.getWarningMessageOnPanels(), expectedWarningMessage);
+		softAssert.assertEquals(panelPage.getWarningMessageOnPanels(), expectedWarningMessage);
+		softAssert.assertAll();
 	}
 }

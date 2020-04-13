@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_MP;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -38,13 +36,12 @@ public class DA_MP_TC012 extends TestBase {
 		newPage.submitNewPage(Constant.PAGE_NAME1, null, null, null, null);
 
 		Log.info("VP: Check new page is displayed besides 'Overview' page");
-		Assert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
+		softAssert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deleteAllPagesByPath(Constant.PAGE_NAME1);
-		}
+	private void cleanUp() {
+		homePage.deleteAllPagesByPath(Constant.PAGE_NAME1);
 	}
 }

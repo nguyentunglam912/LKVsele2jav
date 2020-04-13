@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_MP;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -49,19 +47,18 @@ public class DA_MP_TC024 extends TestBase {
 		homePage.goToPage(pagePath1);
 
 		Log.info("VP: The first page is navigated");
-		Assert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME1);
+		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME1);
 
 		Log.info("Step 8: Click the second breadcrums");
 		homePage.goToPage(pagePath2);
 
 		Log.info("VP: The second page is navigated");
-		Assert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME2);
+		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME2);
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deleteAllPagesByPath(pagePath2);
-		}
+	private void cleanUp() {
+		homePage.deleteAllPagesByPath(pagePath2);
 	}
 }

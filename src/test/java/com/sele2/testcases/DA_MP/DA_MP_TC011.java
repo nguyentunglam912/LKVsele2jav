@@ -1,6 +1,5 @@
 package com.sele2.testcases.DA_MP;
 
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -35,6 +34,7 @@ public class DA_MP_TC011 extends TestBase {
 		homePage.clickOnMenu("Global Setting");
 
 		Log.info("VP: User cannot go to Global Setting -> Add page while 'New Page' dialog appears.");
-		Assert.assertFalse(homePage.isGlobalSettingMenuDisplayed());
+		softAssert.assertFalse(homePage.isGlobalSettingMenuDisplayed());
+		softAssert.assertAll();
 	}
 }

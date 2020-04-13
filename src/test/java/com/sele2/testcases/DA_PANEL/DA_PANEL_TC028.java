@@ -1,6 +1,5 @@
 package com.sele2.testcases.DA_PANEL;
 
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -39,6 +38,7 @@ public class DA_PANEL_TC028 extends TestBase {
 		panelPage.clickOnMenu("Global Setting");
 
 		Log.info("VP: All control/form are disabled or locked when Add New Panel dialog is opening");
-		Assert.assertFalse(panelPage.isGlobalSettingMenuDisplayed());
+		softAssert.assertFalse(panelPage.isGlobalSettingMenuDisplayed());
+		softAssert.assertAll();
 	}
 }

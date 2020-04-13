@@ -1,6 +1,5 @@
 package com.sele2.testcases.DA_PANEL;
 
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -45,31 +44,32 @@ public class DA_PANEL_TC040 extends TestBase {
 		panelPage.selectChartType("Pie");
 
 		Log.info("VP: Check that 'Categories' checkbox is disabled, 'Series' checkbox, 'Value' checkbox and 'Percentage' checkbox are enabled");
-		Assert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(true, false, true, true));
+		softAssert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(true, false, true, true));
 		
 		Log.info("Step 8: Click 'Chart Type' drop-down menu and select 'Single Bar' Chart Type");
 		panelPage.selectChartType("Single Bar");
 
 		Log.info("VP: Check that 'Categories' checkbox is disabled, 'Series' checkbox, 'Value' checkbox and 'Percentage' checkbox are enabled");
-		Assert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(true, false, true, true));
+		softAssert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(true, false, true, true));
 		
 		Log.info("Step 9: Click 'Chart Type' drop-down menu and select 'Stacked Bar' Chart Type");
 		panelPage.selectChartType("Stacked Bar");
 
 		Log.info("VP: Check that 'Categories' checkbox, 'Series' checkbox, 'Value' checkbox and 'Percentage' checkbox are enabled");
-		Assert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(true, true, true, true));
+		softAssert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(true, true, true, true));
 		
 		Log.info("Step 10: Click 'Chart Type' drop-down menu and select 'Group Bar' Chart Type");
 		panelPage.selectChartType("Group Bar");
 
 		Log.info("VP: Check that 'Categories' checkbox, 'Series' checkbox, 'Value' checkbox and 'Percentage' checkbox are enabled");
-		Assert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(true, true, true, true));
+		softAssert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(true, true, true, true));
 		
 		Log.info("Step 11: Click 'Chart Type' drop-down menu and select 'Line' Chart Type");
 		panelPage.selectChartType("Line");
 
 		Log.info("VP: Check that 'Categories' checkbox, 'Series' checkbox, 'Value' checkbox and 'Percentage' checkbox are disabled");
-		Assert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(false, false, false, false));
+		softAssert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(false, false, false, false));
+		softAssert.assertAll();
 	}
 
 	@AfterMethod

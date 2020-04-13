@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_MP;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -43,13 +41,12 @@ public class DA_MP_TC026 extends TestBase {
 		newPage.editPage(Constant.PAGE_NAME1, null, null, numberOfColumn2, null, null);
 
 		Log.info("VP: There are 3 columns on the above created page");
-		Assert.assertEquals(homePage.getNumberOfColumnOnPage(), numberOfColumn2);
+		softAssert.assertEquals(homePage.getNumberOfColumnOnPage(), numberOfColumn2);
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deletePage(Constant.PAGE_NAME1);
-		}
+	private void cleanUp() {
+		homePage.deletePage(Constant.PAGE_NAME1);
 	}
 }

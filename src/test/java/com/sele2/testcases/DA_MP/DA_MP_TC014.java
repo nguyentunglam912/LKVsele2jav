@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_MP;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -43,13 +41,12 @@ public class DA_MP_TC014 extends TestBase {
 		loginPage.login(Constant.REPOSITORY, Constant.TC008_USERNAME, Constant.TC008_PASSWORD);
 
 		Log.info("VP: Check newly added page is visibled");
-		Assert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
+		softAssert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deletePage(Constant.PAGE_NAME1);
-		}
+	private void cleanUp() {
+		homePage.deletePage(Constant.PAGE_NAME1);
 	}
 }

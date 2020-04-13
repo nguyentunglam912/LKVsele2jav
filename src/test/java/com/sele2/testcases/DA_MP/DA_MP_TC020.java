@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_MP;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -54,7 +52,7 @@ public class DA_MP_TC020 extends TestBase {
 		homePage.deletePage(pagePath1);
 
 		Log.info("VP: There is a message 'Cannot delete page \"page 1\" since it has child page(s).\"");
-		Assert.assertEquals(homePage.getErrorMessage(), this.deleteErrorMessage);
+		softAssert.assertEquals(homePage.getErrorMessage(), this.deleteErrorMessage);
 
 		Log.info("Step 10: Close confirmation dialog");
 		generalPage.closePopupMessage();
@@ -67,14 +65,13 @@ public class DA_MP_TC020 extends TestBase {
 		homePage.deletePage(pagePath2);
 
 		Log.info("VP: Page 2 is deleted successfully");
-		Assert.assertEquals(homePage.getCurrentPage(), Constant.OVERVIEW_PAGE);
+		softAssert.assertEquals(homePage.getCurrentPage(), Constant.OVERVIEW_PAGE);
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deleteAllPagesByPath(pagePath1);
-		}
+	private void cleanUp() {
+		homePage.deleteAllPagesByPath(pagePath1);
 	}
 
 }

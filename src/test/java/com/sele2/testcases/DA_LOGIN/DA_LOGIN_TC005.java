@@ -1,7 +1,6 @@
 package com.sele2.testcases.DA_LOGIN;
 
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
 import com.sele2.support.Constant;
@@ -33,9 +32,10 @@ public class DA_LOGIN_TC005 extends TestBase {
 		homePage.switchRepository(Constant.REPOSITORY2);
 
 		Log.info("VP: There is no Login Repository dialog");
-		Assert.assertNotEquals(homePage.getCurrentPageURL(), Constant.LOGIN_URL);
+		softAssert.assertNotEquals(homePage.getCurrentPageURL(), Constant.LOGIN_URL);
 
 		Log.info("VP: The Repository menu displays name of switched repository");
-		Assert.assertEquals(homePage.getCurrentRepo(), Constant.REPOSITORY2);
+		softAssert.assertEquals(homePage.getCurrentRepo(), Constant.REPOSITORY2);
+		softAssert.assertAll();
 	}
 }
