@@ -5,6 +5,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
+import org.testng.asserts.SoftAssert;
 import org.apache.log4j.Logger;
 import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.varia.NullAppender;
@@ -24,6 +25,7 @@ import com.sele2.pages.PanelPage;
 
 
 public class TestBase {
+	public SoftAssert softAssert = new SoftAssert();
 	public GeneralPage generalPage = new GeneralPage();
 	public LoginPage loginPage = new LoginPage();
 	public HomePage homePage = new HomePage();
