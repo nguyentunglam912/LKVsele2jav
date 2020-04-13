@@ -1,8 +1,6 @@
 package com.sele2.pages;
 
-import java.util.Dictionary;
-import java.util.Enumeration;
-import java.util.Hashtable;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.openqa.selenium.WebElement;
@@ -10,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
 import com.sele2.elements.Label;
-import com.sele2.support.DriverUtils;
 
 import io.qameta.allure.Step;
 
@@ -77,36 +74,40 @@ public class HomePage extends GeneralPage{
         utils.waitForPageLoad();
 	}
 
+	public void deleteAllPagesByPath(String path) {
+		String[] nodes = path.split("/");
+		if(nodes.length>1) {
+			this.deletePage(path);
+			String newPath = path.substring(0, path.lastIndexOf("/"));
+			deleteAllPagesByPath(newPath);
+			}
+		else if(!path.equals("Overview") && !path.equals("Execution Dashboard")) {
+			this.deletePage(path);
+		}
+	}
+
 	public String getErrorMessage() {
 		this.alert.waitForAlertPresent();
 		return this.alert.getText().trim();
 	}
 
-	public Dictionary getMenuItems(String menuName) {
+	public ArrayList<String> getMenuItems(String menuName) {
 		BaseElement menu = new BaseElement(String.format(dynamicMenuItems, menuName));
-		Dictionary dictItems = new Hashtable();
+		ArrayList<String> listItems = new ArrayList<String>();
 		List<WebElement> items = menu.findElements();
 		for(WebElement item:items) {
-			String itemName = item.getAttribute("text");
-			String itemHref = item.getAttribute("href");
-			dictItems.put(itemName, itemHref);
+			listItems.add(item.getAttribute("text"));
 			}
-		return dictItems;
+		return listItems;
 	}
 
-	public void deleteAllPagesFromMenu(String parentPage) {
-		Dictionary pages = getMenuItems(parentPage);
-		if(pages.size()>0) {
-			for(Enumeration<String> page = pages.elements(); page.hasMoreElements();) {
-				this.deleteAllPagesFromMenu(page.toString());
-				DriverUtils.driver.get(page.nextElement());
-		        selectOptionInMenu("Global Setting", "Delete");
-		        alert.accept();
-		        utils.waitForPageLoad();
+	public Boolean doesItemExistInMenu(String itemExist, String menuName) {
+		ArrayList<String> items = getMenuItems(menuName);
+		for(String item : items) {
+			if(item.equals(itemExist)) {
+				return true;
 			}
 		}
-		else if(!parentPage.toString().equals("Overview") && !parentPage.toString().equals("Execution Dashboard")) {
-			deletePage(parentPage);
-		}
+		return false;
 	}
 }

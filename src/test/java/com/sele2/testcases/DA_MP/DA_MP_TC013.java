@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_MP;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -44,14 +42,13 @@ public class DA_MP_TC013 extends TestBase {
 		newPage.submitNewPage(Constant.PAGE_NAME2, null, null, Constant.PAGE_NAME1, null);
 
 		Log.info("VP: Check Another Test page is positioned besides the Test page");
-		Assert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.PAGE_NAME1, Constant.PAGE_NAME2));
+		softAssert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.PAGE_NAME1, Constant.PAGE_NAME2));
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME1);
-			homePage.deleteAllPagesFromMenu(Constant.PAGE_NAME2);
-		}
+	private void cleanUp() {
+		homePage.deleteAllPagesByPath(Constant.PAGE_NAME1);
+		homePage.deleteAllPagesByPath(Constant.PAGE_NAME2);
 	}
 }

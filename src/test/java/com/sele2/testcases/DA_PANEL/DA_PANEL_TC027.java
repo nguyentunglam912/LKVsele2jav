@@ -1,6 +1,5 @@
 package com.sele2.testcases.DA_PANEL;
 
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -48,12 +47,11 @@ public class DA_PANEL_TC027 extends TestBase {
 		homePage.selectChoosePanelsMenu();
 
 		Log.info("VP: Verify that all pre-set panels are populated and sorted correctly");
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			homePage.deletePage(Constant.PAGE_NAME1);
-		}
+	private void cleanUp() {
+		homePage.deletePage(Constant.PAGE_NAME1);
 	}
 }
