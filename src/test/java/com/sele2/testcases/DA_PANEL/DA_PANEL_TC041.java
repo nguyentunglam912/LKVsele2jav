@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_PANEL;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -40,21 +38,21 @@ public class DA_PANEL_TC041 extends TestBase {
 		panelPage.selectDataLabels(true, false, false, false);
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 6: Uncheck Series checkbox");
 		Log.info("Step 7: Check Value checkbox for Data Labels");
 		panelPage.selectDataLabels(false, false, true, false);
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 8: Uncheck Value checkbox");
 		Log.info("Step 9: Check Percentage checbox for Data Labels");
 		panelPage.selectDataLabels(false, false, false, true);
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 10: Uncheck Percentage checkbox");
 		panelPage.selectDataLabels(false, false, false, false);
@@ -69,28 +67,27 @@ public class DA_PANEL_TC041 extends TestBase {
 		panelPage.selectDataLabels(true, false, false, false);
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 13: Uncheck Series checkbox");
 		Log.info("Step 14: Check Value checkbox for Data Labels");
 		panelPage.selectDataLabels(false, false, true, false);
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 15: Uncheck Value checkbox");
 		Log.info("Step 16: Check Percentage checbox for Data Labels");
 		panelPage.selectDataLabels(false, false, false, true);
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			panelPage.cancelPanelDialog();
-			panelPage.deletePanel(Constant.PANEL_NAME);
-		}
+	private void cleanUp() {
+		panelPage.cancelPanelDialog();
+		panelPage.deletePanel(Constant.PANEL_NAME);
 	}
 }

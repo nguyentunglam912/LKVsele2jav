@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_PANEL;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -40,31 +38,31 @@ public class DA_PANEL_TC039 extends TestBase {
 		panelPage.selectLegends("None");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 6: Click Top radio button for Legend");
 		panelPage.selectLegends("Top");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 7: Click Right radio button for Legend");
 		panelPage.selectLegends("Right");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 8: Click Bottom radio button for Legend");
 		panelPage.selectLegends("Bottom");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 9: Click Left radio button for Legend");
 		panelPage.selectLegends("Left");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 10: Create a new panel");
 		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null);
@@ -76,38 +74,37 @@ public class DA_PANEL_TC039 extends TestBase {
 		panelPage.selectLegends("None");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 13: Click Top radio button for Legend");
 		panelPage.selectLegends("Top");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 14: Click Right radio button for Legend");
 		panelPage.selectLegends("Right");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 15: Click Bottom radio button for Legend");
 		panelPage.selectLegends("Bottom");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
 		
 		Log.info("Step 16: Click Left radio button for Legend");
 		panelPage.selectLegends("Left");
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
-		Assert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			panelPage.cancelPanelDialog();
-			panelPage.deletePanel(Constant.PANEL_NAME);
-		}
+	private void cleanUp() {
+		panelPage.cancelPanelDialog();
+		panelPage.deletePanel(Constant.PANEL_NAME);
 	}
 }

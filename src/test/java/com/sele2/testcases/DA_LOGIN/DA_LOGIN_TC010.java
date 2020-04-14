@@ -1,7 +1,6 @@
 package com.sele2.testcases.DA_LOGIN;
 
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import com.sele2.support.Constant;
 import com.sele2.helper.Log;
@@ -28,6 +27,7 @@ public class DA_LOGIN_TC010 extends TestBase {
 		loginPage.login(Constant.REPOSITORY, Constant.BLANK_USERNAME, Constant.BLANK_PASSWORD);
 
 		Log.info("VP: Verify the error message 'Please enter username!' is displayed");
-		Assert.assertEquals(loginPage.getLoginErrorMessage(), Constant.ERROR_MESSAGE_PLEASE_ENTER_USERNAME);
+		softAssert.assertEquals(loginPage.getLoginErrorMessage(), Constant.ERROR_MESSAGE_PLEASE_ENTER_USERNAME);
+		softAssert.assertAll();
 	}
 }

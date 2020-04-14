@@ -12,36 +12,36 @@ import com.sele2.utils.listeners.TestListener;
 import io.qameta.allure.Description;
 
 @Listeners({ TestListener.class })
-public class DA_MP_TC026 extends TestBase {
+public class DA_MP_TC014 extends TestBase {
 	/**
-	 * DA_MP_TC026
+	 * DA_MP_TC014
 	 *
 	 * @author lam.tung.nguyen
 	 */
 
-	private Integer numberOfColumn1 = 2;
-	private Integer numberOfColumn2 = 3;
-
 	@Test
-	@Description("Verify that page column is correct when user edit 'Number of Columns' field of a specific page")
-	public void DA_MP_TC025_VerifyCorrectPageWhenEditDisplayAfter() {
+	@Description("Verify that 'Public' pages can be visible and accessed by all users of working repository")
+	public void DA_MP_TC014_PublicPagesIsVisibleAndAccessedByAllUsers() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
-		Log.info("Step 2: Login with valid account");
+		Log.info("Step 2: Log in specific repository with valid account");
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
 
-		Log.info("Step 4: Submit New Page with Page Name");
-		newPage.submitNewPage(Constant.PAGE_NAME1, null, numberOfColumn1, null, null);
+		Log.info("Step 4: Enter Page Name field, check Public checkbox and click Ok button");
+		newPage.submitNewPage(Constant.PAGE_NAME1, null, null, null, true);
 
-		Log.info("Step 5: Edit Number of Columns for the above created page");
-		newPage.editPage(Constant.PAGE_NAME1, null, null, numberOfColumn2, null, null);
+		Log.info("Step 5: Click on Log out link");
+		homePage.logOut();
 
-		Log.info("VP: There are 3 columns on the above created page");
-		softAssert.assertEquals(homePage.getNumberOfColumnOnPage(), numberOfColumn2);
+		Log.info("Step 6: Log in with another valid account");
+		loginPage.login(Constant.REPOSITORY, Constant.TC008_USERNAME, Constant.TC008_PASSWORD);
+
+		Log.info("VP: Check newly added page is visibled");
+		softAssert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
 		softAssert.assertAll();
 	}
 

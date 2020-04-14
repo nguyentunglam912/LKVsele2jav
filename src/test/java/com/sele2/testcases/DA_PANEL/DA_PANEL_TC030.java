@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_PANEL;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -45,7 +43,7 @@ public class DA_PANEL_TC030 extends TestBase {
 		panelPage.submitPanelForm(null, displayNameExceptAtSign, Constant.SERIES, null);
 
 		Log.info("VP: Check warning message is shown up");
-		Assert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
+		softAssert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
 
 		Log.info("Step 6: Close warning message");
 		panelPage.closePopupMessage();
@@ -54,13 +52,12 @@ public class DA_PANEL_TC030 extends TestBase {
 		panelPage.submitPanelForm(null, displayNameWithAtSign, Constant.SERIES, null);
 
 		Log.info("VP: Check The new panel is created");
-		Assert.assertTrue(panelPage.isNewPanelExisted(displayNameWithAtSign));
+		softAssert.assertTrue(panelPage.isNewPanelExisted(displayNameWithAtSign));
+		softAssert.assertAll();
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
-		if (result.getStatus() == ITestResult.SUCCESS) {
-			panelPage.deletePanel(displayNameWithAtSign);
-		}
+	private void cleanUp() {
+		panelPage.deletePanel(displayNameWithAtSign);
 	}
 }

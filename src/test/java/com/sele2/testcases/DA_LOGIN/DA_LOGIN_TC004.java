@@ -1,7 +1,6 @@
 package com.sele2.testcases.DA_LOGIN;
 
 import org.testng.annotations.Test;
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 
 import com.sele2.support.Constant;
@@ -37,6 +36,7 @@ public class DA_LOGIN_TC004 extends TestBase {
 		loginPage.login(Constant.REPOSITORY2, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
-		Assert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
+		softAssert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
+		softAssert.assertAll();
 	}
 }

@@ -1,7 +1,5 @@
 package com.sele2.testcases.DA_PANEL;
 
-import org.testng.Assert;
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -58,11 +56,11 @@ public class DA_PANEL_TC042 extends TestBase {
 
 		Log.info("Step 11: Click 'Select Page*' drop-down menu");
 		Log.info("VP: Check that 'Select Page*' drop-down menu contains 3 created items");
-		Assert.assertTrue(panelPage.doesOptionsExistInSelectPageCombobox(this.listCreatedPages));
+		softAssert.assertTrue(panelPage.doesOptionsExistInSelectPageCombobox(this.listCreatedPages));
 	}
 
 	@AfterMethod
-	private void cleanUp(ITestResult result) {
+	private void cleanUp() {
 		panelPage.cancelPanelDialog();
 		panelPage.deletePage(Constant.PAGE_NAME1);
 		panelPage.deletePage(Constant.PAGE_NAME2);
