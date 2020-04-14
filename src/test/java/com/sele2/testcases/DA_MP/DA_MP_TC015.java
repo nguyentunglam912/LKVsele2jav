@@ -44,7 +44,7 @@ public class DA_MP_TC015 extends TestBase {
 		Log.info("Step 7: Click on Log out link");
 		homePage.logOut();
 
-		Log.info("Step 6: Log in with another valid account");
+		Log.info("Step 8: Log in with another valid account");
 		loginPage.login(Constant.REPOSITORY, Constant.TC008_USERNAME, Constant.TC008_PASSWORD);
 
 		Log.info("VP: Check children is invisibled");

@@ -1,6 +1,7 @@
 package com.sele2.testcases.DA_MP;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -34,32 +35,32 @@ public class DA_MP_TC018 extends TestBase {
 		Log.info("Step 3: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
 		
-		Log.info("Step 4: Enter info into all required fields on New Page dialog");
-		Log.info("Step 5: Click OK button");
+		Log.info("Step 4: Enter info into all required fields on New Page dialog and click OK");
 		newPage.submitNewPage(Constant.PAGE_NAME1, Constant.OVERVIEW_PAGE, null, null, null);
 		
 		Log.info("Step 5: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
 		
-		Log.info("Step 6: Enter Page Name");
-		Log.info("Step 7: Click on  Parent Page dropdown list");
-		Log.info("Step 8: Select a parent page");
-		Log.info("Step 9: Click OK button");
+		Log.info("Step 6: Enter Page Name, select Parent Page and click OK");
 		newPage.submitNewPage(Constant.PAGE_NAME2, Constant.PAGE_NAME1, null, Constant.PAGE_NAME1, null);
 		
-		Log.info("Step 10: Go to Global Setting -> Add page");
+		Log.info("Step 7: Go to Global Setting -> Add page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
 		
-		Log.info("Step 11: Enter Page Name");
-		Log.info("Step 12: Click on  Parent Page dropdown list");
-		Log.info("Step 13: Select a parent page");
-		Log.info("Step 14: Click OK button");
+		Log.info("Step 8: Enter Page Name, select Parent Page and click OK");
 		newPage.submitNewPage(Constant.PAGE_NAME3, Constant.PAGE_NAME1, null, Constant.PAGE_NAME1, null);
 		
-		Log.info("VP: Check \"Test Child 2\" is added successfully");
+		Log.info("VP: Check 'Test Child 2' is added successfully");
 		homePage.goToPage(pagePath3);
-		Assert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME3);
+		softAssert.assertEquals(homePage.getCurrentPageTitle(), Constant.PAGE_NAME3);
+		softAssert.assertAll();
 		
 	}
-
+	
+	@AfterMethod
+	private void cleanUp() {
+		homePage.logOut();
+		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
+		homePage.deleteAllPagesByPath(Constant.PAGE_NAME1 +"/"+ Constant.PAGE_NAME2 +"/"+ Constant.PAGE_NAME3);
+	}
 }
