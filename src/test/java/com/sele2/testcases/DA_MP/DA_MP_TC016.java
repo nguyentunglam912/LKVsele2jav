@@ -68,6 +68,7 @@ public class DA_MP_TC016 extends TestBase {
 	private void cleanUp() {
 		homePage.logOut();
 		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
-		homePage.deleteAllPagesByPath(Constant.PAGE_NAME1 +"/"+ Constant.PAGE_NAME2);
+		homePage.deletePage(Constant.OVERVIEW_PAGE + "/" + Constant.PAGE_NAME1);
+		homePage.deleteAllPagesByPath(Constant.OVERVIEW_PAGE + "/" + Constant.PAGE_NAME2);
 	}
 }

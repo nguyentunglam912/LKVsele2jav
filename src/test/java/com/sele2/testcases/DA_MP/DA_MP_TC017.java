@@ -1,7 +1,6 @@
 package com.sele2.testcases.DA_MP;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -74,12 +73,5 @@ public class DA_MP_TC017 extends TestBase {
 		Log.info("VP: delete link is not present on Overview page");
 		softAssert.assertFalse(homePage.isDeleteMenuDisplayed());
 		softAssert.assertAll();
-	}
-	
-	@AfterMethod
-	private void cleanUp() {
-		homePage.logOut();
-		loginPage.login(Constant.REPOSITORY, Constant.VALID_USERNAME, Constant.VALID_PASSWORD);
-		homePage.deleteAllPagesByPath(Constant.PAGE_NAME1 +"/"+ Constant.PAGE_NAME2);
 	}
 }
