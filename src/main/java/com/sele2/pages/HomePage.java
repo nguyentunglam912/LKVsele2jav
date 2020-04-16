@@ -15,20 +15,9 @@ public class HomePage extends GeneralPage{
 	private String dynamicMenuItems = "//li[a[normalize-space()='%s']]/ul/li/a";
 	BaseElement pageColumns = new BaseElement("//div[@id='ccontent']/div[@id='columns']/ul[@class='column ui-sortable']");
 	Label lblCurrentRepo = new Label("//a[@href='#Repository']//span");
-	String pageList = "//li[@class='active']";
 
 	public Boolean isGlobalSettingMenuDisplayed() {
 		BaseElement menu = new BaseElement(String.format(dynamicMenuItems, "Global Setting"));
-		if(menu.size()!=0) return true ; return false;
-	}
-
-	public Boolean isDeleteMenuDisplayed() {
-		BaseElement menu = new BaseElement(String.format(dynamicMenuItems, "Delete"));
-		if(menu.size()!=0) return true ; return false;
-	}
-
-	public Boolean isPagePresentUnderOverview() {
-		BaseElement menu = new BaseElement(String.format(pageList, Constant.PAGE_NAME2));
 		if(menu.size()!=0) return true ; return false;
 	}
 
@@ -113,6 +102,16 @@ public class HomePage extends GeneralPage{
 	}
 
 	public Boolean doesItemExistInMenu(String itemExist, String menuName) {
+		ArrayList<String> items = getMenuItems(menuName);
+		for(String item : items) {
+			if(item.equals(itemExist)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public Boolean doesItemExistInGlobalSettingMenu(String itemExist, String menuName) {
 		ArrayList<String> items = getMenuItems(menuName);
 		for(String item : items) {
 			if(item.equals(itemExist)) {

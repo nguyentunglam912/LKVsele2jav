@@ -71,7 +71,7 @@ public class DA_MP_TC017 extends TestBase {
 		softAssert.assertEquals(homePage.getCurrentPage(), Constant.OVERVIEW_PAGE);
 		
 		Log.info("VP: delete link is not present on Overview page");
-		softAssert.assertFalse(homePage.isDeleteMenuDisplayed());
+		softAssert.assertFalse(homePage.doesItemExistInGlobalSettingMenu("Delete",""));
 		softAssert.assertAll();
 	}
 }
