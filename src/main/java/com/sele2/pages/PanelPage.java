@@ -14,11 +14,12 @@ import com.sele2.support.DriverUtils;
 import io.qameta.allure.Step;
 
 public class PanelPage extends HomePage{
-	private String xpathPanelType 		= "//input[@name='radPanelType']//preceding::label[contains(text(),'%s')]";
+	private String xpathPanelType 		= "//input[@name='radPanelType']//ancestor::label[contains(text(),'%s')]";
 	private String xpathLegends 		= "//label/input[@name='radPlacement' and @value='%s']";
 	private String xpathPanelButton		= "//form[@id='form1']//a[text()='%s']";
 	private String xpathInfoSettings	= "//table[@id='infoSettings']//tr/td[contains(text(),'%s')]";
 	private String xpathChartSettings	= "//div[@id='tdSettings']//table//tr/td[contains(text(),'%s')]";
+	private Label lblTypeSettings 		= new Label("//table[@id='infoSettings']/following-sibling::div[@id='tdSettings']//legend");
 	private Checkbox chkSeries			= new Checkbox("//label/input[@name='chkSeriesName']");
 	private Checkbox chkCategories		= new Checkbox("//label/input[@name='chkCategoriesName']");
 	private Checkbox chkValue			= new Checkbox("//label/input[@name='chkValue']");
@@ -34,9 +35,14 @@ public class PanelPage extends HomePage{
 	private Table tblPanel 				= new Table("//table[@class='GridView']/tbody");
 	private Combobox cmbChartType		= new Combobox("//div[@id='tdSettings']//td/select[@id='cbbChartType']");
 
-	private void selectPanelType(String type) {
+	public String getCurrentSettingForm() {
+		return this.lblTypeSettings.getText().trim();
+	}
+
+	public void selectPanelType(String type) {
 		Checkbox chkPanelType = new Checkbox(String.format(xpathPanelType, type));
 		chkPanelType.check();
+		utils.waitForPageStable();
 	}
 
 	public void selectChartType(String chartType) {
