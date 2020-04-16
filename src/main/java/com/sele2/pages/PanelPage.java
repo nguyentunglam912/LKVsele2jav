@@ -42,6 +42,7 @@ public class PanelPage extends HomePage{
 	public void selectPanelType(String type) {
 		Checkbox chkPanelType = new Checkbox(String.format(xpathPanelType, type));
 		chkPanelType.check();
+		utils.waitForPageStable();
 	}
 
 	public void selectChartType(String chartType) {
