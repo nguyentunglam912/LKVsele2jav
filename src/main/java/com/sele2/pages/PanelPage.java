@@ -99,7 +99,7 @@ public class PanelPage extends HomePage{
 		utils.waitForPageLoad();
 		if(page!=null) cmbSelectPage.selectByVisibleText(page);
 		if(height!=null) txtHeight.clearAndSendKeys(height.toString());
-		if(folder!=null) txtFolder.sendKeys(folder);
+		if(folder!=null) txtFolder.clearAndSendKeys(folder);
 	}
 
 	@Step("Config new Panel")
