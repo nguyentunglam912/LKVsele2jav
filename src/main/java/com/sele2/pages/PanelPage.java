@@ -77,8 +77,8 @@ public class PanelPage extends HomePage{
 
 	@Step("Click Add New button on Panel")
 	public void selectAddNewButtonOnPanel() {
-		this.selectButtonOnPanel("Add New");
 		utils.waitForPageStable();
+		this.selectButtonOnPanel("Add New");
 	}
 
 	@Step("Click Delete button on Panel")
