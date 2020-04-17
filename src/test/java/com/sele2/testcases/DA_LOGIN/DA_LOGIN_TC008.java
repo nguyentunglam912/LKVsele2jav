@@ -26,7 +26,7 @@ public class DA_LOGIN_TC008 extends TestBase {
 		goToDashboardLoginPage();
 
 		Log.info("Step 2: Login with an account whose password containing special character");
-		loginPage.login(Constant.REPOSITORY, Constant.TC008_USERNAME, Constant.TC009_PASSWORD);
+		loginPage.login(Constant.REPOSITORY, Constant.TC008_USERNAME, Constant.TC008_PASSWORD);
 
 		Log.info("VP: Verify main page is displayed");
 		softAssert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
