@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
 import com.sele2.elements.Label;
-import com.sele2.support.Constant;
 import io.qameta.allure.Step;
 
 public class HomePage extends GeneralPage{
@@ -111,13 +110,7 @@ public class HomePage extends GeneralPage{
 		return false;
 	}
 
-	public Boolean doesItemExistInGlobalSettingMenu(String itemExist, String menuName) {
-		ArrayList<String> items = getMenuItems(menuName);
-		for(String item : items) {
-			if(item.equals(itemExist)) {
-				return true;
-			}
-		}
-		return false;
+	public Boolean doesItemExistInGlobalSettingMenu(String itemExist) {
+		return this.doesItemExistInMenu(itemExist, "");
 	}
 }

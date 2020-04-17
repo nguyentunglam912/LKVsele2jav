@@ -38,7 +38,7 @@ public class DA_MP_TC017 extends TestBase {
 		
 		Log.info("Step 4: Add a children page of newly added page");
 		homePage.selectAddPageButtonInGlobalSettingMenu();
-		newPage.submitNewPage(Constant.PAGE_NAME2, Constant.PAGE_NAME1, null, Constant.PAGE_NAME1, null);
+		newPage.submitNewPage(Constant.PAGE_NAME2, Constant.PAGE_NAME1, null, null, null);
 		
 		Log.info("Step 5: Click on parent page");
 		homePage.goToPage(pagePath1);
@@ -50,7 +50,7 @@ public class DA_MP_TC017 extends TestBase {
 		Assert.assertEquals(homePage.getErrorMessage(), this.deleteErrorMessage);
 		
 		Log.info("Step 7: Click OK button");
-		generalPage.closePopupMessage();
+		homePage.closePopupMessage();
 		
 		Log.info("Step 8: Go to the children page");
 		homePage.goToPage(pagePath2);
@@ -71,7 +71,7 @@ public class DA_MP_TC017 extends TestBase {
 		softAssert.assertEquals(homePage.getCurrentPage(), Constant.OVERVIEW_PAGE);
 		
 		Log.info("VP: delete link is not present on Overview page");
-		softAssert.assertFalse(homePage.doesItemExistInGlobalSettingMenu("Delete",""));
+		softAssert.assertFalse(homePage.doesItemExistInGlobalSettingMenu("Delete"));
 		softAssert.assertAll();
 	}
 }

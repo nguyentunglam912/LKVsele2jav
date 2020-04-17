@@ -14,14 +14,14 @@ import io.qameta.allure.Description;
 @Listeners({ TestListener.class })
 public class DA_MP_TC018 extends TestBase {
 	/**
-	 * DA_MP_TC017
+	 * DA_MP_TC018
 	 * 
 	 * @author khang.ha
 	 */
 
 	@Test
 	@Description("Verify that user is able to add additional sibbling pages to the parent page successfully")
-	public void DA_MP_TC018_AdditionalSiblingPage() {
+	public void DA_MP_TC018_CanAddAdditionalSiblingPages() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
@@ -49,7 +49,6 @@ public class DA_MP_TC018 extends TestBase {
 		Log.info("VP: Check " + Constant.PAGE_NAME3 + " is added successfully");
 		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME3);
 		softAssert.assertAll();
-
 	}
 
 	@AfterMethod
