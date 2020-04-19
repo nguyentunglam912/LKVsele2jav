@@ -19,8 +19,8 @@ public class DA_PANEL_TC052 extends TestBase {
 	 * @author lam.tung.nguyen
 	 */
 
-	Integer invalidHeight = 200;
-	Integer validHeight = 400;
+	String invalidHeight = "200";
+	String validHeight = "400";
 	String invalidHeighMessage = "Panel height must be greater than or equal to 300 and less than or equal to 800.";
 
 	@Test
