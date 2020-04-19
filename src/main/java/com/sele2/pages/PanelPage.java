@@ -32,6 +32,7 @@ public class PanelPage extends HomePage{
 	private TextBox txtHeight 			= new TextBox("//div[@id='div_panelConfigurationDlg']//input[@id='txtHeight']");
 	private TextBox txtFolder			= new TextBox("//div[@id='div_panelConfigurationDlg']//input[@id='txtFolder']");
 	private Button btnOKConfigPanel 	= new Button("//div[@id='div_panelConfigurationDlg']//input[@id='OK']");
+	private Button btnCancelConfigPanel = new Button("//div[@id='div_panelConfigurationDlg']//input[@id='Cancel']");
 	private Table tblPanel 				= new Table("//table[@class='GridView']/tbody");
 	private Combobox cmbChartType		= new Combobox("//div[@id='tdSettings']//td/select[@id='cbbChartType']");
 
@@ -95,16 +96,16 @@ public class PanelPage extends HomePage{
 		this.btnOkAddNewPanel.click();
 	}
 
-	private void fillConfigPanel(String page, Integer height, String folder) {
+	private void fillConfigPanel(String page, String height, String folder) {
 		utils.waitForPageLoad();
 		if(page!=null) cmbSelectPage.selectByVisibleText(page);
-		if(height!=null) txtHeight.clearAndSendKeys(height.toString());
+		if(height!=null) txtHeight.clearAndSendKeys(height);
 		if(folder!=null) txtFolder.clearAndSendKeys(folder);
 	}
 
 	@Step("Config new Panel")
-	public void configPanel(String page, Integer height, String folder) {
-		fillConfigPanel(page, height, folder);
+	public void configPanel(String page, String height, String folder) {
+		this.fillConfigPanel(page, height, folder);
 		btnOKConfigPanel.click();
 	}
 
@@ -192,6 +193,10 @@ public class PanelPage extends HomePage{
 
 	public void cancelPanelDialog() {
 		if(this.btnCancelPanel.isDisplayed()) this.btnCancelPanel.click();
+	}
+
+	public void cancelConfigPanel() {
+		if(this.btnCancelConfigPanel.isDisplayed()) this.btnCancelConfigPanel.click();
 	}
 
 	public void deletePanel(String panelName) {
