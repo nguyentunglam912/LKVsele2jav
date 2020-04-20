@@ -14,6 +14,7 @@ public class NewPage extends HomePage{
 	private Combobox cmbDisplayAfter 	= new Combobox("id=afterpage");
 	private Checkbox chkIsPublic 		= new Checkbox("id=ispublic");
 	private Button btnOk 				= new Button("//div[@id='div_popup']//input[@id='OK']");
+	private Button btnCancel            = new Button("//input[@id='Cancel']");
 
 	public void fillNewPageInfo(String pageName, String parentPage, Integer numberOfColumn, String displayAfter, Boolean isPublic){
 		utils.waitForPageStable();
@@ -26,10 +27,10 @@ public class NewPage extends HomePage{
 
 	@Step("Enter info into New Page dialog and click OK button")
 	public void submitNewPage(String pageName, String parentPage, Integer numberOfColumn, String displayAfter, Boolean isPublic) {
+		utils.waitForPageStable();
 		fillNewPageInfo(pageName, parentPage, numberOfColumn, displayAfter, isPublic);
 		btnOk.moveMouse();
 		btnOk.click();
-		utils.waitForPageStable();
 	}
 
 	@Step("Edit info into Edit Page dialog and click OK button")
@@ -39,5 +40,11 @@ public class NewPage extends HomePage{
 		selectOptionInMenu("Global Setting", "Edit");
 		utils.waitForPageStable();
 		submitNewPage(pageName, parentPage, numberOfColumn, displayAfter, isPublic);
+	}
+
+	public void cancelAddPage() {
+		btnCancel.moveMouse();
+		btnCancel.click();
+		utils.waitForPageStable();
 	}
 }

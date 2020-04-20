@@ -27,6 +27,7 @@ public class HomePage extends GeneralPage{
 
 	@Step("Go to Global Setting -> Add page")
 	public void selectAddPageButtonInGlobalSettingMenu() {
+		utils.waitForPageStable();
 		this.selectOptionInMenu("Global Setting", "Add Page");
 	}
 

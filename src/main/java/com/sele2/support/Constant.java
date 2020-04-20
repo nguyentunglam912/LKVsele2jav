@@ -26,6 +26,7 @@ public class Constant {
 	public static final String PAGE_NAME1 = String.format(RANDOM_STRING, "Test1");
 	public static final String PAGE_NAME2 = String.format(RANDOM_STRING, "Test2");
 	public static final String PAGE_NAME3 = String.format(RANDOM_STRING, "Test3");
+	public static final String PAGE_NAME4 = String.format(RANDOM_STRING, "Test4");
 	public static final String OVERVIEW_PAGE = "Overview";
 
 	// Test Data Panel
