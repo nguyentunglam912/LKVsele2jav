@@ -9,6 +9,7 @@ import io.qameta.allure.Step;
 public class ChoosePanels extends HomePage{
 	Button btnCreateNewPanel = new Button("//div[@class='ccpanels']/div[@class='cpbutton']/span[contains(text(),'Create new panel')]");
 	String xpathChartItem = "//div[@class='cpanels']//div[@class='ptit pchart']//following-sibling::table//li/a[text()='%s']";
+	String xpathEditIcon = "//div[@title='%s']//following::div/ul/li[@title='%s']";
 
 	@Step("Click on Create New Panel button under Choose Panels")
 	public void clickCreateNewPanel () {
@@ -22,5 +23,15 @@ public class ChoosePanels extends HomePage{
 		btnChartItem.waitForVisible(DriverUtils.loadTimeout);
 		btnChartItem.click();
 		utils.waitForPageStable();
+	}
+
+	private void clickChartPanelIconInChoosePanels(String chartPanel, String icon) {
+		Button btnEditIcon = new Button(String.format(xpathEditIcon, chartPanel, icon));
+		utils.waitForPageStable();
+		btnEditIcon.click();
+	}
+
+	public void selectEditChartIconInChoosePanels(String chartPanel) {
+		this.clickChartPanelIconInChoosePanels(chartPanel, "Edit Panel");
 	}
 }
