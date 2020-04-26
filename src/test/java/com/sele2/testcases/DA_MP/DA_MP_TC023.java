@@ -20,7 +20,7 @@ public class DA_MP_TC023 extends TestBase {
 	 */
 
 	private String pagePath1 = Constant.OVERVIEW_PAGE + "/" + Constant.PAGE_NAME1;
-	private String pagePath3 = Constant.OVERVIEW_PAGE + "/" + Constant.PAGE_NAME3+Constant.PAGE_NAME1;
+	private String pagePath3 = Constant.OVERVIEW_PAGE + "/" + Constant.PAGE_NAME3;
 	private String pagePath2 = pagePath3 + "/" +Constant.PAGE_NAME2;
 
 	@Test
@@ -48,7 +48,7 @@ public class DA_MP_TC023 extends TestBase {
 		newPage.editPage(pagePath1, Constant.PAGE_NAME3, Constant.OVERVIEW_PAGE, null, null, null);
 		
 		Log.info("VP: Verify page name is changed");
-		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME3+Constant.PAGE_NAME1);
+		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME3);
 		softAssert.assertAll();
 	}
 	

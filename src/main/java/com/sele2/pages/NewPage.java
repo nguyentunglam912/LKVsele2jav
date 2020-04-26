@@ -14,11 +14,11 @@ public class NewPage extends HomePage{
 	private Combobox cmbDisplayAfter 	= new Combobox("id=afterpage");
 	private Checkbox chkIsPublic 		= new Checkbox("id=ispublic");
 	private Button btnOk 				= new Button("//div[@id='div_popup']//input[@id='OK']");
-	private Button btnCancel            = new Button("//input[@id='Cancel']");
+	private Button btnCancel            = new Button("//div[@id='div_popup']//input[@id='Cancel']");
 
 	public void fillNewPageInfo(String pageName, String parentPage, Integer numberOfColumn, String displayAfter, Boolean isPublic){
 		utils.waitForPageStable();
-		if(pageName != null) txtPageName.sendKeys(pageName);
+		if(pageName != null) txtPageName.clearAndSendKeys(pageName);
 		cmbParentPage.selectBySpecialText(parentPage);
 		if(numberOfColumn != null) cmbNumberOfColumn.selectByValue(numberOfColumn.toString());
 		cmbDisplayAfter.selectBySpecialText(displayAfter);
@@ -43,8 +43,6 @@ public class NewPage extends HomePage{
 	}
 
 	public void cancelAddPage() {
-		btnCancel.moveMouse();
-		btnCancel.click();
-		utils.waitForPageStable();
+		if(this.btnCancel.isDisplayed()) this.btnCancel.click();
 	}
 }

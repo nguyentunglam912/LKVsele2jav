@@ -14,15 +14,15 @@ import io.qameta.allure.Description;
 @Listeners({ TestListener.class })
 public class DA_MP_TC021 extends TestBase {
 	/**
-	 * DA_MP_TC023
+	 * DA_MP_TC021
 	 * 
 	 * @author khang.ha
 	 */
 
 	private String pagePath1 = Constant.OVERVIEW_PAGE + "/" + Constant.PAGE_NAME1;
 	private String pagePath2 = pagePath1 + "/" + Constant.PAGE_NAME2;
-	private String pagePath3 = Constant.OVERVIEW_PAGE + "/" + Constant.PAGE_NAME3+Constant.PAGE_NAME1;
-	private String pagePath4 = pagePath3 + "/" + Constant.PAGE_NAME4+Constant.PAGE_NAME2;
+	private String pagePath3 = Constant.OVERVIEW_PAGE + "/" + Constant.PAGE_NAME3;
+	private String pagePath4 = pagePath3 + "/" + Constant.PAGE_NAME4;
 
 	@Test
 	@Description("Verify that user is able to edit the name of the page (Parent/Sibbling) successfully")
@@ -49,14 +49,14 @@ public class DA_MP_TC021 extends TestBase {
 		newPage.editPage(pagePath2, Constant.PAGE_NAME4, Constant.PAGE_NAME1, null, null, null);
 		
 		Log.info("VP: Verify page name is changed");
-		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME4+Constant.PAGE_NAME2);
+		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME4);
 		softAssert.assertAll();
 		
 		Log.info("Step 8: Click on " + Constant.PAGE_NAME1 + " page, click on Edit link, change name and click OK");
 		newPage.editPage(pagePath1, Constant.PAGE_NAME3, Constant.OVERVIEW_PAGE, null, null, null);
 		
 		Log.info("VP: Verify page name is changed");
-		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME3+Constant.PAGE_NAME1);
+		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME3);
 		softAssert.assertAll();
 	}
 	
