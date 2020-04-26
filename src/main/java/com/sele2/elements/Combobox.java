@@ -6,6 +6,8 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
+import com.sele2.support.DriverUtils;
+
 public class Combobox extends BaseElement {
 
 	public Combobox(String locator) {
@@ -30,7 +32,8 @@ public class Combobox extends BaseElement {
 
 	public void selectBySpecialText(String text) {
 		if(text != null) {
-			this.findElement().click();
+			this.waitForVisible(DriverUtils.loadTimeout);
+			this.click();
 			List<WebElement> options = this.select().getOptions();
 			for(WebElement option : options) {
 				if(option.getText().trim().equals(text)) {

@@ -16,9 +16,10 @@ import io.qameta.allure.Step;
 public class PanelPage extends HomePage{
 	private String xpathPanelType 		= "//input[@name='radPanelType']//ancestor::label[contains(text(),'%s')]";
 	private String xpathLegends 		= "//label/input[@name='radPlacement' and @value='%s']";
-	private String xpathPanelButton		= "//form[@id='form1']//a[text()='%s']";
+	private String xpathPanelButton		= "(//form[@id='form1']//a[text()='%s'])[1]";
 	private String xpathInfoSettings	= "//table[@id='infoSettings']//tr/td[contains(text(),'%s')]";
 	private String xpathChartSettings	= "//div[@id='tdSettings']//table//tr/td[contains(text(),'%s')]";
+	private String xpathPanelCheckbox	= "//table[@class='GridView']/tbody/tr[%s]/td[%s]/input";
 	private Label lblTypeSettings 		= new Label("//table[@id='infoSettings']/following-sibling::div[@id='tdSettings']//legend");
 	private Checkbox chkSeries			= new Checkbox("//label/input[@name='chkSeriesName']");
 	private Checkbox chkCategories		= new Checkbox("//label/input[@name='chkCategoriesName']");
@@ -26,7 +27,7 @@ public class PanelPage extends HomePage{
 	private Checkbox chkPercentage		= new Checkbox("//label/input[@name='chkPercentage']");
 	private TextBox txtDisplayName 		= new TextBox("id=txtDisplayName");
 	private Combobox cmbSeries 			= new Combobox("id=cbbSeriesField");
-	private Button btnOkAddNewPanel 	= new Button("//div[@class='ui-dialog-container']//input[@id='OK']");
+	private Button btnOkAddNewPanel 	= new Button("(//div[@class='ui-dialog-container']//input[@id='OK'])[last()]");
 	private Button btnCancelPanel		= new Button("//div[@class='ui-dialog-container']//input[@id='Cancel']");
 	private Combobox cmbSelectPage 		= new Combobox("//div[@id='div_panelConfigurationDlg']//select[@id='cbbPages']");
 	private TextBox txtHeight 			= new TextBox("//div[@id='div_panelConfigurationDlg']//input[@id='txtHeight']");
@@ -47,7 +48,7 @@ public class PanelPage extends HomePage{
 	}
 
 	public void selectChartType(String chartType) {
-		this.cmbChartType.selectByValue(chartType);
+		this.cmbChartType.selectByVisibleText(chartType);
 		utils.waitForPageStable();
 	}
 
@@ -68,6 +69,7 @@ public class PanelPage extends HomePage{
 		if(type!=null) this.selectPanelType(type);
 		if(displayName!=null) txtDisplayName.clearAndSendKeys(displayName);
 		if(series!=null) cmbSeries.selectBySpecialText(series);
+		utils.waitForPageStable();
 		if(legend!=null) this.selectLegends(legend);
 	}
 
@@ -85,6 +87,16 @@ public class PanelPage extends HomePage{
 	@Step("Click Delete button on Panel")
 	public void selectDeleteButtonOnPanel() {
 		this.selectButtonOnPanel("Delete");
+		utils.waitForPageStable();
+	}
+
+	public void clickCheckAllLink() {
+		this.selectButtonOnPanel("Check All");
+		utils.waitForPageStable();
+	}
+
+	public void clickUncheckAllLink() {
+		this.selectButtonOnPanel("UnCheck All");
 		utils.waitForPageStable();
 	}
 
@@ -196,6 +208,7 @@ public class PanelPage extends HomePage{
 	}
 
 	public void cancelConfigPanel() {
+		utils.waitForPageStable();
 		if(this.btnCancelConfigPanel.isDisplayed()) this.btnCancelConfigPanel.click();
 	}
 
@@ -203,5 +216,40 @@ public class PanelPage extends HomePage{
 		this.selectPanel(panelName);
 		this.selectDeleteButtonOnPanel();
 		utils.waitForPageLoad();
+	}
+
+	public void deleteAllPanels () {
+		this.tblPanel.waitForVisible(DriverUtils.loadTimeout);
+		this.clickCheckAllLink();
+		this.selectDeleteButtonOnPanel();
+		utils.waitForPageLoad();
+	}
+
+	public Boolean isPanelCheckboxSelected(String panelName) {
+		this.tblPanel.waitForVisible(DriverUtils.loadTimeout);
+		int totalRows = this.tblPanel.getRowsCount();
+		int panelNameCol = 2;
+		int checkboxCol = 1;
+		for(int i = 2; i < totalRows - 1; i++) {
+			String currentPanel = this.tblPanel.getTableCellValue(i, panelNameCol);
+			if(currentPanel.equals(panelName)) {
+				Checkbox chkPanelCheckbox = new Checkbox(String.format(this.xpathPanelCheckbox,i,checkboxCol));
+				return chkPanelCheckbox.isChecked();
+			}
+		}
+		return false;
+	}
+
+	public Boolean isAllPanelCheckboxesSelected() {
+		this.tblPanel.waitForVisible(DriverUtils.loadTimeout);
+		int totalRows = this.tblPanel.getRowsCount();
+		int checkboxCol = 1;
+		for(int i = 2; i < totalRows - 1; i++) {
+			Checkbox chkPanelCheckbox = new Checkbox(String.format(this.xpathPanelCheckbox,i,checkboxCol));
+			if(chkPanelCheckbox.isChecked() == false) {
+				return false;
+			}
+		}
+		return true;
 	}
 }

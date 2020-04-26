@@ -30,6 +30,8 @@ public class Constant {
 
 	// Test Data Panel
 	public static final String PANEL_NAME = String.format(RANDOM_STRING, "Panel");
+	public static final String PANEL_NAME1 = String.format(RANDOM_STRING, "Panel1");
 	public static final String SERIES = "Name";
+	public static final String SERIES1 = "Location";
 	public static final String CHART_PANEL = "Action Implementation By Status";
 }
