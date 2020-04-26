@@ -1,5 +1,7 @@
 package com.sele2.testcases.DA_PANEL;
 
+import java.util.ArrayList;
+
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -41,6 +43,8 @@ public class DA_PANEL_TC063 extends TestBase {
 		Log.info("Step 6: Click Edit Panel icon");
 		choosePanels.selectEditChartIconInChoosePanels(Constant.CHART_PANEL);
 
+		ArrayList<String> currentSetting = panelPage.getCurrentPanelSettingElements();
+
 		Log.info("Step 7: Click on Chart Type dropped down menu and select Single Bar");
 		panelPage.selectChartType("Single Bar");
 
@@ -48,7 +52,7 @@ public class DA_PANEL_TC063 extends TestBase {
 		panelPage.selectChartType("Pie");
 
 		Log.info("VP: Check original 'Pie' - Edit Panel form is displayed");
-		softAssert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isSettingsExisted(currentSetting));
 
 		Log.info("Step 9: Close Edit Panel");
 		panelPage.cancelPanelDialog();
@@ -63,7 +67,7 @@ public class DA_PANEL_TC063 extends TestBase {
 		panelPage.selectChartType("Pie");
 
 		Log.info("VP: Check original 'Pie' - Edit Panel form is displayed");
-		softAssert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isSettingsExisted(currentSetting));
 
 		Log.info("Step 13: Close Edit Panel");
 		panelPage.cancelPanelDialog();
@@ -78,7 +82,7 @@ public class DA_PANEL_TC063 extends TestBase {
 		panelPage.selectChartType("Pie");
 
 		Log.info("VP: Check original 'Pie' - Edit Panel form is displayed");
-		softAssert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isSettingsExisted(currentSetting));
 
 		Log.info("Step 17: Close Edit Panel");
 		panelPage.cancelPanelDialog();
@@ -93,7 +97,7 @@ public class DA_PANEL_TC063 extends TestBase {
 		panelPage.selectChartType("Pie");
 
 		Log.info("VP: Check original 'Pie' - Edit Panel form is displayed");
-		softAssert.assertTrue(panelPage.isAllSettingExists());
+		softAssert.assertTrue(panelPage.isSettingsExisted(currentSetting));
 		softAssert.assertAll();
 	}
 }

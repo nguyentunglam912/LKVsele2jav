@@ -1,7 +1,12 @@
 package com.sele2.pages;
 
-import org.openqa.selenium.By;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
 import com.sele2.elements.Checkbox;
 import com.sele2.elements.Combobox;
@@ -36,6 +41,7 @@ public class PanelPage extends HomePage{
 	private Button btnCancelConfigPanel = new Button("//div[@id='div_panelConfigurationDlg']//input[@id='Cancel']");
 	private Table tblPanel 				= new Table("//table[@class='GridView']/tbody");
 	private Combobox cmbChartType		= new Combobox("//div[@id='tdSettings']//td/select[@id='cbbChartType']");
+	private BaseElement listSetting		= new BaseElement("//div[@id='tabs-displaySettings']//tr//td");
 
 	public String getCurrentSettingForm() {
 		return this.lblTypeSettings.getText().trim();
@@ -48,7 +54,9 @@ public class PanelPage extends HomePage{
 	}
 
 	public void selectChartType(String chartType) {
-		this.cmbChartType.selectByVisibleText(chartType);
+		utils.waitForPageStable();
+		this.cmbChartType.waitForVisible(DriverUtils.loadTimeout);
+		this.cmbChartType.selectBySpecialText(chartType);
 		utils.waitForPageStable();
 	}
 
@@ -138,6 +146,7 @@ public class PanelPage extends HomePage{
 		}
 		return doesOptionExist;
 	}
+
 	public Boolean isAllSettingExists() {
 		Label lblType = new Label(String.format(xpathInfoSettings, "Type"));
 		Label lblDataProfile = new Label(String.format(xpathInfoSettings, "Data Profile"));
@@ -251,5 +260,20 @@ public class PanelPage extends HomePage{
 			}
 		}
 		return true;
+	}
+
+	public ArrayList<String> getCurrentPanelSettingElements(){
+		utils.waitForPageStable();
+		ArrayList<String> listItems = new ArrayList<String>();
+		List<WebElement> items = this.listSetting.findElements();
+		for(WebElement item:items) {
+			listItems.add(item.getText().trim());
+			}
+		return listItems;
+	}
+
+	public Boolean isSettingsExisted( ArrayList<String> expectedSettings) {
+		ArrayList<String> actualSettings = this.getCurrentPanelSettingElements();
+		return actualSettings.equals(expectedSettings);
 	}
 }
