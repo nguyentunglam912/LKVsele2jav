@@ -1,5 +1,7 @@
 package com.sele2.support;
 
+import java.util.ArrayList;
+
 public class Constant {
 	public static final String VALID_USERNAME 	= "test";
 	public static final String VALID_PASSWORD 	= "TEST";
@@ -35,4 +37,10 @@ public class Constant {
 	public static final String SERIES = "Name";
 	public static final String SERIES1 = "Location";
 	public static final String CHART_PANEL = "Action Implementation By Status";
+
+	//Test Data Profiles
+	public static final String[] LIST_PRESET_DATAPROFILES = {"Action Implementation By Status", "Test Case Execution", "Test Case Execution Failed Trend", "Test Case Execution History"
+			, "Test Case Execution Results", "Test Case Execution Trend" , "Test Module Execution", "Test Module Execution Failure Trend"
+			, "Test Module Execution History", "Test Module Execution Results", "Test Module Execution Results Report", "Test Module Execution Trend"
+			, "Test Module Implementation By Priority", "Test Module Implementation By Status", "Test Module Status per Assigned Users", "Test Objective Execution"};
 }

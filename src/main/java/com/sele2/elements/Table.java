@@ -25,7 +25,7 @@ public class Table extends BaseElement {
 
 	// verify presence of the text/data
 	public boolean presenceOfData(String data){
-		int dataSize = this.table().findElements(By.xpath("//td/a[normalize-space(text())='"+data+"']")).size();
+		int dataSize = this.table().findElements(By.xpath("//td[normalize-space(.)='"+data+"']")).size();
 		boolean presence = false;
 		if(dataSize > 0){
 			presence = true;
@@ -34,7 +34,7 @@ public class Table extends BaseElement {
 	}
 	
 	public String getTableCellValue(int rowNumber, int columnNumber){
-		String cellData = this.table().findElement(By.xpath("//tr["+rowNumber+"]/td["+columnNumber+"]/a")).getText().trim();
+		String cellData = this.table().findElement(By.xpath("//tr["+rowNumber+"]/td["+columnNumber+"]")).getText().trim();
 		return cellData;
 	}
 

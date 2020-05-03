@@ -36,6 +36,11 @@ public class HomePage extends GeneralPage{
 		this.selectOptionInMenu("Administer", "Panels");
 	}
 
+	@Step("Go to Administer -> Data Profiles")
+	public void selectDataProfilesInAdministerMenu() {
+		this.selectOptionInMenu("Administer", "Data Profiles");
+	}
+
 	@Step("Go to Global Setting -> Create Panel")
 	public void selectCreatePanelButtonInGlobalSettingMenu() {
 		this.selectOptionInMenu("Global Setting", "Create Panel");
