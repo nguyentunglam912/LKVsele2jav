@@ -12,18 +12,16 @@ import com.sele2.utils.listeners.TestListener;
 import io.qameta.allure.Description;
 
 @Listeners({ TestListener.class })
-public class DA_PANEL_TC032 extends TestBase {
+public class DA_PANEL_TC033 extends TestBase {
 	/**
-	 * DA_PANEL_TC032
+	 * DA_PANEL_TC033
 	 *
 	 * @author lam.tung.nguyen
 	 */
 
-	private String duplicateErrorMessage = Constant.PANEL_NAME + " already exists. Please enter a different name.";
-
 	@Test
-	@Description("Verify that user is not allowed to create panel with duplicated 'Display Name'  ")
-	public void DA_PANEL_TC032_NotAllowedCreatePanelWithDupDisplayName() {
+	@Description("Verify that 'Data Profile' listing of 'Add New Panel' and 'Edit Panel' control/form are in alphabetical order ")
+	public void DA_PANEL_TC033_DataProfileListSortedInAlphabeticalOrder() {
 		Log.info("Step 1: Navigate to Dashboard login page");
 		goToDashboardLoginPage();
 
@@ -36,17 +34,17 @@ public class DA_PANEL_TC032 extends TestBase {
 		Log.info("Step 4: Click Add New link");
 		panelPage.selectAddNewButtonOnPanel();
 
-		Log.info("Step 5: Enter display name to Display name field.");
+		Log.info("VP: Verify that Data Profile list is in alphabetical order");
+		softAssert.assertTrue(panelPage.isDataProfileInAlphabeticalOrder());
+
+		Log.info("Step 5:Enter a display name to display name field and click OK");
 		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null, null);
-
-		Log.info("Step 6: Click Add New link");
-		panelPage.selectAddNewButtonOnPanel();
-
-		Log.info("Step 7: Enter display name same with previous display name to display name field. ");
-		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null, null);
-
-		Log.info("VP: Check warning message show up");
-		softAssert.assertEquals(panelPage.getErrorMessage(), this.duplicateErrorMessage);
+		
+		Log.info("Step 6: Click Edit ");
+		panelPage.openEditPanel(Constant.PANEL_NAME);
+		
+		Log.info("VP: Verify that Data Profile list is in alphabetical order");
+		softAssert.assertTrue(panelPage.isDataProfileInAlphabeticalOrder());
 	}
 
 	@AfterMethod

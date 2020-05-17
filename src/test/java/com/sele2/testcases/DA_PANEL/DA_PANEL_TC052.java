@@ -45,7 +45,7 @@ public class DA_PANEL_TC052 extends TestBase {
 		choosePanels.clickCreateNewPanel();
 
 		Log.info("Step 7: Enter all required fields on Add New Panel page and click OK");
-		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null);
+		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null, null);
 
 		Log.info("Step 8: Enter invalid height into Height field and click OK");
 		panelPage.configPanel(null, this.invalidHeight, null);

@@ -37,7 +37,7 @@ public class DA_PANEL_TC054 extends TestBase {
 		Log.info("Step 4: Create a new panel");
 		homePage.selectChoosePanelsMenu();
 		choosePanels.clickCreateNewPanel();
-		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null);
+		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null, null);
 		panelPage.configPanel(null, null, null);
 
 		Log.info("Step 5: Click on the newly created panel link under Choose Panels");

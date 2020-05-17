@@ -44,4 +44,5 @@ public class Constant {
 			, "Test Case Execution Results", "Test Case Execution Trend" , "Test Module Execution", "Test Module Execution Failure Trend"
 			, "Test Module Execution History", "Test Module Execution Results", "Test Module Execution Results Report", "Test Module Execution Trend"
 			, "Test Module Implementation By Priority", "Test Module Implementation By Status", "Test Module Status per Assigned Users", "Test Objective Execution"};
+	public static final String DATA_PROFILE_NAME = String.format(RANDOM_STRING, "DataProfile");
 }

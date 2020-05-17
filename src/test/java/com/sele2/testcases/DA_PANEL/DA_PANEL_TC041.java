@@ -58,7 +58,7 @@ public class DA_PANEL_TC041 extends TestBase {
 		panelPage.selectDataLabels(false, false, false, false);
 		
 		Log.info("Step 10: Create a new panel");
-		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null);
+		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null, null);
 		
 		Log.info("Step 11: Click Edit Panel link");
 		panelPage.openEditPanel(Constant.PANEL_NAME);

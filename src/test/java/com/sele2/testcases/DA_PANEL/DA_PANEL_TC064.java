@@ -41,7 +41,7 @@ public class DA_PANEL_TC064 extends TestBase {
 		choosePanels.clickCreateNewPanel();
 		
 		Log.info("Step 7: Enter a name to Display Name and click OK");
-		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null);
+		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null, null);
 		
 		Log.info("Step 8: Click Cancel button on Config Panel");
 		panelPage.cancelConfigPanel();
@@ -50,7 +50,7 @@ public class DA_PANEL_TC064 extends TestBase {
 		choosePanels.clickCreateNewPanel();
 		
 		Log.info("Step 10: Enter a name to Display Name and click OK");
-		panelPage.submitPanelForm(null, Constant.PANEL_NAME1, Constant.SERIES1, null);
+		panelPage.submitPanelForm(null, Constant.PANEL_NAME1, Constant.SERIES1, null, null);
 		
 		Log.info("Step 11: Click Cancel button on Config Panel");
 		panelPage.cancelConfigPanel();

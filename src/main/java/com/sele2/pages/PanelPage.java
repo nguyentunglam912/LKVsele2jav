@@ -1,6 +1,7 @@
 package com.sele2.pages;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -43,6 +44,8 @@ public class PanelPage extends HomePage{
 	private Table tblPanel 				= new Table("//table[@class='GridView']/tbody");
 	private Combobox cmbChartType		= new Combobox("//div[@id='tdSettings']//td/select[@id='cbbChartType']");
 	private BaseElement listSetting		= new BaseElement("//div[@id='tabs-displaySettings']//tr//td");
+	private Combobox cmbDataProfile		= new Combobox("//select[@id='cbbProfile']");
+	private TextBox txtChartTitle		= new TextBox("//input[@id='txtChartTitle']");
 
 	public String getCurrentSettingForm() {
 		return this.lblTypeSettings.getText().trim();
@@ -74,7 +77,7 @@ public class PanelPage extends HomePage{
 		chkPanelType.check();
 	}
 
-	private void fillNewPanelInformation(String type, String displayName, String series, String legend){
+	private void fillNewPanelInformation(String type, String displayName, String series, String legend, String chartTitle){
 		if(type!=null) {
 			this.selectPanelType(type);
 		}
@@ -87,6 +90,9 @@ public class PanelPage extends HomePage{
 		utils.waitForPageStable();
 		if(legend!=null) {
 			this.selectLegends(legend);
+		}
+		if(chartTitle != null) {
+			this.txtChartTitle.clearAndSendKeys(chartTitle);
 		}
 	}
 
@@ -118,9 +124,9 @@ public class PanelPage extends HomePage{
 	}
 
 	@Step("Create a new Panel")
-	public void submitPanelForm(String type, String displayName, String series, String legend) {
+	public void submitPanelForm(String type, String displayName, String series, String legend, String chartTitle) {
 		utils.waitForPageStable();
-		this.fillNewPanelInformation(type, displayName, series, legend);
+		this.fillNewPanelInformation(type, displayName, series, legend, chartTitle);
 		utils.waitForPageStable();
 		this.btnOkAddNewPanel.click();
 	}
@@ -201,7 +207,7 @@ public class PanelPage extends HomePage{
 	public void selectPanel(String panelName) {
 		this.tblPanel.waitForVisible(DriverUtils.loadTimeout);
 		int totalRows = this.tblPanel.getRowsCount();
-		for(int i = 2; i < totalRows - 1; i++) {
+		for(int i = 2; i <= totalRows - 1; i++) {
 			String currentPanel = this.tblPanel.getTableCellValue(i, Constant.PANEL_NAME_COLUMN_INDEX);
 			if(currentPanel.equals(panelName)) {
 				this.tblPanel.clickTableCell(i, Constant.PANEL_CHECKBOX_COLUMN_INDEX);
@@ -211,7 +217,6 @@ public class PanelPage extends HomePage{
 	}
 
 	public void openEditPanel(String panelName) {
-		this.btnOkAddNewPanel.waitForInVisible(DriverUtils.loadTimeout);
 		int totalRows = this.tblPanel.getRowsCount();
 		for(int i = 2; i < totalRows - 1; i++) {
 			String currentPanel = this.tblPanel.getTableCellValue(i, Constant.PANEL_NAME_COLUMN_INDEX);
@@ -287,5 +292,20 @@ public class PanelPage extends HomePage{
 	public Boolean isSettingsExisted( ArrayList<String> expectedSettings) {
 		ArrayList<String> actualSettings = this.getCurrentPanelSettingElements();
 		return actualSettings.equals(expectedSettings);
+	}
+
+	public Boolean isDataProfileInAlphabeticalOrder() {
+		List<String> listOptions = this.cmbDataProfile.getAllOptions();
+		List tmp = new ArrayList(listOptions);
+		Collections.sort(tmp);
+		Boolean sorted = tmp.equals(listOptions);
+		return sorted;
+	}
+
+	public Boolean isDataProfilePopulated(String dataProfileName) {
+		List<String> listOptions = this.cmbDataProfile.getAllOptions();
+		List tmp = new ArrayList(listOptions);
+		Boolean isExisted = listOptions.containsAll(tmp);
+		return isExisted;
 	}
 }
