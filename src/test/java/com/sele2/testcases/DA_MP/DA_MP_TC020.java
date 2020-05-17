@@ -66,7 +66,6 @@ public class DA_MP_TC020 extends TestBase {
 
 		Log.info("VP: Page 2 is deleted successfully");
 		softAssert.assertEquals(homePage.getCurrentPage(), Constant.OVERVIEW_PAGE);
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

@@ -14,6 +14,7 @@ import com.sele2.elements.Label;
 import com.sele2.elements.Link;
 import com.sele2.elements.Table;
 import com.sele2.elements.TextBox;
+import com.sele2.support.Constant;
 import com.sele2.support.DriverUtils;
 
 import io.qameta.allure.Step;
@@ -74,11 +75,19 @@ public class PanelPage extends HomePage{
 	}
 
 	private void fillNewPanelInformation(String type, String displayName, String series, String legend){
-		if(type!=null) this.selectPanelType(type);
-		if(displayName!=null) txtDisplayName.clearAndSendKeys(displayName);
-		if(series!=null) cmbSeries.selectBySpecialText(series);
+		if(type!=null) {
+			this.selectPanelType(type);
+		}
+		if(displayName!=null) {
+			this.txtDisplayName.clearAndSendKeys(displayName);
+		}
+		if(series!=null) {
+			this.cmbSeries.selectBySpecialText(series);
+		}
 		utils.waitForPageStable();
-		if(legend!=null) this.selectLegends(legend);
+		if(legend!=null) {
+			this.selectLegends(legend);
+		}
 	}
 
 	private void selectButtonOnPanel(String button) {
@@ -118,9 +127,15 @@ public class PanelPage extends HomePage{
 
 	private void fillConfigPanel(String page, String height, String folder) {
 		utils.waitForPageLoad();
-		if(page!=null) cmbSelectPage.selectByVisibleText(page);
-		if(height!=null) txtHeight.clearAndSendKeys(height);
-		if(folder!=null) txtFolder.clearAndSendKeys(folder);
+		if(page!=null) {
+			this.cmbSelectPage.selectByVisibleText(page);
+		}
+		if(height!=null) {
+			this.txtHeight.clearAndSendKeys(height);
+		}
+		if(folder!=null) {
+			this.txtFolder.clearAndSendKeys(folder);
+		}
 	}
 
 	@Step("Config new Panel")
@@ -186,12 +201,10 @@ public class PanelPage extends HomePage{
 	public void selectPanel(String panelName) {
 		this.tblPanel.waitForVisible(DriverUtils.loadTimeout);
 		int totalRows = this.tblPanel.getRowsCount();
-		int panelNameCol = 2;
-		int checkboxCol = 1;
 		for(int i = 2; i < totalRows - 1; i++) {
-			String currentPanel = this.tblPanel.getTableCellValue(i, panelNameCol);
+			String currentPanel = this.tblPanel.getTableCellValue(i, Constant.PANEL_NAME_COLUMN_INDEX);
 			if(currentPanel.equals(panelName)) {
-				this.tblPanel.clickTableCell(i, checkboxCol);
+				this.tblPanel.clickTableCell(i, Constant.PANEL_CHECKBOX_COLUMN_INDEX);
 				break;
 			}
 		}
@@ -200,12 +213,10 @@ public class PanelPage extends HomePage{
 	public void openEditPanel(String panelName) {
 		this.btnOkAddNewPanel.waitForInVisible(DriverUtils.loadTimeout);
 		int totalRows = this.tblPanel.getRowsCount();
-		int panelNameCol = 2;
-		int actionCol = 3;
 		for(int i = 2; i < totalRows - 1; i++) {
-			String currentPanel = this.tblPanel.getTableCellValue(i, panelNameCol);
+			String currentPanel = this.tblPanel.getTableCellValue(i, Constant.PANEL_NAME_COLUMN_INDEX);
 			if(currentPanel.equals(panelName)) {
-				this.tblPanel.table().findElement(By.xpath("//tr["+i+"]/td["+actionCol+"]/a[contains(text(),'Edit')]")).click();;
+				this.tblPanel.table().findElement(By.xpath("//tr["+i+"]/td["+Constant.PANEL_ACTION_COLUMN_INDEX+"]/a[contains(text(),'Edit')]")).click();;
 				this.btnOkAddNewPanel.waitForVisible(DriverUtils.loadTimeout);
 				break;
 			}
@@ -213,12 +224,16 @@ public class PanelPage extends HomePage{
 	}
 
 	public void cancelPanelDialog() {
-		if(this.btnCancelPanel.isDisplayed()) this.btnCancelPanel.click();
+		if(this.btnCancelPanel.isDisplayed()) {
+			this.btnCancelPanel.click();
+		}
 	}
 
 	public void cancelConfigPanel() {
 		utils.waitForPageStable();
-		if(this.btnCancelConfigPanel.isDisplayed()) this.btnCancelConfigPanel.click();
+		if(this.btnCancelConfigPanel.isDisplayed()) {
+			this.btnCancelConfigPanel.click();
+		}
 	}
 
 	public void deletePanel(String panelName) {
@@ -237,12 +252,10 @@ public class PanelPage extends HomePage{
 	public Boolean isPanelCheckboxSelected(String panelName) {
 		this.tblPanel.waitForVisible(DriverUtils.loadTimeout);
 		int totalRows = this.tblPanel.getRowsCount();
-		int panelNameCol = 2;
-		int checkboxCol = 1;
 		for(int i = 2; i < totalRows - 1; i++) {
-			String currentPanel = this.tblPanel.getTableCellValue(i, panelNameCol);
+			String currentPanel = this.tblPanel.getTableCellValue(i, Constant.PANEL_NAME_COLUMN_INDEX);
 			if(currentPanel.equals(panelName)) {
-				Checkbox chkPanelCheckbox = new Checkbox(String.format(this.xpathPanelCheckbox,i,checkboxCol));
+				Checkbox chkPanelCheckbox = new Checkbox(String.format(this.xpathPanelCheckbox,i,Constant.PANEL_CHECKBOX_COLUMN_INDEX));
 				return chkPanelCheckbox.isChecked();
 			}
 		}
@@ -252,9 +265,8 @@ public class PanelPage extends HomePage{
 	public Boolean isAllPanelCheckboxesSelected() {
 		this.tblPanel.waitForVisible(DriverUtils.loadTimeout);
 		int totalRows = this.tblPanel.getRowsCount();
-		int checkboxCol = 1;
 		for(int i = 2; i < totalRows - 1; i++) {
-			Checkbox chkPanelCheckbox = new Checkbox(String.format(this.xpathPanelCheckbox,i,checkboxCol));
+			Checkbox chkPanelCheckbox = new Checkbox(String.format(this.xpathPanelCheckbox,i,Constant.PANEL_CHECKBOX_COLUMN_INDEX));
 			if(chkPanelCheckbox.isChecked() == false) {
 				return false;
 			}

@@ -17,7 +17,7 @@ public class Constant {
 	public static final String REPOSITORY2      = "SampleRepositoryLV2";
 	public static final String LOGIN_URL		= "http://5e421106.ngrok.io/TADashboard/login.jsp";
 	public static final String CONFIG_PATH		= "\\src\\test\\resources\\Configuration.properties";
-	public static final String TA_DASHBOARD_TITLE = "TestArchitect ™";
+	public static final String TA_DASHBOARD_TITLE = "TestArchitect ™ - ";
 	public static final String ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD = "Username or password is invalid";
 	public static final String ERROR_MESSAGE_PLEASE_ENTER_USERNAME = "Please enter username!";
 
@@ -35,6 +35,9 @@ public class Constant {
 	public static final String SERIES = "Name";
 	public static final String SERIES1 = "Location";
 	public static final String CHART_PANEL = "Action Implementation By Status";
+	public static final int PANEL_NAME_COLUMN_INDEX = 2;
+	public static final int PANEL_CHECKBOX_COLUMN_INDEX = 1;
+	public static final int PANEL_ACTION_COLUMN_INDEX = 3;
 
 	//Test Data Profiles
 	public static final String[] LIST_PRESET_DATAPROFILES = {"Action Implementation By Status", "Test Case Execution", "Test Case Execution Failed Trend", "Test Case Execution History"
