@@ -47,11 +47,11 @@ public class TestBase {
 
 	@AfterClass
 	public void tearDown() {
-		softAssert.assertAll();
 		System.out.println("Post-condition");
 		Logger.getRootLogger().removeAllAppenders();
 		Logger.getRootLogger().addAppender(new NullAppender());
 		DriverUtils.driver.quit();
+		softAssert.assertAll();
 	}
 
 	@Step("Navigate to Dashboard login page")

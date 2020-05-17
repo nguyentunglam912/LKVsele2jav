@@ -1,5 +1,8 @@
 package com.sele2.support;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Constant {
 	public static final String VALID_USERNAME 	= "test";
 	public static final String VALID_PASSWORD 	= "TEST";
@@ -38,6 +41,7 @@ public class Constant {
 	public static final int PANEL_NAME_COLUMN_INDEX = 2;
 	public static final int PANEL_CHECKBOX_COLUMN_INDEX = 1;
 	public static final int PANEL_ACTION_COLUMN_INDEX = 3;
+	public static final ArrayList<String> LIST_CHART_TYPE = new ArrayList<String>( Arrays.asList("Pie", "Single Bar", "Stacked Bar", "Group Bar", "Line") );
 
 	//Test Data Profiles
 	public static final String[] LIST_PRESET_DATAPROFILES = {"Action Implementation By Status", "Test Case Execution", "Test Case Execution Failed Trend", "Test Case Execution History"

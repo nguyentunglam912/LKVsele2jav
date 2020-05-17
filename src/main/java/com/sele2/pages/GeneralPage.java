@@ -31,7 +31,7 @@ public class GeneralPage {
 	}
 
 	public void clickOnMenu(String menuname) {
-		utils.waitForPageLoad();
+		utils.waitForPageStable();
 		String xpathMenuOption = jsonReader.getValueFromJson(String.format("/menu name/%s",menuname));
 		Button btnMenuOption = new Button(String.format(xpathMenuOption));
 		btnMenuOption.waitForVisible(DriverUtils.loadTimeout);

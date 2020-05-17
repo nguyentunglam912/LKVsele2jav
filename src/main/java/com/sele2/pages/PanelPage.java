@@ -46,6 +46,9 @@ public class PanelPage extends HomePage{
 	private BaseElement listSetting		= new BaseElement("//div[@id='tabs-displaySettings']//tr//td");
 	private Combobox cmbDataProfile		= new Combobox("//select[@id='cbbProfile']");
 	private TextBox txtChartTitle		= new TextBox("//input[@id='txtChartTitle']");
+	private Combobox cmbCategories		= new Combobox("//div[@id='tdSettings']//select[@id='cbbCategoryField']");
+	private TextBox txtCaptionCategories= new TextBox("//div[@id='tdSettings']//input[@id='txtCategoryXAxis']");
+	private TextBox txtCaptionValue		= new TextBox("//div[@id='tdSettings']//input[@id='txtValueYAxis']");
 
 	public String getCurrentSettingForm() {
 		return this.lblTypeSettings.getText().trim();
@@ -188,11 +191,14 @@ public class PanelPage extends HomePage{
 	}
 
 	public Boolean isDataLabelsCheckBoxesStateCorrect(Boolean series, Boolean category, Boolean value, Boolean percentage) {
+		Boolean result = false;
 		if((this.chkSeries.isEnabled() == series)&&(this.chkCategories.isEnabled() == category)&&(this.chkValue.isEnabled() == value)
 				&&(this.chkPercentage.isEnabled() == percentage)) {
-			return true;
-		} else return false;
+			result = true;
+		}
+		return result;
 	}
+
 	public String getWarningMessageOnPanels() {
 		alert.waitForAlertPresent();
 		String actualMessage = alert.getText();
@@ -307,5 +313,20 @@ public class PanelPage extends HomePage{
 		List tmp = new ArrayList(listOptions);
 		Boolean isExisted = listOptions.containsAll(tmp);
 		return isExisted;
+	}
+
+	public ArrayList<String> getListChartType(){
+		List<String> listOptions = this.cmbChartType.getAllOptions();
+		ArrayList<String> list = new ArrayList<String>(listOptions);
+		return list;
+	}
+
+	public Boolean isControlStateCorrect(Boolean series, Boolean categories, Boolean captionSeries, Boolean captionCategory) {
+		Boolean result = false;
+		if((this.cmbCategories.isEnabled() == categories)&&(this.cmbSeries.isEnabled() == series)&&(this.txtCaptionCategories.isEnabled() == captionCategory)
+				&&(this.txtCaptionValue.isEnabled() == captionSeries)) {
+			result = true;
+		}
+		return result;
 	}
 }
