@@ -18,17 +18,23 @@ public class NewPage extends HomePage{
 
 	public void fillNewPageInfo(String pageName, String parentPage, Integer numberOfColumn, String displayAfter, Boolean isPublic){
 		utils.waitForPageStable();
-		if(pageName != null) txtPageName.clearAndSendKeys(pageName);
+		if(pageName != null) {
+			this.txtPageName.clearAndSendKeys(pageName);
+		}
 		cmbParentPage.selectBySpecialText(parentPage);
-		if(numberOfColumn != null) cmbNumberOfColumn.selectByValue(numberOfColumn.toString());
+		if(numberOfColumn != null) {
+			this.cmbNumberOfColumn.selectByValue(numberOfColumn.toString());
+		}
 		cmbDisplayAfter.selectBySpecialText(displayAfter);
-		if(isPublic != null) chkIsPublic.selectValue(isPublic);
+		if(isPublic != null) {
+			this.chkIsPublic.selectValue(isPublic);
+		}
 	}
 
 	@Step("Enter info into New Page dialog and click OK button")
 	public void submitNewPage(String pageName, String parentPage, Integer numberOfColumn, String displayAfter, Boolean isPublic) {
 		utils.waitForPageStable();
-		fillNewPageInfo(pageName, parentPage, numberOfColumn, displayAfter, isPublic);
+		this.fillNewPageInfo(pageName, parentPage, numberOfColumn, displayAfter, isPublic);
 		btnOk.moveMouse();
 		btnOk.click();
 	}
@@ -36,13 +42,17 @@ public class NewPage extends HomePage{
 	@Step("Edit info into Edit Page dialog and click OK button")
 	public void editPage(String pagePath, String pageName, String parentPage,
 			Integer numberOfColumn, String displayAfter, Boolean isPublic) {
-		if(pagePath != null) goToPage(pagePath);
+		if(pagePath != null) {
+			goToPage(pagePath);
+		}
 		selectOptionInMenu("Global Setting", "Edit");
 		utils.waitForPageStable();
 		submitNewPage(pageName, parentPage, numberOfColumn, displayAfter, isPublic);
 	}
 
 	public void cancelAddPage() {
-		if(this.btnCancel.isDisplayed()) this.btnCancel.click();
+		if(this.btnCancel.isDisplayed()) {
+			this.btnCancel.click();
+		}
 	}
 }

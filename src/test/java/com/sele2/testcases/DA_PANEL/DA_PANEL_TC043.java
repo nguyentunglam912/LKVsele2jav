@@ -89,7 +89,6 @@ public class DA_PANEL_TC043 extends TestBase {
 
 		Log.info("VP: Error message 'Panel height must be an integer number' display");
 		softAssert.assertEquals(panelPage.getWarningMessageOnPanels(), this.invalidHeightMsg2);
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

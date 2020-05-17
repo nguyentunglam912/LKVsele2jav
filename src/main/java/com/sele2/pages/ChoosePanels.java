@@ -19,7 +19,9 @@ public class ChoosePanels extends HomePage{
 
 	public void selectChartPanelInChoosePanels(String chartPanel) {
 		Link btnChartItem = new Link(String.format(xpathChartItem, chartPanel.replace(" ", "\u00A0")));
-		if(!btnChartItem.isDisplayed()) this.selectChoosePanelsMenu();
+		if(!btnChartItem.isDisplayed()) {
+			this.selectChoosePanelsMenu();
+		}
 		btnChartItem.waitForVisible(DriverUtils.loadTimeout);
 		btnChartItem.click();
 		utils.waitForPageStable();

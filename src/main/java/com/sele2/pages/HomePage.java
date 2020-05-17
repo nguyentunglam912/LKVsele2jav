@@ -8,6 +8,8 @@ import org.openqa.selenium.WebElement;
 import com.sele2.elements.BaseElement;
 import com.sele2.elements.Button;
 import com.sele2.elements.Label;
+import com.sele2.support.Constant;
+
 import io.qameta.allure.Step;
 
 public class HomePage extends GeneralPage{
@@ -60,7 +62,7 @@ public class HomePage extends GeneralPage{
 	public String getCurrentPage() {
 		utils.waitForPageStable();
 		String currentPageTitle = this.getCurrentPageTitle();
-		return currentPageTitle.substring(18, currentPageTitle.length()).trim();
+		return currentPageTitle.substring(Constant.TA_DASHBOARD_TITLE.length(), currentPageTitle.length()).trim();
 	}
 
 	public Integer getNumberOfColumnOnPage() {
