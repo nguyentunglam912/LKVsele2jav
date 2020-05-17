@@ -29,6 +29,5 @@ public class DA_LOGIN_TC001 extends TestBase {
 
 		Log.info("VP: Verify that Dashboard Mainpage appears");
 		softAssert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
-		softAssert.assertAll();
 	}
 }

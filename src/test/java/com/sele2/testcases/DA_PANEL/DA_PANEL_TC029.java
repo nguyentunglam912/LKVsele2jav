@@ -40,6 +40,5 @@ public class DA_PANEL_TC029 extends TestBase {
 
 		Log.info("VP: Warning message: 'Display Name is a required field.' show up");
 		softAssert.assertEquals(panelPage.getWarningMessageOnPanels(), expectedWarningMessage);
-		softAssert.assertAll();
 	}
 }

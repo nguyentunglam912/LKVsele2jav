@@ -1,7 +1,5 @@
 package com.sele2.support;
 
-import java.util.ArrayList;
-
 public class Constant {
 	public static final String VALID_USERNAME 	= "test";
 	public static final String VALID_PASSWORD 	= "TEST";

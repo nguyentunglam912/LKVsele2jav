@@ -69,7 +69,6 @@ public class DA_PANEL_TC040 extends TestBase {
 
 		Log.info("VP: Check that 'Categories' checkbox, 'Series' checkbox, 'Value' checkbox and 'Percentage' checkbox are disabled");
 		softAssert.assertTrue(panelPage.isDataLabelsCheckBoxesStateCorrect(false, false, false, false));
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

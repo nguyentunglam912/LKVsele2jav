@@ -50,7 +50,6 @@ public class DA_MP_TC022 extends TestBase {
 		
 		Log.info("VP: There is a message  'Test Child 1 already exist. Please enter a diffrerent name.'");
 		softAssert.assertEquals(homePage.getErrorMessage(), this.DuplicateErrorMessage);
-		softAssert.assertAll();
 	}
 	
 	@AfterMethod

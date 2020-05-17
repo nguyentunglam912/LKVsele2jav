@@ -10,7 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class Utilities {
 	
 	// Wait for page load
-	public void waitForPageLoad() {
+	public static void waitForPageLoad() {
 		Wait<WebDriver> wait = new WebDriverWait(DriverUtils.driver,DriverUtils.loadTimeout);
 		wait.until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver wdriver) {
@@ -19,7 +19,7 @@ public class Utilities {
 				}
 			});
 	}
-	public void waitForPageStable() {
+	public static void waitForPageStable() {
 		Wait<WebDriver> wait = new WebDriverWait(DriverUtils.driver,DriverUtils.loadTimeout);
 		wait.until(new ExpectedCondition<Boolean>() {
 			public Boolean apply(WebDriver driver) {

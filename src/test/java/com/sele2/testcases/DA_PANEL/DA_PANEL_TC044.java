@@ -48,7 +48,6 @@ public class DA_PANEL_TC044 extends TestBase {
 
 		Log.info("VP: Check that 'Panel height is required field' message display");
 		softAssert.assertEquals(panelPage.getWarningMessageOnPanels(), this.requiredErrorMsg);
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

@@ -35,7 +35,6 @@ public class DA_MP_TC019 extends TestBase {
 
 		Log.info("VP: User is able to add additional sibbling page levels to parent page successfully");
 		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME1);
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

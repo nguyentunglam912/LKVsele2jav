@@ -99,7 +99,6 @@ public class DA_PANEL_TC039 extends TestBase {
 
 		Log.info("VP: All settings are unchange in Add New Panel dialog");
 		softAssert.assertTrue(panelPage.isAllSettingExists());
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

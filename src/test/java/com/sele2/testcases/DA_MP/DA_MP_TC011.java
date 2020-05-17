@@ -35,6 +35,5 @@ public class DA_MP_TC011 extends TestBase {
 
 		Log.info("VP: User cannot go to Global Setting -> Add page while 'New Page' dialog appears.");
 		softAssert.assertFalse(homePage.isGlobalSettingMenuDisplayed());
-		softAssert.assertAll();
 	}
 }

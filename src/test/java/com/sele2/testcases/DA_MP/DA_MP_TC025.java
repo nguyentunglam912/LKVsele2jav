@@ -45,7 +45,6 @@ public class DA_MP_TC025 extends TestBase{
 
 		Log.info("VP: Position of the second page follow Overview page");
 		softAssert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME2));
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

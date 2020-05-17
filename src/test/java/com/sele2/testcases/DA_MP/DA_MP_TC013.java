@@ -43,7 +43,6 @@ public class DA_MP_TC013 extends TestBase {
 
 		Log.info("VP: Check Another Test page is positioned besides the Test page");
 		softAssert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.PAGE_NAME1, Constant.PAGE_NAME2));
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

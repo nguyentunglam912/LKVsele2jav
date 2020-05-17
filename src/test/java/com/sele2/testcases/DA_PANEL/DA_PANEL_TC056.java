@@ -48,7 +48,6 @@ public class DA_PANEL_TC056 extends TestBase {
 
 		Log.info("VP: User is unable to edit 'Folder' field with empty path");
 		softAssert.assertTrue(panelPage.doesConfigPanelDisplay());
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

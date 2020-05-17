@@ -49,7 +49,6 @@ public class DA_MP_TC023 extends TestBase {
 		
 		Log.info("VP: Verify page name is changed");
 		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME3);
-		softAssert.assertAll();
 	}
 	
 	@AfterMethod

@@ -36,6 +36,5 @@ public class DA_LOGIN_TC005 extends TestBase {
 
 		Log.info("VP: The Repository menu displays name of switched repository");
 		softAssert.assertEquals(homePage.getCurrentRepo(), Constant.REPOSITORY2);
-		softAssert.assertAll();
 	}
 }

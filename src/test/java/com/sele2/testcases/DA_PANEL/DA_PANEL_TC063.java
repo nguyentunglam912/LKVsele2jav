@@ -98,6 +98,5 @@ public class DA_PANEL_TC063 extends TestBase {
 
 		Log.info("VP: Check original 'Pie' - Edit Panel form is displayed");
 		softAssert.assertTrue(panelPage.isSettingsExisted(currentSetting));
-		softAssert.assertAll();
 	}
 }
