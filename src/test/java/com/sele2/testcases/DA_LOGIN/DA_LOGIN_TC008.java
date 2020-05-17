@@ -30,6 +30,5 @@ public class DA_LOGIN_TC008 extends TestBase {
 
 		Log.info("VP: Verify main page is displayed");
 		softAssert.assertEquals(homePage.getCurrentPageTitle(), Constant.TA_DASHBOARD_TITLE);
-		softAssert.assertAll();
 	}
 }

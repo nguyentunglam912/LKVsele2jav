@@ -49,7 +49,6 @@ public class DA_MP_TC015 extends TestBase {
 
 		Log.info("VP: Check children is invisibled");
 		softAssert.assertFalse(homePage.doesItemExistInMenu(Constant.PAGE_NAME2, Constant.PAGE_NAME1));
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

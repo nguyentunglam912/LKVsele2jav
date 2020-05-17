@@ -48,7 +48,6 @@ public class DA_MP_TC018 extends TestBase {
 
 		Log.info("VP: Check " + Constant.PAGE_NAME3 + " is added successfully");
 		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME3);
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

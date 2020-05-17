@@ -61,7 +61,6 @@ public class DA_PANEL_TC052 extends TestBase {
 
 		Log.info("VP: Check that User is able to edit Height field to anything apart from integer number with in 300-800 range");
 		softAssert.assertFalse(panelPage.doesConfigPanelDisplay());
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

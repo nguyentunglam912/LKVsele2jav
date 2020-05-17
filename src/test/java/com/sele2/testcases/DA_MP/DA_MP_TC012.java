@@ -37,7 +37,6 @@ public class DA_MP_TC012 extends TestBase {
 
 		Log.info("VP: Check new page is displayed besides 'Overview' page");
 		softAssert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

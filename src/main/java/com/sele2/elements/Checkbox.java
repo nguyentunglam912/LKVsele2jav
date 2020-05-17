@@ -24,7 +24,7 @@ public class Checkbox extends BaseElement {
 
 	public void selectValue(Boolean value) {
 		if(value == true) this.check();
-		else if(value == false) this.uncheck();
+		else this.uncheck();
 	}
 
 }

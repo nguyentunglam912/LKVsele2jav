@@ -42,7 +42,6 @@ public class DA_MP_TC026 extends TestBase {
 
 		Log.info("VP: There are 3 columns on the above created page");
 		softAssert.assertEquals(homePage.getNumberOfColumnOnPage(), numberOfColumn2);
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

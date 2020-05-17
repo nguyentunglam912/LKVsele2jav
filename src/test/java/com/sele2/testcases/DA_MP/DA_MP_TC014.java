@@ -42,7 +42,6 @@ public class DA_MP_TC014 extends TestBase {
 
 		Log.info("VP: Check newly added page is visibled");
 		softAssert.assertTrue(homePage.isNewPageDisplayAfterPage(Constant.OVERVIEW_PAGE, Constant.PAGE_NAME1));
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

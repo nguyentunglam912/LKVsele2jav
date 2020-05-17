@@ -47,6 +47,5 @@ public class DA_PANEL_TC031 extends TestBase {
 
 		Log.info("VP: Verify that report panel setting form is displayed with corresponding panel type selected");
 		softAssert.assertEquals(panelPage.getCurrentSettingForm(), "Heat Map Settings");
-		softAssert.assertAll();
 	}
 }

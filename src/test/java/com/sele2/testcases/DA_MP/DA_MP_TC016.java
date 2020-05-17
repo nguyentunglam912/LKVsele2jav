@@ -62,7 +62,6 @@ public class DA_MP_TC016 extends TestBase {
 		
 		Log.info("VP: Check 'Another Test' page is invisible");
 		softAssert.assertFalse(homePage.doesItemExistInMenu(Constant.PAGE_NAME2, Constant.OVERVIEW_PAGE));
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

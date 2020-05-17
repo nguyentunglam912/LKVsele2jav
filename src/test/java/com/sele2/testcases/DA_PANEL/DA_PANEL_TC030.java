@@ -53,7 +53,6 @@ public class DA_PANEL_TC030 extends TestBase {
 
 		Log.info("VP: Check The new panel is created");
 		softAssert.assertTrue(panelPage.isNewPanelExisted(displayNameWithAtSign));
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

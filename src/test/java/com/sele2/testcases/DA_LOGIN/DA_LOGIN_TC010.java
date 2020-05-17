@@ -28,6 +28,5 @@ public class DA_LOGIN_TC010 extends TestBase {
 
 		Log.info("VP: Verify the error message 'Please enter username!' is displayed");
 		softAssert.assertEquals(loginPage.getLoginErrorMessage(), Constant.ERROR_MESSAGE_PLEASE_ENTER_USERNAME);
-		softAssert.assertAll();
 	}
 }

@@ -28,6 +28,5 @@ public class DA_LOGIN_TC003 extends TestBase{
 
 		Log.info("VP: Verify that Dashboard Error message 'Username or password is invalid' appears");
 		softAssert.assertEquals(loginPage.getLoginErrorMessage(), Constant.ERROR_MESSAGE_INVALID_USERNAME_OR_PASSWORD);
-		softAssert.assertAll();
 	}
 }

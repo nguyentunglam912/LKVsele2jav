@@ -47,7 +47,6 @@ public class DA_PANEL_TC027 extends TestBase {
 		homePage.selectChoosePanelsMenu();
 
 		Log.info("VP: Verify that all pre-set panels are populated and sorted correctly");
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

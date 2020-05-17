@@ -54,7 +54,6 @@ public class DA_MP_TC024 extends TestBase {
 
 		Log.info("VP: The second page is navigated");
 		softAssert.assertEquals(homePage.getCurrentPage(), Constant.PAGE_NAME2);
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

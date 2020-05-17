@@ -17,6 +17,7 @@ import io.qameta.allure.Step;
 import com.sele2.driver.DriverManagerFactory;
 import com.sele2.helper.FileReaderManager;
 import com.sele2.pages.ChoosePanels;
+import com.sele2.pages.DataProfilesPage;
 import com.sele2.pages.GeneralPage;
 import com.sele2.pages.HomePage;
 import com.sele2.pages.LoginPage;
@@ -32,6 +33,7 @@ public class TestBase {
 	public NewPage newPage = new NewPage();
 	public PanelPage panelPage = new PanelPage();
 	public ChoosePanels choosePanels = new ChoosePanels();
+	public DataProfilesPage dataProfilePage = new DataProfilesPage();
 
 	@BeforeClass
 	@Parameters({ "BROWSER", "REMOTE"})
@@ -45,6 +47,7 @@ public class TestBase {
 
 	@AfterClass
 	public void tearDown() {
+		softAssert.assertAll();
 		System.out.println("Post-condition");
 		Logger.getRootLogger().removeAllAppenders();
 		Logger.getRootLogger().addAppender(new NullAppender());

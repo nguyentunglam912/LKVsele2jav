@@ -47,7 +47,6 @@ public class DA_PANEL_TC032 extends TestBase {
 
 		Log.info("VP: Check warning message show up");
 		softAssert.assertEquals(panelPage.getErrorMessage(), this.duplicateErrorMessage);
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

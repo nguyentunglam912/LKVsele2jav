@@ -48,7 +48,6 @@ public class DA_PANEL_TC054 extends TestBase {
 
 		Log.info("VP: User is able to successfully edit 'Folder' field with valid path");
 		softAssert.assertFalse(panelPage.doesConfigPanelDisplay());
-		softAssert.assertAll();
 	}
 
 	@AfterMethod

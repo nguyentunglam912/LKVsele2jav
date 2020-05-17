@@ -39,6 +39,5 @@ public class DA_PANEL_TC028 extends TestBase {
 
 		Log.info("VP: All control/form are disabled or locked when Add New Panel dialog is opening");
 		softAssert.assertFalse(panelPage.isGlobalSettingMenuDisplayed());
-		softAssert.assertAll();
 	}
 }
