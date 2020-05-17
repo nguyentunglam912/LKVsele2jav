@@ -38,7 +38,7 @@ public class DA_PANEL_TC027 extends TestBase {
 		homePage.selectCreatePanelButtonInGlobalSettingMenu();
 
 		Log.info("Step 6: Create Panel with display name and series");
-		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null);
+		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null, null);
 
 		Log.info("Step 7: Click Ok button in Panel Configuration popup");
 		panelPage.configPanel(null, null, null);

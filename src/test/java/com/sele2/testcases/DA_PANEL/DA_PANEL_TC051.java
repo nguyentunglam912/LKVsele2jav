@@ -39,13 +39,13 @@ public class DA_PANEL_TC051 extends TestBase {
 		panelPage.selectAddNewButtonOnPanel();
 
 		Log.info("Step 5: Enter value into Display Name field with special characters except '@' and click OK");
-		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null);
+		panelPage.submitPanelForm(null, Constant.PANEL_NAME, Constant.SERIES, null, null);
 
 		Log.info("Step 6: Click Edit link");
 		panelPage.openEditPanel(Constant.PANEL_NAME);
 
 		Log.info("Step 7: Edit panel name with special characters");
-		panelPage.submitPanelForm(null, this.displayNameExceptAtSign, null, null);
+		panelPage.submitPanelForm(null, this.displayNameExceptAtSign, null, null, null);
 
 		Log.info("VP: Check warning message is shown up");
 		softAssert.assertEquals(panelPage.getWarningMessageOnPanels(), invalidDisplayNameMessage);
@@ -54,7 +54,7 @@ public class DA_PANEL_TC051 extends TestBase {
 		panelPage.closePopupMessage();
 
 		Log.info("Step 9: Edit panel name with special character is @");
-		panelPage.submitPanelForm(null, displayNameWithAtSign, null, null);
+		panelPage.submitPanelForm(null, displayNameWithAtSign, null, null, null);
 
 		Log.info("VP: Check The new panel is created");
 		softAssert.assertTrue(panelPage.isNewPanelExisted(displayNameWithAtSign));
